@@ -3,20 +3,19 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "deploy:stage": "npm run build:stage && rsync -rvtP ./dist/stage/  zhuo-dev:/home/rmt-clients/pc-mall",
-    "deploy:win": "scp -rv ./dist/stage/  zhuo-dev:/home/rmt-clients/pc-mall",
+    "lint": "vue-cli-service lint",
+    "build:dev": "vue-cli-service build --mode dev --dest dist/dev",
+    "build:prod": "vue-cli-service build --mode prod --dest dist/prod",
+    "build:stage": "vue-cli-service build --mode stage --dest dist/stage",
     "deploy:prod": "rsync -rvtP ./dist/prod/  smt-prod:/mnt/clients/pc-mall",
     "deploy:rmt-prod": "rsync -rvtP ./dist/prod/  rmt-prod:/mnt/clients/pc-mall",
+    "deploy:stage": "npm run build:stage && rsync -rvtP ./dist/stage/  zhuo-dev:/home/rmt-clients/pc-mall",
+    "deploy:win": "scp -rv ./dist/stage/  zhuo-dev:/home/rmt-clients/pc-mall",
     "serve:dev": "vue-cli-service serve --mode dev --open",
-    "serve:stage": "vue-cli-service serve --mode stage --open",
     "serve:prod": "vue-cli-service serve --mode prod --open",
-    "build:dev": "vue-cli-service build --mode dev --dest dist/dev",
-    "build:stage": "vue-cli-service build --mode stage --dest dist/stage",
-    "build:prod": "vue-cli-service build --mode prod --dest dist/prod",
-    "lint": "vue-cli-service lint"
+    "serve:stage": "vue-cli-service serve --mode stage --open"
   },
   "dependencies": {
-    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.4",
     "el-phone-number-input": "^1.1.11",
@@ -39,8 +38,11 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^2.2.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-element": "^1.0.1",
     "vue-template-compiler": "^2.6.11"
   }
 }
