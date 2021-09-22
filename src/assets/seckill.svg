@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="190" height="188" viewBox="0 0 190 188">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #d83041;
+      }
+
+      .cls-2 {
+        filter: url(#交叉_1);
+      }
+    </style>
+    <filter id="交叉_1" x="0" y="0" width="190" height="188" filterUnits="userSpaceOnUse">
+      <feOffset dx="-3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.149"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g class="cls-2" transform="matrix(1, 0, 0, 1, 0, 0)">
+    <path id="交叉_1-2" data-name="交叉 1" class="cls-1" d="M73.192,262A101.091,101.091,0,0,1,218,120.973V262Zm60.949-126.256V199.09a6.337,6.337,0,0,0,6.338,6.335h50.71a6.335,6.335,0,1,0,0-12.669H146.819V135.743a6.339,6.339,0,0,0-12.677,0Z" transform="translate(-34 -83)"/>
+  </g>
+</svg>
