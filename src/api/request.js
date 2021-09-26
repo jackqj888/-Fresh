@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken, clearToken } from "@/utils/storage";
+import { clearToken } from "@/utils/storage";
 import { Message } from "element-ui";
 import router from "@/router/index";
 
@@ -9,8 +9,8 @@ axios.defaults.timeout = 10000;
 axios.defaults.baseURL =
   process.env.VUE_APP_PROXY_URL || process.env.VUE_APP_BASE_URL;
 axios.defaults.headers.post["Content-Type"] = "application/json;charset=utf-8";
-axios.defaults.headers.ClientId = "Basic bWFsbDptYWxs";
-axios.defaults.withCredentials = false; // axios 默认不发送cookie，需要全局设置true发送cookie
+// axios.defaults.headers.ClientId = "Basic bWFsbDptYWxs";
+axios.defaults.withCredentials = true; // axios 默认不发送cookie，需要全局设置true发送cookie
 
 // 避免多个接口同事报错，出现一堆弹窗
 // let errorMessage = false
@@ -21,10 +21,12 @@ axios.interceptors.request.use((config) => {
     config.url.includes("/auth/mobile/token/sms") ||
     config.url.includes("/auth/oauth/token")
   ) {
-    config.headers.Authorization = "Basic bWFsbDptYWxs";
+    // config.headers.Authorization = "Basic bWFsbDptYWxs";
+    console.log(111)
   } else {
-    const token = getToken();
-    token && (config.headers.Authorization = "Bearer " + token);
+    // const token = getToken();
+    // token && (config.headers.Authorization = "Bearer " + token);
+    console.log(111)
   }
   return config;
 });

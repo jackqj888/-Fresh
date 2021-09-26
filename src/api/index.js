@@ -6,9 +6,9 @@ import {
 
 export default {
   login: {
-    getCode: (data) => post("/mall/register/verify", data),
+    getCode: (data) => get("/cart/list", data),
     loginWidthCode: (data) => postByUrl("/auth/mobile/token/sms", data),
-    loginWidthPassword: (data) => post("/auth/oauth/token", data),
+    loginWidthPassword: () => post("/login?userName=mumu4&password=112345678"),
     //获取个人信息,里面有个人积分
     getUserInfo: () => get("/mall/userinfo?login=true"),
     vipEndTime: () => get("/mall/userinfoVipEndTime"),

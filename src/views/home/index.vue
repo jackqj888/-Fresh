@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import api from '@/api'
 export default {
   name: 'home',
   data() {
@@ -10,6 +11,9 @@ export default {
     }
   },
   created() {
+      api.login.getCode().then(() => {
+        console.log(111222)
+      })
   },
 }
 </script>
