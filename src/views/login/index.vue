@@ -37,7 +37,9 @@
               </div>
             </div>
           </template>
+          <router-link to="/index">
           <div class="btn" @click="login">登录</div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -186,6 +188,9 @@ export default {
           background rgba(238, 83, 130, 0.4)
           margin-top 30px
           cursor pointer
+        .router-link-active {
+          text-decoration: none;
+          }
 
         .tabs
           margin-bottom 68px
