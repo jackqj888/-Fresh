@@ -10,7 +10,11 @@ export default {
     return {}
   },
   
-  methods: {},
+  mounted() {
+    console.log(this.$route.params.id)
+  },
+  methods: {
+  },
   watch: {},
 }
 </script>

@@ -35,14 +35,15 @@ const routes = [{
                 component: () => import("@/views/productlist/index.vue"),
             },
             {
-                path: "/details",
+                path: "/details:id",
                 name: "details",
                 meta: {
                     title: '商品详情',
                     headerType: 'normal'
                 },
                 component: () => import("@/views/details/index.vue"),
-            }
+            },
+            
             
         ]
     },
