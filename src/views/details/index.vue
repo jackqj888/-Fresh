@@ -29,12 +29,12 @@
             <el-input-number
               size="small"
               v-model="cartNum"
-              min="1"
-              max="99"
+              :min="1"
+              :max="99"
             ></el-input-number>
           </div>
           <div class="buyBox">
-            <div class="single" @click="cartAdd">
+            <div class="single" >
               加入购物车
             </div>
             <div class="buyNow">立即付款</div>
@@ -52,20 +52,22 @@ export default {
     return {
       goodsInfo: {},
       cartNum: 1,
+      id:'',
+      min:1,
+      max:99
     }
   },
   created() {
     this.getGoodsInfo()
+    this.id = this.$route.params.id
   },
 
   methods: {
     getGoodsInfo() {
       const that = this
       api.details.GoodsInfo().then((res) => {
-        if (res.data.status === 10000) {
           that.goodsInfo = res
-          console.log('bbb', res)
-        }
+          console.log('bbb',  that.goodsInfo)
       })
     },
   },

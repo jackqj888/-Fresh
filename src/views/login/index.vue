@@ -7,10 +7,13 @@
           <div class="login-top">
             <img src="@/assets/logo.png" alt="logo" class="logo"/>
             <div class="tabs flex-around">
-              <div class="tab" :class="{ active: form.grant_type === 'mobile' }" @click="form.grant_type = 'mobile'">
+              <div class="tab" 
+                   :class="{ active: form.grant_type === 'mobile' }" 
+                   @click="form.grant_type = 'mobile'">
                 快捷登录
               </div>
-              <div class="tab" :class="{ active: form.grant_type === 'password' }"
+              <div class="tab" 
+                   :class="{ active: form.grant_type === 'password' }"
                    @click="form.grant_type = 'password'">
                 账号登录
               </div>
@@ -32,13 +35,14 @@
             <div class="input">
               <input :type="inputType" v-model="form.password" placeholder="密码"/>
               <div class="view">
-                <img src="@/assets/eye_open.svg" v-if="inputType === 'text'" @click="inputType = 'password'"/>
+                <img src="@/assets/eye_open.svg" v-if="inputType === 'text'" 
+                     @click="inputType = 'password'"/>
                 <img src="@/assets/eye_close.svg" v-else @click="inputType = 'text'"/>
               </div>
             </div>
           </template>
           <router-link to="/index">
-          <div class="btn" @click="login">登录</div>
+            <div class="btn" @click="login">登录</div>
           </router-link>
         </div>
       </div>
@@ -131,10 +135,11 @@ export default {
       display: flex
       justify-content: center
       align-items: center
-      
+
       .login-top
         display: flex
         justify-content: space-around
+
       .logo
         width 148px
         height 100px
@@ -188,9 +193,10 @@ export default {
           background rgba(238, 83, 130, 0.4)
           margin-top 30px
           cursor pointer
+
         .router-link-active {
           text-decoration: none;
-          }
+        }
 
         .tabs
           margin-bottom 68px
