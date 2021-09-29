@@ -14,10 +14,6 @@ export default {
     vipEndTime: () => get("/mall/userinfoVipEndTime"),
   },
   home: {
-    ProductList: () => get(`./mock/mockData.json`)
-  },
-  details:{
-    GoodsInfo:() => get('./mock/dataInfo.json'+ this.id)
+    ProductList: () => get(`./mockData.json`)
   }
-
 };

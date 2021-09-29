@@ -29,7 +29,7 @@
       <div class="productList1">
         <div v-if="current===0" class="productList">
           <div class="goods" v-for="(item, index ) in fruitsList" :key="index">
-            <div class="item" @click="jump(item.id)">
+            <div class="item" @click="jump(id)">
               <div class="item_detail">
                 <img class="item_img" src="@/assets/item.png"/>
                 <span class="item_name">{{ item.name }}</span>
@@ -40,7 +40,7 @@
         </div>
         <div v-if="current===1" class="productList">
           <div class="goods" v-for="(item, index ) in vegetablesList" :key="index">
-            <div class="item" @click="jump(item.id)">
+            <div class="item" @click="jump(id)">
               <div class="item_detail">
                 <img class="item_img" src="@/assets/item.png"/>
                 <span class="item_name">{{ item.name }}</span>
@@ -51,7 +51,7 @@
         </div>
         <div v-if="current===2" class="productList">
           <div class="goods" v-for="(item, index ) in seafoodList" :key="index">
-            <div class="item" @click="jump(item.id)">
+            <div class="item" @click="jump(id)">
               <div class="item_detail">
                 <img class="item_img" src="@/assets/item.png"/>
                 <span class="item_name">{{ item.name }}</span>
@@ -92,7 +92,7 @@ export default {
   },
   methods: {
     jump(id) {
-      this.$router.push({name: 'details', params: { id }});
+      this.$router.push(`/details/${id}`);
     },
     getProductList(type) {
       const that = this;
@@ -121,6 +121,7 @@ export default {
     },
     active(id) {
       this.current = id
+
       if (this.current === 0) {
         this.fruitsList = this.ProductPageList[0]
       } else if (this.current === 1) {
