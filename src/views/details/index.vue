@@ -8,14 +8,14 @@
       </div>
       <div class="box-center">
         <div class="title">
-          <span>111</span>
+          <span>{{goodsInfo.name}}</span>
         </div>
         <div class="centerBox">
           <div class="detail">
             <p class="price">
               价格
               <span style="color: #d83041;">
-                ¥ 100
+                ¥ {{ goodsInfo.price }}
               </span>
             </p>
           </div>
@@ -52,20 +52,22 @@ export default {
     return {
       goodsInfo: {},
       cartNum: 1,
-      id:'',
+      id: '',
       min:1,
       max:99
     }
   },
-  created() {
-    this.getGoodsInfo()
+  mounted() {
     this.id = this.$route.params.id
+    this.getGoodsInfo()
+   
+   
   },
 
   methods: {
     getGoodsInfo() {
       const that = this
-      api.details.GoodsInfo().then((res) => {
+      api.details.GoodsInfo(this.id).then((res) => {
           that.goodsInfo = res
           console.log('bbb',  that.goodsInfo)
       })

@@ -78,7 +78,8 @@ export default {
       ProductPageList: [],
       fruitsList: [],
       vegetablesList: [],
-      seafoodList: []
+      seafoodList: [],
+      currentStatus: '18'
 
     }
   },
@@ -86,27 +87,27 @@ export default {
   //   this.active(0)
   // },
   created() {
-    
+
     this.getProductList()
-    
+
   },
   methods: {
     jump(id) {
-      this.$router.push({name: 'details', params: { id }});
+      this.$router.push({name: 'details', params: {id}});
     },
-    getProductList(type) {
+    getProductList(categoryId) {
       const that = this;
-      api.home.ProductList(type).then((res) => {
+      api.home.ProductList(categoryId).then((res) => {
         that.data = res
         that.ProductList = this.data.list
         const c = []
         const d = {}
         that.ProductList.forEach(item => {
-          if (d[item.productType] === undefined) {
-            d[item.productType] = c.length
+          if (d[item.categoryId] === undefined) {
+            d[item.categoryId] = c.length
             c.push([item])
           } else {
-            c[d[item.productType]].push(item)
+            c[d[item.categoryId]].push(item)
           }
         })
         this.ProductPageList = c
@@ -121,6 +122,7 @@ export default {
     },
     active(id) {
       this.current = id
+
       if (this.current === 0) {
         this.fruitsList = this.ProductPageList[0]
       } else if (this.current === 1) {
@@ -135,7 +137,6 @@ export default {
       // this.productType = type
       // console.log(this.id)
     },
-    
 
 
   }
@@ -166,7 +167,7 @@ button
 
 .container_right
   width: 1360px
-  height: 600px
+
   background-color: #e7e7e7
 
   .productList_top
@@ -187,10 +188,11 @@ button
   display: flex
   justify-content: flex-start
   align-items: center
+  flex-wrap: wrap
 
   .goods
     //width: 1300px
-    height: 500px
+    height: 280px
 
     .item
       width 212px
