@@ -41,9 +41,9 @@
               </div>
             </div>
           </template>
-          <router-link to="/index">
+          <div to="/index">
             <div class="btn" @click="login">登录</div>
-          </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
 
 <script>
 import api from '@/api'
-import {getToken} from '@/utils/storage'
+import {getToken, setUser} from '@/utils/storage'
 
 export default {
   name: 'login',
@@ -94,14 +94,12 @@ export default {
         formData.append('password', this.form.password)
         formData.append('scope', this.form.scope)
         res = await api.login.loginWidthPassword(formData)
-        console.log(res)
+        if (res.username) {
+          setUser(res.username)
+          this.$router.push('/index')
+        }
       }
-      // setToken(res.access_token)
-      // this.$store.commit('setUser', res.user_info)
-      // api.login.getUserInfo().then((res) => {
-      //   this.$store.commit('setUser', res)
-      // })
-      this.$router.push('/index')
+      
     },
   },
 }

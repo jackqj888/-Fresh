@@ -1,7 +1,5 @@
 import axios from "axios";
-import { clearToken } from "@/utils/storage";
 import { Message } from "element-ui";
-import router from "@/router/index";
 
 // import store from "@/store";
 
@@ -50,15 +48,6 @@ axios.interceptors.response.use(
     }
   },
   function (err) {
-    const url = err.response.config.url;
-    // 获取用户信息500不提示
-    if (!url.includes('/userinfo')) {
-      Message(err.response.data.msg);
-    }
-    if ([401, 403].includes(err.response.status)) {
-      clearToken();
-      router.replace("/login");
-    }
     return Promise.reject(err);
   }
 );

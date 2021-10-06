@@ -4,7 +4,12 @@
       <span class="app-name">时代生鲜</span>
         <div class="user">
           
-          <p @click="Jump" >用户名: {{ message }}</p>
+          <a v-if="!username" @click="Jump" >{{ message }}</a>
+
+          <div v-else>
+            <a >用户名: {{ username }}</a>
+            <button @click="logout" style="margin-left: 10px">登出</button>
+          </div>
           
         </div>
     </div>
@@ -18,11 +23,19 @@ export default {
       message: "请登入"
     }
   },
+  computed: {
+    username() {
+      return this.$store.state.user
+    }
+  },
   methods:{
     Jump(){
       this.$router.push({
         path:`/login`
       })
+    },
+    logout() {
+      // 这里实现登出逻辑
     }
   }
 }
