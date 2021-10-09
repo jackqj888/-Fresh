@@ -16,7 +16,7 @@ export default {
 
 <style scoped >
 .home-footer {
-  height: 300px;
+  height: 100px;
   background-color: #B3C0D1;
   color: #333;
   text-align: center;

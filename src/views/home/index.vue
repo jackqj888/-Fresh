@@ -63,7 +63,7 @@ body {
 
 .home-container {
   display: flex;
-  /*justify-content:center;*/
+  justify-content:center;
   min-height: 100%;
   height: 700px;
 }

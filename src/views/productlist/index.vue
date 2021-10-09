@@ -1,19 +1,12 @@
 <template>
   <div class="container">
     <div class="container_left">
-      <div style="text-align:center">
+      <div style="text-align:center" v-for="(item,index) in categoryList" :key="index">
         <button
             :class="current === 0 ? 'active ' : ''"
-            @click="active(0)">水果
+            @click="active(item.id)">{{ item.name }}
         </button>
-        <button
-            :class="current === 1 ? 'active ' : ''"
-            @click="active(1)">蔬菜
-        </button>
-        <button
-            :class="current === 2 ? 'active ' : ''"
-            @click="active(2)">海鲜
-        </button>
+
       </div>
 
     </div>
@@ -27,30 +20,8 @@
         </div>
       </div>
       <div class="productList1">
-        <div v-if="current===0" class="productList">
+        <div  class="productList">
           <div class="goods" v-for="(item, index ) in fruitsList" :key="index">
-            <div class="item" @click="jump(item.id)">
-              <div class="item_detail">
-                <img class="item_img" src="@/assets/item.png"/>
-                <span class="item_name">{{ item.name }}</span>
-                <span class="item_price">￥{{ item.price }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-if="current===1" class="productList">
-          <div class="goods" v-for="(item, index ) in vegetablesList" :key="index">
-            <div class="item" @click="jump(item.id)">
-              <div class="item_detail">
-                <img class="item_img" src="@/assets/item.png"/>
-                <span class="item_name">{{ item.name }}</span>
-                <span class="item_price">￥{{ item.price }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-if="current===2" class="productList">
-          <div class="goods" v-for="(item, index ) in seafoodList" :key="index">
             <div class="item" @click="jump(item.id)">
               <div class="item_detail">
                 <img class="item_img" src="@/assets/item.png"/>
@@ -79,7 +50,9 @@ export default {
       fruitsList: [],
       vegetablesList: [],
       seafoodList: [],
-      currentStatus: '18'
+      currentStatus: '18',
+      categoryList: [],
+      categoryId: ''
 
     }
   },
@@ -89,6 +62,7 @@ export default {
   created() {
 
     this.getProductList()
+    this.getCategoryList()
 
   },
   methods: {
@@ -96,46 +70,44 @@ export default {
       this.$router.push({name: 'details', params: {id}});
     },
     getProductList(categoryId) {
-      const that = this;
+
       api.home.ProductList(categoryId).then((res) => {
-        that.data = res
-        that.ProductList = this.data.list
-        const c = []
-        const d = {}
-        that.ProductList.forEach(item => {
-          if (d[item.categoryId] === undefined) {
-            d[item.categoryId] = c.length
-            c.push([item])
-          } else {
-            c[d[item.categoryId]].push(item)
-          }
-        })
-        this.ProductPageList = c
-        console.log('ttt', this.ProductPageList)
+        this.data = res
+        this.ProductList = this.data.list
+        // const c = []
+        // const d = {}
+        // this.ProductList.forEach(item => {
+        //   if (d[item.categoryId] === undefined) {
+        //     d[item.categoryId] = c.length
+        //     c.push([item])
+        //   } else {
+        //     c[d[item.categoryId]].push(item)
+        //   }
+        // })
+        // this.ProductPageList = c
+        // console.log('ttt', this.ProductPageList)
 
         // that.ProductList.filter(item => {
         //     this.ProductPageList.push(item)
         //   })
         //
-        this.active(0)
+        this.active(3)
       })
     },
+    getCategoryList() {
+      api.CategoryList.CategoryList().then((res) => {
+            this.categoryList = res
+          }
+      )
+    },
     active(id) {
-      this.current = id
-
-      if (this.current === 0) {
-        this.fruitsList = this.ProductPageList[0]
-      } else if (this.current === 1) {
-        this.vegetablesList = this.ProductPageList[1]
-      } else if (this.current === 2) {
-        this.seafoodList = this.ProductPageList[2]
-      }
-      // console.log('aaa',this.FruitsList)
-      // console.log('bbb',this.Vegetables)
-      // console.log('ccc',this.seafood)
-      // this.getProductList(type)
-      // this.productType = type
-      // console.log(this.id)
+      api.home.ProductList(id).then((res) => {
+            this.data = res
+        this.fruitsList= this.data.list
+        console.log('ccc',this.fruitsList)
+            
+          }
+      )
     },
 
 

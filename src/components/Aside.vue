@@ -24,7 +24,8 @@ export default {
 
 <style scoped>
 .home-aside {
-  width: 300px;
+  width: 400px;
+  height: 560px;
   background-color: #D3DCE6;
   color: #333;
   text-align: center;

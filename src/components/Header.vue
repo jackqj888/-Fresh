@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import api from '@/api'
+import { clearToken } from '@/utils/storage'
 export default {
   data() {
     return {
@@ -36,6 +38,11 @@ export default {
     },
     logout() {
       // 这里实现登出逻辑
+      api.logout.getLogout()
+      clearToken()
+      this.$router.push('/login')
+      
+     
     }
   }
 }

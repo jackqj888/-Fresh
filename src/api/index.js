@@ -13,11 +13,17 @@ export default {
     getUserInfo: () => get("/mall/userinfo?login=true"),
     vipEndTime: () => get("/mall/userinfoVipEndTime"),
   },
+  logout: {
+    getLogout:() =>post(`/user/logout`)
+  },
   home: {
-    ProductList: () => get(`/product/list`)
+    ProductList: (id) => get(`/product/list?categoryId=`+id)
   },
   details:{
     GoodsInfo:(id) => get('/product/detail?id='+id)
+  },
+  CategoryList:{
+    CategoryList:() => get(`/category/list`)
   }
 
 };

@@ -96,7 +96,8 @@ export default {
         res = await api.login.loginWidthPassword(formData)
         if (res.username) {
           setUser(res.username)
-          this.$router.push('/index')
+          this.$store.commit('setUser', res.username)
+          this.$router.push('/productlist')
         }
       }
       

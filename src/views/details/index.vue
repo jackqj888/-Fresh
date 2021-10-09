@@ -37,7 +37,7 @@
             <div class="single" >
               加入购物车
             </div>
-            <div class="buyNow">立即付款</div>
+            
           </div>
         </div>
       </div>
