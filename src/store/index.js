@@ -14,11 +14,11 @@ export default new Vuex.Store({
       setUser(JSON.stringify(user))
     },
     // 登出
-    logout() {
-      // eslint-disable-next-line no-undef
-      state.user = {};
-      // eslint-disable-next-line no-undef
-      state.token = false;
+    logout(state) {
+     
+      state.user = null;
+  
+      // state.token = false;
     }
   },
   actions: {},

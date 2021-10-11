@@ -39,11 +39,11 @@ export default {
   },
   methods: {
     getProductList(categoryId) {
-      const that = this;
+    
       api.home.ProductList(categoryId).then((res) => {
-        that.data = res
-        that.ProductList = this.data.list
-        console.log('vvv', that.ProductList)
+        this.data = res
+        this.ProductList = this.data.list
+        console.log('vvv', this.ProductList)
       })
     },
   }

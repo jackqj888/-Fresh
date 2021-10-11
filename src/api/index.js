@@ -20,10 +20,13 @@ export default {
     ProductList: (id) => get(`/product/list?categoryId=`+id)
   },
   details:{
-    GoodsInfo:(id) => get('/product/detail?id='+id)
+    GoodsInfo:(id) => get('/product/detail?id='+id),
+    CartAdd:(data) => post(`/cart/add?productId=`+data.productId +`&count=`+data.count)
+    
   },
   CategoryList:{
     CategoryList:() => get(`/category/list`)
-  }
+  },
+  
 
 };

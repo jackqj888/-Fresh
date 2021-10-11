@@ -43,6 +43,15 @@ const routes = [{
                 },
                 component: () => import("@/views/details/index.vue"),
             },
+            {
+                path: "/shoppingcart",
+                name: "shoppingcart",
+                meta: {
+                    title: '购物车',
+                    headerType: 'normal'
+                },
+                component: () => import("@/views/shoppingcart/index.vue"),
+            },
             
             
         ]

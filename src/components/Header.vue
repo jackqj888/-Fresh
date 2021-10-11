@@ -1,7 +1,7 @@
 <template>
   <div class="home-header wrap">
     <div class="top">
-      <span class="app-name">时代生鲜</span>
+      <span class="app-name" @click="goHome">时代生鲜</span>
         <div class="user">
           
           <a v-if="!username" @click="Jump" >{{ message }}</a>
@@ -36,11 +36,20 @@ export default {
         path:`/login`
       })
     },
+    goHome(){
+      this.$router.push({
+        path:`/productlist`
+      })
+    },
     logout() {
       // 这里实现登出逻辑
-      api.logout.getLogout()
-      clearToken()
-      this.$router.push('/login')
+      api.logout.getLogout().then(()=>{  
+        // clearToken()
+        this.$store.commit('logout')
+        clearToken()
+        // this.$router.push('/login')
+      })
+    
       
      
     }
