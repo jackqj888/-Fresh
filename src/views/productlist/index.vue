@@ -74,23 +74,6 @@ export default {
       api.home.ProductList(categoryId).then((res) => {
         this.data = res
         this.ProductList = this.data.list
-        // const c = []
-        // const d = {}
-        // this.ProductList.forEach(item => {
-        //   if (d[item.categoryId] === undefined) {
-        //     d[item.categoryId] = c.length
-        //     c.push([item])
-        //   } else {
-        //     c[d[item.categoryId]].push(item)
-        //   }
-        // })
-        // this.ProductPageList = c
-        // console.log('ttt', this.ProductPageList)
-
-        // that.ProductList.filter(item => {
-        //     this.ProductPageList.push(item)
-        //   })
-        //
         this.active(3)
       })
     },

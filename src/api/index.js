@@ -27,6 +27,9 @@ export default {
   CategoryList:{
     CategoryList:() => get(`/category/list`)
   },
-  
 
+cart:{
+  cartList:() => get(`/cart/list`),
+  countUp:(data)=> post(`/cart/update?productId=`+data.productId +`&count=`+data.count)
+}
 };

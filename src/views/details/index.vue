@@ -37,9 +37,9 @@
             <div class="single" @click="add">
               加入购物车
             </div>
-
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -49,6 +49,7 @@
 import api from '@/api'
 
 export default {
+  components: {},
   data() {
     return {
       goodsInfo: {},
@@ -57,7 +58,8 @@ export default {
       min: 1,
       max: 99,
       add1: [],
-      productId: ''
+      productId: '',
+      CartAddList: []
     }
   },
   mounted() {
@@ -76,17 +78,20 @@ export default {
         console.log('bbb', this.goodsInfo)
       })
     },
+    
+
     add() {
       let data = {
         productId: this.productId,
         count: this.cartNum
       }
       api.details.CartAdd(data).then(res => {
+        this.CartAddList = res
+        console.log('zzz', this.CartAddList)
         this.$router.push({name: 'shoppingcart', params: {data}});
-        console.log('zzz', res)
       })
-      
-    }
+    },
+    
   },
   watch: {},
 }

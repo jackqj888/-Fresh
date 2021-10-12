@@ -1,95 +1,66 @@
 <template>
-  <div class="container">
-    <div class="cartList">
-      <div class="cartListBox" v-for="(value,index) in CartAddList" :key="index">
+  <div>
+    <div class="cartList" >
+      <div class="cartListBox" v-for="(value,index) in CartAddLists" :key="index">
         <div class="cartListBox_left">
           <img src="@/assets/item.png" />
         </div>
         <div class="cartListBox_center">
           <div class="title">
-            <span>{{ value.productName }}</span>
+            <span>{{ v }}</span>
           </div>
           <div class="num">
-            {{ value.quantity }}
-            <span>个</span>
+            1
+            <p>个</p>
           </div>
           <div class="detail">
             <p class="price">
               价格
               <span style="color: #d83041;">
-               ¥ {{ value.totalPrice }}
+                ¥ 222
               </span>
             </p>
           </div>
-          
+
         </div>
         <div class="cartListBox_right">
-          <button class="add" @click="add">增加</button>
-          <button class="reduce" @click="sub">减少</button>
+          <button class="add">增加</button>
+          <button class="reduce">减少</button>
           <button class="Selected">选中</button>
           <button class="remove">删除</button>
         </div>
       </div>
     </div>
-
   </div>
 </template>
-
 <script>
-import api from "@/api";
-
+import eventBus from "@/eventBus";
 export default {
-  data() {
-    return {
-      CartAddList:[],
-      cartNum:1,
-      productId: '',
+  data(){
+    return{
+      CartAddLists:[]
     }
   },
   created() {
-    this.getCartList()
-  },
-  methods: {
-    getCartList() {
-      api.cart.cartList().then(res => {
-        this.CartAddList = res
-       this.productId = this.CartAddList.productId
-        this.cartNum = this.CartAddList.cartNum
-        console.log('zz1z', this.CartAddList)
-
-      })
-    },
-    add(){
-      let data = {
-        productId: this.productId,
-        count: this.cartNum
-      }
-      api.cart.countUp(data).then(res=> {
-        this.cartNum = res.quantity
-        this.cartNum++
-      })
-      
-    },
-    sub(){
-      this.num--
-    }
+    eventBus.$on('add',(CartAddList)=>{
+      //一些操作，message就是从top组件传过来的值
+      this.CartAddLists = CartAddList
+      console.log('aaa',this.CartAddLists)
+    })
   }
+
 }
+
 </script>
 
 <style scoped lang="stylus">
- .container
-   margin: 20px 0
-   display: flex
-   justify-content:center
   .cartList
-    width: 1200px
+    width: 1000px
     height: 760px
     display: flex
     justify-content:center
-    flex-wrap:wrap
     .cartListBox
-      margin: 5px 0
+      margin: 10px 0
       width: 800px
       height: 180px
       border: 1px solid #cbcbcb
@@ -97,10 +68,7 @@ export default {
       justify-content:space-around
       align-items: center
       .cartListBox_center
-        width: 250px
         margin-right: 120px;
-        .num
-          margin-top: 10px
       .cartListBox_right
         width: 200px
         height: 126px
@@ -114,6 +82,5 @@ export default {
           max-width:30%
           width: 50px
           margin:0 10px
-
 
 </style>
