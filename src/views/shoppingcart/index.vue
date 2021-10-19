@@ -26,12 +26,14 @@
         <div class="cartListBox_right">
           <button class="add" @click="add(index)">增加</button>
           <button class="reduce" @click="sub(index)">减少</button>
-          <button class="Selected" :class="current === index ? 'active ' : ''" @click="isBlue(index)">选中</button>
+          <button class="Selected" :class="{'active':spanIndex.indexOf(index)>-1}" @click="isBlue(index,value)">选中</button>
           <button class="remove" @click="remove">删除</button>
         </div>
       </div>
+      <div class="placeOrder">
+        <el-button type="primary" class="placeOrder_btn">下单</el-button>
+      </div>
     </div>
-
   </div>
 </template>
 
@@ -45,14 +47,17 @@ export default {
       cartNum: 1,
       productId: '',
       totalPrice: '',
-      isActive:false,
-      current:''
+      selected:1,
+      current: '',
+      isActive:true,
+      spanIndex:[]
+    
     }
   },
   created() {
     this.getCartList()
   },
-  
+
   methods: {
     getCartList() {
       api.cart.cartList().then(res => {
@@ -63,7 +68,7 @@ export default {
     add(i) {
       this.CartAddList[i].quantity++
       this.totalPrice = this.CartAddList[i].totalPrice
-      console.log('nnn',this.totalPrice)
+      console.log('nnn', this.totalPrice)
     },
     sub(i) {
       this.CartAddList[i].quantity--
@@ -71,18 +76,18 @@ export default {
         this.CartAddList.splice(i, 1)
       }
     },
-    remove(i){
+    remove(i) {
       this.CartAddList.splice(i, 1)
     },
-    isBlue(i){
-      this.current = i
-      this.isActive = !this.isActive
-      
-     
-      
-      
+    isBlue(i) {
+      let arrIndex = this.spanIndex.indexOf(i)
+      console.log('bbb',arrIndex)
+      if(arrIndex>-1){
+        this.spanIndex.splice(arrIndex,1);
+      }else {
+        this.spanIndex.push(i);
+      }
     }
-    
   }
 }
 </script>
@@ -93,45 +98,52 @@ export default {
   display: flex
   justify-content: center
 
-.cartList
-  width: 1200px
-  height: 760px
-  display: flex
-  justify-content: center
-  flex-wrap: wrap
-
-  .cartListBox
-    margin: 5px 0
+  .placeOrder
     width: 800px
-    height: 180px
-    border: 1px solid #cbcbcb
+    height: 30px
+    .placeOrder_btn
+      float: right
+
+  .cartList
+    width: 1200px
+    height: 800px
     display: flex
-    justify-content: space-around
-    align-items: center
-
-    .cartListBox_center
-      width: 250px
-      margin-right: 120px;
-
-      .num
-        margin-top: 10px
-
-    .cartListBox_right
-      width: 200px
-      height: 126px
+    justify-content: center
+    flex-wrap: wrap
+  
+    .cartListBox
+      margin: 5px 0
+      width: 800px
+      height: 180px
+      border: 1px solid #cbcbcb
       display: flex
-      flex-wrap: wrap;
-      justify-content: center
+      justify-content: space-around
       align-items: center
-
-      .add, .reduce, .Selected, .remove
-        flex: 1
-        min-width: 30%
-        max-width: 30%
-        width: 50px
-        margin: 0 10px
-      .active
-        color: #32bcf3
-
+  
+      .cartListBox_center
+        width: 250px
+        margin-right: 120px;
+  
+        .num
+          margin-top: 10px
+  
+      .cartListBox_right
+        width: 200px
+        height: 126px
+        display: flex
+        flex-wrap: wrap;
+        justify-content: center
+        align-items: center
+  
+        .add, .reduce, .Selected, .remove
+          flex: 1
+          min-width: 30%
+          max-width: 30%
+          width: 50px
+          margin: 0 10px
+  
+        .active
+          background-color: #32bcf3
+    
 
 </style>
