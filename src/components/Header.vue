@@ -1,28 +1,37 @@
 <template>
   <div class="home-header wrap">
     <div class="top">
-      <span class="app-name" @click="goHome">时代生鲜</span>
-        <div class="user">
-          
-          <a v-if="!username" @click="Jump" >{{ message }}</a>
-
-          <div v-else>
-            <a >用户名: {{ username }}</a>
-            <button @click="logout" style="margin-left: 10px">登出</button>
-          </div>
-          
-        </div>
+      <div class="logo">
+        <img src="@/assets/logo.png" alt="logo" />
+      </div>
+      <div class="logo1">
+        <span class="siteName">汝果AI门户系统 
+          </span>
+        <span class="siteName1">Ruguo AI portal system</span>
+      
+      </div>
+      <div class="user">
+        <el-button class="btn">快速登入</el-button>
+        <el-button class="btn1" icon="el-icon-user" >账号登入</el-button>
+<!--        <a v-if="!username" @click="Jump">{{ message }}</a>-->
+<!--        <div v-else>-->
+<!--          <a>用户名: {{ username }}</a>-->
+<!--          <button @click="logout" style="margin-left: 10px">登出</button>-->
+<!--        </div>-->
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import api from '@/api'
-import { clearToken } from '@/utils/storage'
+import {clearToken} from '@/utils/storage'
+
 export default {
   data() {
     return {
-      message: "请登入"
+      message: "请登入",
+      
     }
   },
   computed: {
@@ -30,34 +39,33 @@ export default {
       return this.$store.state.user
     }
   },
-  methods:{
-    Jump(){
+  methods: {
+    Jump() {
       this.$router.push({
-        path:`/login`
+        path: `/login`
       })
     },
-    goHome(){
+    goHome() {
       this.$router.push({
-        path:`/productlist`
+        path: `/productlist`
       })
     },
     logout() {
       // 这里实现登出逻辑
-      api.logout.getLogout().then(()=>{  
+      api.logout.getLogout().then(() => {
         // clearToken()
         this.$store.commit('logout')
         clearToken()
         // this.$router.push('/login')
       })
-    
-      
-     
+
+
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="stylus">
 .home-header {
   background-color: #d2cdcd;
   color: #333;
@@ -65,17 +73,58 @@ export default {
   line-height: 60px;
 }
 
-.top {
-  display: flex;
-  justify-content: space-around;
-}
+.top 
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff
+  
+  .logo1
+    margin-top 25px
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    flex-wrap: wrap
+    min-width: 15%; // 加入这两个后每个item的宽度就生效了
+    max-width: 15%; // 加入这两个后每个item的宽度就生效了
+    .siteName
+      font-size 35px
+      line-height: 30px;
+      height: 30px
+    .siteName1
+      font-size 13px
+      line-height: 20px;
+      height: 20px
+      margin-bottom 50px
 
 .router-link-active {
   text-decoration: none;
+
+}
   
-}
+.user
+  //margin 20px 200px 0 0
+  margin-top:30px
 
-.user {
-
-}
+  .btn
+       width 105px
+       height 60px
+       color #fff
+       font-size 18px
+      
+       background #FE8CAA
+       border none   // 去掉边框
+       outline none  // 去掉点击按钮后的边框
+       border-radius 15px
+       margin-right 18px
+    
+    .btn1
+      width 177px
+      height 60px
+      color #fff
+      font-size 18px
+     
+      background #FE5782
+      border none   // 去掉边框
+      outline none  // 去掉点击按钮后的边框
+      border-radius 15px
 </style>

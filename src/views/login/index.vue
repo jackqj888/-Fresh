@@ -1,41 +1,44 @@
 <template>
   <div class="login ">
-    <div class="slider bgimg"></div>
     <div class="main bgimg ">
       <div class="login1">
         <div class="login-box">
           <div class="login-top">
-            <img src="@/assets/logo.png" alt="logo" class="logo"/>
-            <div class="tabs flex-around">
-              <div class="tab" 
-                   :class="{ active: form.grant_type === 'mobile' }" 
+            <div class="tabs">
+              <div class="tab"
+                   :class="{ active: form.grant_type === 'mobile' }"
                    @click="form.grant_type = 'mobile'">
                 快捷登录
               </div>
-              <div class="tab" 
+              <div class="tab"
                    :class="{ active: form.grant_type === 'password' }"
                    @click="form.grant_type = 'password'">
-                账号登录
+                登录
               </div>
+            </div>
+            <div>
+              <span>Without entering a password, the first SMS login is regarded as the first time
+                login was successful</span>
             </div>
           </div>
           <template v-if="form.grant_type === 'mobile'">
             <div class="input">
-              <input type="text" v-model="form.mobile" placeholder="用户名/手机号码"/>
+              <input type="text" v-model="form.mobile" placeholder="输入手机号"/>
             </div>
             <div class="input">
-              <input type="text" v-model="form.code" placeholder="短信验证码"/>
+              <input type="text" v-model="form.code" placeholder="输入验证码"/>
+              <button class="verificationCode">获取验证码</button>
               <div class="get-code" @click="getCode">{{ text }}</div>
             </div>
           </template>
           <template v-else>
             <div class="input">
-              <input type="text" v-model="form.username" placeholder="用户名/手机号码"/>
+              <input type="text" v-model="form.username" placeholder="输入手机号"/>
             </div>
             <div class="input">
-              <input :type="inputType" v-model="form.password" placeholder="密码"/>
+              <input :type="inputType" v-model="form.password" placeholder="输入密码"/>
               <div class="view">
-                <img src="@/assets/eye_open.svg" v-if="inputType === 'text'" 
+                <img src="@/assets/eye_open.svg" v-if="inputType === 'text'"
                      @click="inputType = 'password'"/>
                 <img src="@/assets/eye_close.svg" v-else @click="inputType = 'text'"/>
               </div>
@@ -43,6 +46,11 @@
           </template>
           <div to="/index">
             <div class="btn" @click="login">登录</div>
+          </div>
+          <div class="pact">
+            <p>
+              登入则同意 <a href="url" >《汝美堂用户协议》</a> ? Sign In
+            </p> 
           </div>
         </div>
       </div>
@@ -100,7 +108,7 @@ export default {
           this.$router.push('/productlist')
         }
       }
-      
+
     },
   },
 }
@@ -125,7 +133,8 @@ export default {
   .main
     height 100vh
     flex 1
-    background-image url('~@/assets/login_bg.png')
+
+    background-color: #FE8CAA
     position relative
     justify-content center
 
@@ -135,9 +144,6 @@ export default {
       justify-content: center
       align-items: center
 
-      .login-top
-        display: flex
-        justify-content: space-around
 
       .logo
         width 148px
@@ -146,15 +152,18 @@ export default {
         top 50px
 
       .login-box
-        width 440px
+        width 513px
         text-align center
-        background #fff
+        background #F6FBF9
         padding 50px 40px 75px
         box-sizing border-box
-
+        border-radius: 50px
+        
+        .login-top
+          height 130px
 
         .input
-          margin-top 20px
+          margin-top 18px
           position relative
 
           .get-code
@@ -183,33 +192,55 @@ export default {
           text-indent 1em
           font-size 16px
           display block
+          border-radius 10px
+        
+        .verificationCode
+          position absolute
+          top 18px
+          right 0
+          background-color #909090
+          border none   // 去掉边框
+          outline none  // 去掉点击按钮后的边框
+          color #fff
+          font-size: 14px
+          border-radius 20px
+          width: 85px
+          height: 33px
+
 
         .btn
-          height 62px
+          width 288px
+          height 58px
           color #fff
           font-size 18px
           line-height 62px
-          background rgba(238, 83, 130, 0.4)
-          margin-top 30px
+          background #FE8CAA
+          
           cursor pointer
+          border-radius 10px
+          display:block
+          margin:30px auto 0 auto
 
         .router-link-active {
           text-decoration: none;
         }
 
         .tabs
-          margin-bottom 68px
+          margin-bottom 28px
+          display: flex
+          justify-content: space-around
 
           .tab
             //margin-left 120px
             font-size 24px
-            color #999999
+            color #0c0c0c
             position relative
             line-height 33px
             cursor pointer
+            
 
             &.active
-              color #000
+              color #FE8CAA
               cursor auto
 
               &::after
@@ -218,11 +249,14 @@ export default {
                 position absolute
                 width 40px
                 height 3px
-                background #EE5382
-                border-radius 3px
+                background #FE8CAA
+                border-radius 10px
                 left 50%
                 transform translateX(-50%)
                 margin-top 5px
-
-
+        .pact
+          margin-top 25px
+         a
+           text-decoration: none
+           color: #FE8CAA
 </style>

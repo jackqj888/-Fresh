@@ -66,7 +66,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="stylus">
 .home-Main {
   min-height: 550px;
   height: 550px;
