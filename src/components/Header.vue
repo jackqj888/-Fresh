@@ -2,13 +2,11 @@
   <div class="home-header wrap">
     <div class="top">
       <div class="logo">
-        <img src="@/assets/logo.png" alt="logo" />
+        <img src="@/assets/login.png" alt="login" />
       </div>
       <div class="logo1">
-        <span class="siteName">汝果AI门户系统 
-          </span>
+        <span class="siteName">汝果AI门户系统 </span>
         <span class="siteName1">Ruguo AI portal system</span>
-      
       </div>
       <div class="user">
         <el-button class="btn">快速登入</el-button>
@@ -71,46 +69,50 @@ export default {
   color: #333;
   text-align: center;
   line-height: 60px;
+  
 }
 
 .top 
     display: flex;
-    justify-content: space-around;
+    justify-content: center 
     background-color: #fff
-  
+  .logo
+    margin-right 303px
   .logo1
-    margin-top 25px
-    display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center;     /* 垂直居中 */
-    flex-wrap: wrap
-    min-width: 15%; // 加入这两个后每个item的宽度就生效了
-    max-width: 15%; // 加入这两个后每个item的宽度就生效了
+    margin-top 40px
+    display flex
+    flex-direction column
+    justify-content center
+    lign-items center
+   
+    margin-right 170px
     .siteName
-      font-size 35px
+      font-size 30px
       line-height: 30px;
-      height: 30px
+      margin-bottom 20PX
+     
     .siteName1
       font-size 13px
-      line-height: 20px;
-      height: 20px
-      margin-bottom 50px
+      line-height: 20px
+      margin-bottom:  20PX
+     
+     
 
-.router-link-active {
+.router-link-active 
   text-decoration: none;
 
-}
+
   
 .user
-  //margin 20px 200px 0 0
-  margin-top:30px
+   display flex
+   justify-content flex-start
+   margin 30px 
 
   .btn
        width 105px
        height 60px
        color #fff
        font-size 18px
-      
        background #FE8CAA
        border none   // 去掉边框
        outline none  // 去掉点击按钮后的边框
@@ -122,9 +124,11 @@ export default {
       height 60px
       color #fff
       font-size 18px
-     
       background #FE5782
       border none   // 去掉边框
       outline none  // 去掉点击按钮后的边框
       border-radius 15px
+
+.el-icon-user
+ margin-right 20px      
 </style>
