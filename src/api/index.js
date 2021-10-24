@@ -17,7 +17,8 @@ export default {
     getLogout:() =>post(`/user/logout`)
   },
   home: {
-    ProductList: (id) => get(`/product/list?categoryId=`+id)
+    ProductList: (id) => get(`/product/list?categoryId=`+id),
+    HomeList:()=> get(`/portal/mp/index/index`)
   },
   details:{
     GoodsInfo:(id) => get('/product/detail?id='+id),
