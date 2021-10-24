@@ -9,8 +9,9 @@
     >
       <el-carousel-item v-for="(item, index) in banner" :key="index">
         <el-image
+          :class="className"
           style="width: 100%; height: 100%;"
-          :src="item"
+          :src="item.bannerSrc"
           fit="cover"
         ></el-image>
       </el-carousel-item>
@@ -19,12 +20,11 @@
 </template>
 <script>
 export default {
-  props: {
-    banner: {
+ props: {
       banner: Array,
-      required: true,
+      // eslint-disable-next-line vue/require-prop-type-constructor
+      required: false
     },
-  },
   data() {
     return {
       bannerList: [
@@ -32,19 +32,16 @@ export default {
         { imgUrl: require('../assets/banner/banner2.png') },
         { imgUrl: require('../assets/banner/banner3.png') },
         { imgUrl: require('../assets/banner/banner4.png') },
-      ],
+      ], 
+      className: '', //轮播图名字
     }
   },
-  created(){
-    console.log('bbb',this.banner);
-  },
-
-  mounted() {
-    this.className = 'lun-img'
-    setTimeout(() => {
-      this.className = 'lun-img-two'
-    }, 300)
-  },
+    mounted() {
+      this.className = 'lun-img'
+      setTimeout(() => {
+        this.className = 'lun-img-two'
+      }, 300)
+    },
   methods: {
     // 轮播图切换
     changeImg() {
@@ -59,17 +56,17 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.carousel-map
+.carousel-map 
     width: 100%;
     height: 500px;
     overflow: hidden;
-    // .lun-img
+    // .lun-img 
     //   transform: scale(1.5);
-
-    // .lun-img-two
+    
+    // .lun-img-two 
     //   transition: all 3s;
     //   transform: scale(1);
-
-    .el-carousel__item.is-animating
-      transition: all 0.6s;
+    
+    .el-carousel__item.is-animating 
+      transition: all 0.6s;  
 </style>

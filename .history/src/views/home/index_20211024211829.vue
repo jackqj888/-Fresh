@@ -65,10 +65,9 @@
                 <span class="courseTitle">{{ item.name }}</span>
                 <span class="course-price">￥ {{ item.price }}</span>
               </swiper-slide>
-             
+              <div class="swiper-button-prev" slot="button-prev"></div>
+              <div class="swiper-button-next" slot="button-next"></div>
             </swiper>
-             <div class="swiper-button-prev swiper-button-prev1" ></div>
-             <div class="swiper-button-next swiper-button-next1"></div>
           </div>
         </div>
         <div class="commodity">
@@ -102,10 +101,9 @@
                 <span class="courseTitle">{{ item.name }}</span>
                 <span class="course-price">￥ {{ item.price }}</span>
               </swiper-slide>
-              
+              <div class="swiper-button-prev" slot="button-prev"></div>
+              <div class="swiper-button-next" slot="button-next"></div>
             </swiper>
-            <div class="swiper-button-prev swiper-button-prev1"></div>
-            <div class="swiper-button-next swiper-button-next1"></div>
           </div>
         </div>
       </div>
@@ -227,15 +225,14 @@
           <br />
           make an appointment
         </p>
-        <p class="go">
-         <a class="go-jk" href="http://kfxx.smtbs.cn/m/health">点击进入 ></a> </p>
+        <p class="go">点击进入 ></p>
         <div class="evaluate">
-          <div class="evaluate-box" v-for="(item,index) in evaluate" :key="index">
-            <p class="evaluate-title">{{item.data.title}}</p>
+          <div class="evaluate-box">
+            <p class="evaluate-title">体制评估</p>
             <div class="evaluate-Introduction">
-              <img :src="item.imgSrc" class="cirlces4" />
+              <img src="@/assets/cirlces4.png" class="cirlces4" />
               <div class="evaluate-font">
-                <p class="evaluate-cn">{{item.data.summary}}</p>
+                <p class="evaluate-cn">红外风险自测，你是真的健康吗？</p>
                 <p class="evaluate-en">
                   Infrared risk self-test, are you really healthy?
                 </p>
@@ -269,8 +266,8 @@ export default {
         },
         //设置点击箭头
         navigation: {
-          nextEl: 'swiper-button-next1',
-          prevEl: '.swiper-button-prev1',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
         //自动轮播
         autoplay: {
@@ -337,8 +334,6 @@ export default {
       course: [],
       commodity: [],
       homebanner: [],
-      evaluate:[],
-
       groups: 'http://kfxx.smtbs.cn/m/talent',
       healthy:'http://kfxx.smtbs.cn/m/health',
       mall:'http://kfxx.smtbs.cn/m/mall'
@@ -353,9 +348,7 @@ export default {
         this.data = res
         this.course = this.data.channels[0].details
         this.commodity = this.data.channels[1].details
-        this.homebanner = this.data.banners[0].bannerSrc
-        this.evaluate = this.data.channels[2].items[10]
-
+        this.homebanner = this.data.banners[0]
         console.log('vvv', this.data)
       })
     },
@@ -789,19 +782,15 @@ body
     .evaluate
       display flex
       justify-content center
-      
-      
+      background-color #fff
+      border-radius 15px
+      border none // 去掉边框
+      outline none // 去掉点击按钮后的边框
+      margin-bottom 93px
 
       .evaluate-box
         width 451px
         height 143px
-        background-color #fff
-        margin 0 12px
-        border-radius 15px
-        border none // 去掉边框
-        outline none // 去掉点击按钮后的边框
-        margin-bottom 93px
-
 
         .evaluate-title
           font-size 22px
@@ -815,8 +804,8 @@ body
           justify-content center
 
           .cirlces4
-            width 36px
-            height 35px
+            width 50px
+            height 29px
             margin-right 27px
 
           .evaluate-font
@@ -862,9 +851,6 @@ body
    width: 505px
    height: 110px
    margin 23px 0 0 27px
-   position relative
-   .swiper jp
-    overflow hidden
 
 .go-jp
  color #FF9F59
@@ -876,35 +862,28 @@ body
 .go-rc 
  color #000000
  text-decoration:none
-.go-jk
- color #000000
- text-decoration:none
 .swiper-jp-image, .swiper-tj-image
   width 106px
   height 106px
   border-radius 25px
 
-.swiper-button-prev, .swiper-button-prev
-  left: -5%;
-  width 36px
-  height 36px
+.jp .swiper-button-prev, .tj .swiper-button-prev
+  left: 0%;
+  width 44px
+  height 44px
   border-radius 50%
   background-color #fff
   border 2px solid #F1F1F1
   color #FE5782
-  
- .swiper-container
-   --swiper-navigation-size 15px  
-.swiper-button-next, .swiper-button-next
-  right: -5%;
-  width 36px
-  height 36px
-  border-radius 50%
-  background-color #fff
-  border 2px solid #F1F1F1
-  color #FE5782
-  
 
+.jp .swiper-button-next, .tj .swiper-button-next
+  right: 0%;
+  width 44px
+  height 44px
+  border-radius 50%
+  background-color #fff
+  border 2px solid #F1F1F1
+  color #FE5782
 
 .kp .swiper-button-prev, .kp .swiper-button-next {
   top: 90%;

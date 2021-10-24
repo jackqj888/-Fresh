@@ -102,10 +102,9 @@
                 <span class="courseTitle">{{ item.name }}</span>
                 <span class="course-price">￥ {{ item.price }}</span>
               </swiper-slide>
-              
+              <div class="swiper-button-prev" slot="button-prev"></div>
+              <div class="swiper-button-next" slot="button-next"></div>
             </swiper>
-            <div class="swiper-button-prev swiper-button-prev1"></div>
-            <div class="swiper-button-next swiper-button-next1"></div>
           </div>
         </div>
       </div>
@@ -885,7 +884,7 @@ body
   border-radius 25px
 
 .swiper-button-prev, .swiper-button-prev
-  left: -5%;
+  left: -10%;
   width 36px
   height 36px
   border-radius 50%
@@ -893,10 +892,10 @@ body
   border 2px solid #F1F1F1
   color #FE5782
   
- .swiper-container
+  .swiper-container
    --swiper-navigation-size 15px  
 .swiper-button-next, .swiper-button-next
-  right: -5%;
+  right: -10%;
   width 36px
   height 36px
   border-radius 50%

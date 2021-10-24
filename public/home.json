@@ -1,0 +1,626 @@
+{
+	"code": 0,
+	"msg": "成功",
+	"data": {
+		"banners": [{
+			"id": 4,
+			"title": "首页",
+			"banner": "[{\"label\":\"f236c884375b4ac4a97471f8a8f5fe55.jpg\",\"value\":\"/admin/sys-file/yunkanghulu/f236c884375b4ac4a97471f8a8f5fe55.jpg\"}]",
+			"state": "0",
+			"url": "http://kfxx.smtbs.cn/m/mall/pages/shop/GoodsCon/index?id=124",
+			"type": -1,
+			"targetType": "",
+			"sort": 1,
+			"createTime": "2021-06-08 11:53:47",
+			"updateTime": "2021-06-08 11:53:47",
+			"delFlag": "0",
+			"bannerList": [{
+				"label": "f236c884375b4ac4a97471f8a8f5fe55.jpg",
+				"value": "/admin/sys-file/yunkanghulu/f236c884375b4ac4a97471f8a8f5fe55.jpg"
+			}],
+			"bannerSrc": "http://yk-oss.smtbs.cn/f236c884375b4ac4a97471f8a8f5fe55.jpg"
+		}],
+		"navigation": [
+			[{
+				"id": 32,
+				"title": "健康数据",
+				"imgPc": "[{\"label\":\"48d8f339abe04fae8965dfdca5e115bf.jpg\",\"value\":\"/admin/sys-file/yunkanghulu/48d8f339abe04fae8965dfdca5e115bf.jpg\"}]",
+				"imgMp": "[{\"label\":\"7361c4959ed04204b7e58ecebbce1b20.jpg\",\"value\":\"/admin/sys-file/yunkanghulu/7361c4959ed04204b7e58ecebbce1b20.jpg\"}]",
+				"state": "0",
+				"url": "http://kfxx.smtbs.cn/m/health/",
+				"position": "1",
+				"type": 1,
+				"targetType": 1,
+				"sort": 0,
+				"createTime": "2021-08-25 11:48:21",
+				"updateTime": "2021-08-25 11:48:21",
+				"delFlag": "0",
+				"imgPcList": [{
+					"label": "48d8f339abe04fae8965dfdca5e115bf.jpg",
+					"value": "/admin/sys-file/yunkanghulu/48d8f339abe04fae8965dfdca5e115bf.jpg"
+				}],
+				"imgMpList": [{
+					"label": "7361c4959ed04204b7e58ecebbce1b20.jpg",
+					"value": "/admin/sys-file/yunkanghulu/7361c4959ed04204b7e58ecebbce1b20.jpg"
+				}],
+				"imgPcSrc": "http://yk-oss.smtbs.cn/48d8f339abe04fae8965dfdca5e115bf.jpg",
+				"imgMpSrc": "http://yk-oss.smtbs.cn/7361c4959ed04204b7e58ecebbce1b20.jpg"
+			}, {
+				"id": 8,
+				"title": "康富教育",
+				"imgPc": "[{\"label\":\"359e83ecf57b4c3fb63a14afbde3426a.png\",\"value\":\"/admin/sys-file/yunkanghulu/359e83ecf57b4c3fb63a14afbde3426a.png\"}]",
+				"imgMp": "[{\"label\":\"518f1c5c14b043f8aa280834338f1e2a.png\",\"value\":\"/admin/sys-file/yunkanghulu/518f1c5c14b043f8aa280834338f1e2a.png\"}]",
+				"state": "0",
+				"url": "http://kfxx.smtbs.cn/m/kaopei",
+				"position": "1",
+				"type": 1,
+				"targetType": 1,
+				"sort": 1,
+				"createTime": "2021-06-11 16:42:46",
+				"updateTime": "2021-06-11 16:42:46",
+				"delFlag": "0",
+				"imgPcList": [{
+					"label": "359e83ecf57b4c3fb63a14afbde3426a.png",
+					"value": "/admin/sys-file/yunkanghulu/359e83ecf57b4c3fb63a14afbde3426a.png"
+				}],
+				"imgMpList": [{
+					"label": "518f1c5c14b043f8aa280834338f1e2a.png",
+					"value": "/admin/sys-file/yunkanghulu/518f1c5c14b043f8aa280834338f1e2a.png"
+				}],
+				"imgPcSrc": "http://yk-oss.smtbs.cn/359e83ecf57b4c3fb63a14afbde3426a.png",
+				"imgMpSrc": "http://yk-oss.smtbs.cn/518f1c5c14b043f8aa280834338f1e2a.png"
+			}, {
+				"id": 30,
+				"title": "云康商城",
+				"imgPc": "[{\"label\":\"12ba83fba7df46e49a50dd12da784e5a.png\",\"value\":\"/admin/sys-file/yunkanghulu/12ba83fba7df46e49a50dd12da784e5a.png\"}]",
+				"imgMp": "[{\"label\":\"008d9177bc004db8b2faeb0b23cb374f.png\",\"value\":\"/admin/sys-file/yunkanghulu/008d9177bc004db8b2faeb0b23cb374f.png\"}]",
+				"state": "0",
+				"url": "http://kfxx.smtbs.cn/m/mall/pages/home/index",
+				"position": "1",
+				"type": 1,
+				"targetType": 1,
+				"sort": 1,
+				"createTime": "2021-08-19 09:44:22",
+				"updateTime": "2021-08-19 09:44:22",
+				"delFlag": "0",
+				"imgPcList": [{
+					"label": "12ba83fba7df46e49a50dd12da784e5a.png",
+					"value": "/admin/sys-file/yunkanghulu/12ba83fba7df46e49a50dd12da784e5a.png"
+				}],
+				"imgMpList": [{
+					"label": "008d9177bc004db8b2faeb0b23cb374f.png",
+					"value": "/admin/sys-file/yunkanghulu/008d9177bc004db8b2faeb0b23cb374f.png"
+				}],
+				"imgPcSrc": "http://yk-oss.smtbs.cn/12ba83fba7df46e49a50dd12da784e5a.png",
+				"imgMpSrc": "http://yk-oss.smtbs.cn/008d9177bc004db8b2faeb0b23cb374f.png"
+			}, {
+				"id": 10,
+				"title": "云康人才",
+				"imgPc": "[{\"label\":\"b0159516e7a244429faae21d2c67df3d.png\",\"value\":\"/admin/sys-file/yunkanghulu/b0159516e7a244429faae21d2c67df3d.png\"}]",
+				"imgMp": "[{\"label\":\"8bb4c174545142f59df82111aecf95f8.png\",\"value\":\"/admin/sys-file/yunkanghulu/8bb4c174545142f59df82111aecf95f8.png\"}]",
+				"state": "0",
+				"url": "http://kfxx.smtbs.cn/m/talent",
+				"position": "1",
+				"type": 1,
+				"targetType": 1,
+				"sort": 3,
+				"createTime": "2021-06-11 16:45:49",
+				"updateTime": "2021-06-11 16:45:49",
+				"delFlag": "0",
+				"imgPcList": [{
+					"label": "b0159516e7a244429faae21d2c67df3d.png",
+					"value": "/admin/sys-file/yunkanghulu/b0159516e7a244429faae21d2c67df3d.png"
+				}],
+				"imgMpList": [{
+					"label": "8bb4c174545142f59df82111aecf95f8.png",
+					"value": "/admin/sys-file/yunkanghulu/8bb4c174545142f59df82111aecf95f8.png"
+				}],
+				"imgPcSrc": "http://yk-oss.smtbs.cn/b0159516e7a244429faae21d2c67df3d.png",
+				"imgMpSrc": "http://yk-oss.smtbs.cn/8bb4c174545142f59df82111aecf95f8.png"
+			}],
+			[{
+				"id": 11,
+				"title": "云康实体",
+				"imgPc": "[{\"label\":\"8af51a071f134af5a8be484040620882.png\",\"value\":\"/admin/sys-file/yunkanghulu/8af51a071f134af5a8be484040620882.png\"}]",
+				"imgMp": "[{\"label\":\"0082b3ba196a45b0b200985eb9fb8c10.png\",\"value\":\"/admin/sys-file/yunkanghulu/0082b3ba196a45b0b200985eb9fb8c10.png\"}]",
+				"state": "0",
+				"url": "http://kfxx.smtbs.cn/m/store",
+				"position": "1",
+				"type": 1,
+				"targetType": 1,
+				"sort": 4,
+				"createTime": "2021-06-11 16:46:37",
+				"updateTime": "2021-06-11 16:46:37",
+				"delFlag": "0",
+				"imgPcList": [{
+					"label": "8af51a071f134af5a8be484040620882.png",
+					"value": "/admin/sys-file/yunkanghulu/8af51a071f134af5a8be484040620882.png"
+				}],
+				"imgMpList": [{
+					"label": "0082b3ba196a45b0b200985eb9fb8c10.png",
+					"value": "/admin/sys-file/yunkanghulu/0082b3ba196a45b0b200985eb9fb8c10.png"
+				}],
+				"imgPcSrc": "http://yk-oss.smtbs.cn/8af51a071f134af5a8be484040620882.png",
+				"imgMpSrc": "http://yk-oss.smtbs.cn/0082b3ba196a45b0b200985eb9fb8c10.png"
+			}, {
+				"id": 39,
+				"title": "现代康养",
+				"imgPc": "[{\"label\":\"cf42b0cfd0bc4be7abc520d6789f203d.png\",\"value\":\"/admin/sys-file/yunkanghulu/cf42b0cfd0bc4be7abc520d6789f203d.png\"}]",
+				"imgMp": "[{\"label\":\"e9100ffc7bc94a93b4a0f4935082aace.png\",\"value\":\"/admin/sys-file/yunkanghulu/e9100ffc7bc94a93b4a0f4935082aace.png\"}]",
+				"state": "0",
+				"url": "http://health.smtbs.cn/m/portal/",
+				"position": "1",
+				"type": 1,
+				"targetType": 1,
+				"sort": 6,
+				"createTime": "2021-09-24 15:39:30",
+				"updateTime": "2021-09-24 15:39:30",
+				"delFlag": "0",
+				"imgPcList": [{
+					"label": "cf42b0cfd0bc4be7abc520d6789f203d.png",
+					"value": "/admin/sys-file/yunkanghulu/cf42b0cfd0bc4be7abc520d6789f203d.png"
+				}],
+				"imgMpList": [{
+					"label": "e9100ffc7bc94a93b4a0f4935082aace.png",
+					"value": "/admin/sys-file/yunkanghulu/e9100ffc7bc94a93b4a0f4935082aace.png"
+				}],
+				"imgPcSrc": "http://yk-oss.smtbs.cn/cf42b0cfd0bc4be7abc520d6789f203d.png",
+				"imgMpSrc": "http://yk-oss.smtbs.cn/e9100ffc7bc94a93b4a0f4935082aace.png"
+			}, {
+				"id": 38,
+				"title": "月坤坊",
+				"imgPc": "[{\"label\":\"d97497b6296f4ca7b152f4026447c1fe.png\",\"value\":\"/admin/sys-file/yunkanghulu/d97497b6296f4ca7b152f4026447c1fe.png\"}]",
+				"imgMp": "[{\"label\":\"a09c431c188545e9ae4ee140bfb89471.png\",\"value\":\"/admin/sys-file/yunkanghulu/a09c431c188545e9ae4ee140bfb89471.png\"}]",
+				"state": "0",
+				"url": "http://ykf-square.smtbs.cn/m/portal/",
+				"position": "1",
+				"type": 1,
+				"targetType": 1,
+				"sort": 7,
+				"createTime": "2021-09-24 15:38:56",
+				"updateTime": "2021-09-24 15:38:56",
+				"delFlag": "0",
+				"imgPcList": [{
+					"label": "d97497b6296f4ca7b152f4026447c1fe.png",
+					"value": "/admin/sys-file/yunkanghulu/d97497b6296f4ca7b152f4026447c1fe.png"
+				}],
+				"imgMpList": [{
+					"label": "a09c431c188545e9ae4ee140bfb89471.png",
+					"value": "/admin/sys-file/yunkanghulu/a09c431c188545e9ae4ee140bfb89471.png"
+				}],
+				"imgPcSrc": "http://yk-oss.smtbs.cn/d97497b6296f4ca7b152f4026447c1fe.png",
+				"imgMpSrc": "http://yk-oss.smtbs.cn/a09c431c188545e9ae4ee140bfb89471.png"
+			}, {
+				"id": 40,
+				"title": "云康艾",
+				"imgPc": "[{\"label\":\"b9638daa9eae47a48baf5c51dcfba648.png\",\"value\":\"/admin/sys-file/yunkanghulu/b9638daa9eae47a48baf5c51dcfba648.png\"}]",
+				"imgMp": "[{\"label\":\"6fc937b8fd8045c59990995b80823919.png\",\"value\":\"/admin/sys-file/yunkanghulu/6fc937b8fd8045c59990995b80823919.png\"}]",
+				"state": "0",
+				"url": "http://ykai.smtbs.cn/m/portal/?code=021gCFFa17xAIB0Sd6Ga18nFCM2gCFFh&state=",
+				"position": "1",
+				"type": 1,
+				"targetType": 1,
+				"sort": 8,
+				"createTime": "2021-09-24 15:40:28",
+				"updateTime": "2021-09-24 15:40:28",
+				"delFlag": "0",
+				"imgPcList": [{
+					"label": "b9638daa9eae47a48baf5c51dcfba648.png",
+					"value": "/admin/sys-file/yunkanghulu/b9638daa9eae47a48baf5c51dcfba648.png"
+				}],
+				"imgMpList": [{
+					"label": "6fc937b8fd8045c59990995b80823919.png",
+					"value": "/admin/sys-file/yunkanghulu/6fc937b8fd8045c59990995b80823919.png"
+				}],
+				"imgPcSrc": "http://yk-oss.smtbs.cn/b9638daa9eae47a48baf5c51dcfba648.png",
+				"imgMpSrc": "http://yk-oss.smtbs.cn/6fc937b8fd8045c59990995b80823919.png"
+			}]
+		],
+		"appList": [
+			[{
+				"id": 23,
+				"appId": 13,
+				"name": "科普系统",
+				"title": "专家科普",
+				"appAlias": "科普系统",
+				"appCode": "kpm",
+				"domainUrl": "http://kfxx.smtbs.cn",
+				"appDomainUrl": "http://kfxx.smtbs.cn/m/kepu",
+				"pcDomainUrl": "http://kfxx.smtbs.cn",
+				"deployFlag": "0",
+				"logo": "[{\"label\":\"44486855b6884837945b73b9ae4f89ad.png\",\"value\":\"/admin/sys-file/yunkanghulu/44486855b6884837945b73b9ae4f89ad.png\"}]",
+				"status": "0",
+				"sort": 0,
+				"createTime": "2021-06-08 16:43:26",
+				"updateTime": "2021-06-11 16:55:17",
+				"delFlag": "0",
+				"tenantId": 10,
+				"disabled": false,
+				"logoSrc": "http://yk-oss.smtbs.cn/44486855b6884837945b73b9ae4f89ad.png"
+			}, {
+				"id": 52,
+				"appId": 4,
+				"name": "健康信息库",
+				"title": "健康信息库",
+				"appAlias": "健康信息库",
+				"appCode": "health",
+				"domainUrl": "http://kfxx.smtbs.cn",
+				"appDomainUrl": "http://kfxx.smtbs.cn/m/health",
+				"pcDomainUrl": "http://kfxx.smtbs.cn",
+				"deployFlag": "0",
+				"logo": null,
+				"status": "0",
+				"sort": 0,
+				"createTime": "2021-08-19 14:32:07",
+				"updateTime": "2021-08-24 17:23:02",
+				"delFlag": "0",
+				"tenantId": 10,
+				"disabled": false,
+				"logoSrc": ""
+			}, {
+				"id": 7,
+				"appId": 1,
+				"name": "考培系统",
+				"title": "考试培训",
+				"appAlias": "考培系统",
+				"appCode": "kaopei",
+				"domainUrl": "http://kfxx.smtbs.cn",
+				"appDomainUrl": "http://kfxx.smtbs.cn/m/kaopei",
+				"pcDomainUrl": "http://kfxx.smtbs.cn",
+				"deployFlag": "0",
+				"logo": "[{\"label\":\"c8f714affd19435aa7806af264699ca6.png\",\"value\":\"/admin/sys-file/yunkanghulu/c8f714affd19435aa7806af264699ca6.png\"}]",
+				"status": "0",
+				"sort": 1,
+				"createTime": "2021-04-04 13:09:17",
+				"updateTime": "2021-06-11 16:54:30",
+				"delFlag": "0",
+				"tenantId": 10,
+				"disabled": false,
+				"logoSrc": "http://yk-oss.smtbs.cn/c8f714affd19435aa7806af264699ca6.png"
+			}, {
+				"id": 11,
+				"appId": 2,
+				"name": "商城系统",
+				"title": "云康商城",
+				"appAlias": "商城系统",
+				"appCode": "mall",
+				"domainUrl": "http://kfxx.smtbs.cn",
+				"appDomainUrl": "http://kfxx.smtbs.cn/m/mall",
+				"pcDomainUrl": "http://kfxx.smtbs.cn",
+				"deployFlag": "0",
+				"logo": "[{\"label\":\"b50efaf174af4e5bba702d11944a7842.png\",\"value\":\"/admin/sys-file/yunkanghulu/b50efaf174af4e5bba702d11944a7842.png\"}]",
+				"status": "0",
+				"sort": 2,
+				"createTime": "2021-04-04 13:09:17",
+				"updateTime": "2021-06-11 16:54:45",
+				"delFlag": "0",
+				"tenantId": 10,
+				"disabled": false,
+				"logoSrc": "http://yk-oss.smtbs.cn/b50efaf174af4e5bba702d11944a7842.png"
+			}],
+			[{
+				"id": 13,
+				"appId": 6,
+				"name": "实体系统",
+				"title": "实体门店",
+				"appAlias": "实体系统",
+				"appCode": "store",
+				"domainUrl": "http://kfxx.smtbs.cn",
+				"appDomainUrl": "http://kfxx.smtbs.cn/m/store",
+				"pcDomainUrl": "http://kfxx.smtbs.cn",
+				"deployFlag": "0",
+				"logo": "[{\"label\":\"2d9cce4668d549529ab50046dadf4011.png\",\"value\":\"/admin/sys-file/yunkanghulu/2d9cce4668d549529ab50046dadf4011.png\"}]",
+				"status": "0",
+				"sort": 3,
+				"createTime": "2021-04-04 13:09:17",
+				"updateTime": "2021-06-11 16:55:07",
+				"delFlag": "0",
+				"tenantId": 10,
+				"disabled": false,
+				"logoSrc": "http://yk-oss.smtbs.cn/2d9cce4668d549529ab50046dadf4011.png"
+			}, {
+				"id": 12,
+				"appId": 3,
+				"name": "人才系统",
+				"title": "产业人才",
+				"appAlias": "人才系统",
+				"appCode": "talent",
+				"domainUrl": "http://kfxx.smtbs.cn",
+				"appDomainUrl": "http://kfxx.smtbs.cn/m/talent",
+				"pcDomainUrl": "http://kfxx.smtbs.cn",
+				"deployFlag": "0",
+				"logo": "[{\"label\":\"878b29eae00e4142a27cdefab88bfe38.png\",\"value\":\"/admin/sys-file/yunkanghulu/878b29eae00e4142a27cdefab88bfe38.png\"}]",
+				"status": "0",
+				"sort": 4,
+				"createTime": "2021-04-04 13:09:17",
+				"updateTime": "2021-06-11 16:54:57",
+				"delFlag": "0",
+				"tenantId": 10,
+				"disabled": false,
+				"logoSrc": "http://yk-oss.smtbs.cn/878b29eae00e4142a27cdefab88bfe38.png"
+			}]
+		],
+		"adverts": [{
+			"id": 5,
+			"title": "燕窝",
+			"imgPc": "[{\"label\":\"e47decf869f34b1688349982da4b5681.png\",\"value\":\"/admin/sys-file/yunkanghulu/e47decf869f34b1688349982da4b5681.png\"}]",
+			"imgMp": "[{\"label\":\"33a87912b6f04be79da30f3a628a66ca.png\",\"value\":\"/admin/sys-file/yunkanghulu/33a87912b6f04be79da30f3a628a66ca.png\"}]",
+			"state": "0",
+			"url": "http://kfxx.smtbs.cn/m/mall/pages/shop/GoodsCon/index?id=124",
+			"position": "1",
+			"type": 0,
+			"targetType": 1,
+			"sort": 1,
+			"createTime": "2021-06-08 09:30:51",
+			"updateTime": "2021-06-11 12:15:21",
+			"delFlag": "0",
+			"imgPcList": [{
+				"label": "e47decf869f34b1688349982da4b5681.png",
+				"value": "/admin/sys-file/yunkanghulu/e47decf869f34b1688349982da4b5681.png"
+			}],
+			"imgMpList": [{
+				"label": "33a87912b6f04be79da30f3a628a66ca.png",
+				"value": "/admin/sys-file/yunkanghulu/33a87912b6f04be79da30f3a628a66ca.png"
+			}],
+			"imgPcSrc": "http://yk-oss.smtbs.cn/e47decf869f34b1688349982da4b5681.png",
+			"imgMpSrc": "http://yk-oss.smtbs.cn/33a87912b6f04be79da30f3a628a66ca.png"
+		}],
+		"channels": [{
+			"channel": {
+				"id": 5,
+				"name": "精选课程",
+				"appCode": "kaopei",
+				"targetUrl": "http://kfxx.smtbs.cn/m/kaopei",
+				"urlAlias": "进入考培",
+				"sort": 1,
+				"createTime": "2021-06-07 10:33:28",
+				"updateTime": "2021-06-07 10:33:28",
+				"delFlag": "0"
+			},
+			"details": [{
+				"name": "公共营养师",
+				"imgSrc": "http://yk-oss.smtbs.cn/2579c78979ef4514aa013f0d7120ec97.jpg",
+				"url": "/pages/index/curriclum/curriclumPackage/index?id=43",
+				"price": 2980,
+				"underlinedPrice": 2980,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}, {
+				"name": "健康管理师",
+				"imgSrc": "http://yk-oss.smtbs.cn/14ac0f2dec294f738e0ec60432000846.png",
+				"url": "/pages/index/curriclum/curriclumPackage/index?id=44",
+				"price": 2980,
+				"underlinedPrice": 2980,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}, {
+				"name": "产后康复师",
+				"imgSrc": "http://yk-oss.smtbs.cn/a5a34e3e17984b499c543195814d545e.jpg",
+				"url": "/pages/index/curriclum/curriclumPackage/index?id=32",
+				"price": 1980,
+				"underlinedPrice": 1980,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}],
+			"items": null
+		}, {
+			"channel": {
+				"id": 22,
+				"name": "云康商城",
+				"appCode": "mall",
+				"targetUrl": "http://kfxx.smtbs.cn/m/mall",
+				"urlAlias": "进入商城",
+				"sort": 1,
+				"createTime": "2021-08-19 09:28:38",
+				"updateTime": "2021-08-19 09:28:38",
+				"delFlag": "0"
+			},
+			"details": [{
+				"name": "肉桂枸杞子复合谷物粉 阳虚体质调理",
+				"imgSrc": "http://yk-oss.smtbs.cn/bf50fef268e64bf4b2a2a4cd3635dbe0.jpg",
+				"url": "/pages/shop/GoodsCon/index?id=29",
+				"price": 259,
+				"underlinedPrice": 300,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}, {
+				"name": "代代花莲子复合谷物粉 气郁体质调理",
+				"imgSrc": "http://yk-oss.smtbs.cn/f99751a9e03d4e4fbe6753c9c1675ff8.jpg",
+				"url": "/pages/shop/GoodsCon/index?id=30",
+				"price": 259,
+				"underlinedPrice": 300,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}, {
+				"name": "淡竹叶砂仁复合谷物粉 湿热体质调理",
+				"imgSrc": "http://yk-oss.smtbs.cn/eb563e60b149467a82c9ede33a70244a.jpg",
+				"url": "/pages/shop/GoodsCon/index?id=31",
+				"price": 259,
+				"underlinedPrice": 300,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}, {
+				"name": "茯苓薏苡仁复合谷物粉 痰湿体质调理",
+				"imgSrc": "http://yk-oss.smtbs.cn/43b706356e024a0bbe0c07cb2a0fb340.jpg",
+				"url": "/pages/shop/GoodsCon/index?id=32",
+				"price": 259,
+				"underlinedPrice": 300,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}],
+			"items": null
+		}, {
+			"channel": {
+				"id": 32,
+				"name": "健康数据",
+				"appCode": "health",
+				"targetUrl": "http://kfxx.smtbs.cn/m/health",
+				"urlAlias": "进入数据",
+				"sort": 1,
+				"createTime": "2021-09-08 09:24:14",
+				"updateTime": "2021-09-08 09:24:14",
+				"delFlag": "0"
+			},
+			"details": null,
+			"items": {
+				"10": [{
+					"name": "红外评估",
+					"imgSrc": "http://yk-oss.smtbs.cn/88eb697002e0419b823ec07b565cae58.png",
+					"url": "1",
+					"price": null,
+					"underlinedPrice": null,
+					"resumeType": null,
+					"article": null,
+					"bizType": 10,
+					"data": {
+						"id": 1,
+						"title": "红外评估",
+						"iconPc": "http://yk-oss.smtbs.cn/3803aca6e8f24a5cb98edc5930510827.png",
+						"iconMobile": "http://yk-oss.smtbs.cn/88eb697002e0419b823ec07b565cae58.png",
+						"state": "0",
+						"type": "1",
+						"summary": "红外风险自测，你是真的健康吗？",
+						"content": "<body>\n <p>红外评估</p>\n</body>",
+						"tips": "红外风险自测，你是真的健康吗？",
+						"sort": 2,
+						"createTime": "2021-08-19 15:57:21",
+						"updateTime": "2021-08-19 16:23:24",
+						"delFlag": "0",
+						"iconPcList": [{
+							"label": "3803aca6e8f24a5cb98edc5930510827.png",
+							"value": "/admin/sys-file/yunkanghulu/3803aca6e8f24a5cb98edc5930510827.png"
+						}],
+						"iconMobileList": [{
+							"label": "88eb697002e0419b823ec07b565cae58.png",
+							"value": "/admin/sys-file/yunkanghulu/88eb697002e0419b823ec07b565cae58.png"
+						}]
+					}
+				}, {
+					"name": "体质评估",
+					"imgSrc": "http://yk-oss.smtbs.cn/0906cbdc60b146449cce95043e968508.jpg",
+					"url": "2",
+					"price": null,
+					"underlinedPrice": null,
+					"resumeType": null,
+					"article": null,
+					"bizType": 10,
+					"data": {
+						"id": 2,
+						"title": "体质评估",
+						"iconPc": "http://yk-oss.smtbs.cn/2929df0466914b029daa469c11932996.jpg",
+						"iconMobile": "http://yk-oss.smtbs.cn/0906cbdc60b146449cce95043e968508.jpg",
+						"state": "0",
+						"type": "2",
+						"summary": "医云掌",
+						"content": "<body>\n <p>医云掌</p>\n</body>",
+						"tips": "医云掌",
+						"sort": 1,
+						"createTime": "2021-08-20 11:59:13",
+						"updateTime": "2021-08-25 11:16:07",
+						"delFlag": "0",
+						"iconPcList": [{
+							"label": "2929df0466914b029daa469c11932996.jpg",
+							"value": "/admin/sys-file/yunkanghulu/2929df0466914b029daa469c11932996.jpg"
+						}],
+						"iconMobileList": [{
+							"label": "0906cbdc60b146449cce95043e968508.jpg",
+							"value": "/admin/sys-file/yunkanghulu/0906cbdc60b146449cce95043e968508.jpg"
+						}]
+					}
+				}]
+			}
+		}, {
+			"channel": {
+				"id": 7,
+				"name": "人才精英",
+				"appCode": "talent",
+				"targetUrl": "http://kfxx.smtbs.cn/m/talent",
+				"urlAlias": "进入人才",
+				"sort": 3,
+				"createTime": "2021-06-08 09:24:30",
+				"updateTime": "2021-06-08 09:24:30",
+				"delFlag": "0"
+			},
+			"details": [{
+				"name": "张丽",
+				"imgSrc": "http://yk-oss.smtbs.cn/910194032a62496aa0e0a14a07340931.png",
+				"url": "/pages/served/talentDetails?id=22",
+				"price": null,
+				"underlinedPrice": null,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}, {
+				"name": "李颖",
+				"imgSrc": "http://yk-oss.smtbs.cn/067499a2a5e849e3b097dee334adb8bf.jpg",
+				"url": "/pages/served/talentDetails?id=24",
+				"price": null,
+				"underlinedPrice": null,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}],
+			"items": null
+		}, {
+			"channel": {
+				"id": 8,
+				"name": "精选服务",
+				"appCode": "store",
+				"targetUrl": "http://kfxx.smtbs.cn/m/store",
+				"urlAlias": "进入门店",
+				"sort": 4,
+				"createTime": "2021-06-08 09:24:54",
+				"updateTime": "2021-06-08 09:24:54",
+				"delFlag": "0"
+			},
+			"details": [{
+				"name": "体质调理",
+				"imgSrc": "http://yk-oss.smtbs.cn/fa9dc495d89442c3a37486d80175bcc0.jpg",
+				"url": "/pages/store/serveStore?id=53",
+				"price": 199,
+				"underlinedPrice": null,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}, {
+				"name": "足浴养生",
+				"imgSrc": "http://yk-oss.smtbs.cn/035b4adf6a2b44129b94eeea28c7785b.jpg",
+				"url": "/pages/store/serveStore?id=54",
+				"price": 99,
+				"underlinedPrice": null,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}, {
+				"name": "肩颈放松",
+				"imgSrc": "http://yk-oss.smtbs.cn/8f7b7182fa1948228c59bbd9273303c3.jpg",
+				"url": "/pages/store/serveStore?id=55",
+				"price": 399,
+				"underlinedPrice": null,
+				"resumeType": null,
+				"article": null,
+				"bizType": null,
+				"data": null
+			}],
+			"items": null
+		}]
+	}
+}

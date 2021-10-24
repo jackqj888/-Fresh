@@ -4,30 +4,28 @@
     <div class="home-container">
       <Carousel :banner="homebanner"></Carousel>
       <div class="navigation">
-        <div class="groups" @click="rcgo">
-          <img src="@/assets/groups.png" alt="" class="image" />
+        <div class="groups">
+          <img src="@/assets/groups.png" alt="" class="image"/>
           <span class="item-name">人才</span>
           <span class="item-title">Personnel</span>
         </div>
         <div class="popularScience">
-          <img src="@/assets/popularScience.png" alt="" class="image" />
+          <img src="@/assets/popularScience.png" alt="" class="image"/>
           <span class="item-name">科普</span>
           <span class="item-title">Popularization of science</span>
         </div>
-        <div class="healthy" @click="jkgo">
-          <img src="@/assets/healthy.png" alt="" class="image" />
+        <div class="healthy">
+          <img src="@/assets/healthy.png" alt="" class="image"/>
           <span class="item-name">健康</span>
           <span class="item-title">Healthy</span>
         </div>
         <div class="test">
-          <img src="@/assets/test.png" alt="" class="image" />
-          <span class="item-name">
-            考试
-          </span>
+          <img src="@/assets/test.png" alt="" class="image"/>
+          <span class="item-name">考试</span>
           <span class="item-title">Examination</span>
         </div>
-        <div class="mall"  @click="scgo">
-          <img src="@/assets/mall.png" alt="" class="image" />
+        <div class="mall">
+          <img src="@/assets/mall.png" alt="" class="image"/>
           <span class="item-name">商城</span>
           <span class="item-title">Shopping Mall</span>
         </div>
@@ -39,36 +37,29 @@
               精品课程
             </span>
             <span class="course-font1">
-              <a class="go-jp" href="http://kfxx.smtbs.cn/m/kaopei">
-                进入考培 >
-              </a>
+              进入考培 >
             </span>
           </div>
           <div class="course-introduction">
             <span class="e-font">
               The examination and training system has launched high-
-              <br />
+              <br/>
               quality courses. I wish you a smooth passing of the
-              <br />
+              <br/>
               examination and training
             </span>
-            <img src="@/assets/cirlces.png" class="image1" />
+            <img src="@/assets/cirlces.png" class="image1"/>
           </div>
           <div class="swiper-jp">
             <swiper class="swiper jp" ref="swiper" :options="jpOption">
-              <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in course"
-                :key="index"
-              >
-                <img :src="item.imgSrc" class="swiper-jp-image" />
-                <span class="courseTitle">{{ item.name }}</span>
-                <span class="course-price">￥ {{ item.price }}</span>
+              <swiper-slide class="swiper-slide" v-for="(item,index) in course" :key="index">
+                <img :src="item.imgSrc" class="swiper-jp-image"/>
+                <span class="courseTitle">{{item.name}}</span>
+                <span class="course-price" >￥ {{item.price}}</span>
               </swiper-slide>
-             
+              <div class="swiper-button-prev" slot="button-prev"></div>
+              <div class="swiper-button-next" slot="button-next"></div>
             </swiper>
-             <div class="swiper-button-prev swiper-button-prev1" ></div>
-             <div class="swiper-button-next swiper-button-next1"></div>
           </div>
         </div>
         <div class="commodity">
@@ -77,36 +68,32 @@
               推荐商品
             </span>
             <span class="commodity-font1">
-              <a class="go-tj" href="http://kfxx.smtbs.cn/m/mall">进入商城 ></a>
+              进入商城 >
             </span>
           </div>
           <div class="commodity-introduction">
             <span class="e-font">
               Shopping mall system shelves recommended
-              <br />
+              <br/>
               goods, value for money, I wish you a happy
-              <br />
+              <br/>
               shopping
             </span>
-            <img src="@/assets/cirlces1.png" class="image2" />
+            <img src="@/assets/cirlces1.png" class="image2"/>
           </div>
 
           <div class="swiper-tj">
             <swiper class="swiper tj" ref="swiper" :options="jpOption">
-              <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in commodity"
-                :key="index"
-              >
-                <img :src="item.imgSrc" class="swiper-tj-image" />
-                <span class="courseTitle">{{ item.name }}</span>
-                <span class="course-price">￥ {{ item.price }}</span>
+              <swiper-slide class="swiper-slide" v-for="(item,index) in commodity" :key="index">
+                <img :src="item.imgSrc" class="swiper-tj-image"/>
+                <span  class="courseTitle">{{item.name}}</span>
+                <span class="course-price" >￥ {{item.price}}</span>
               </swiper-slide>
-              
+              <div class="swiper-button-prev" slot="button-prev"></div>
+              <div class="swiper-button-next" slot="button-next"></div>
             </swiper>
-            <div class="swiper-button-prev swiper-button-prev1"></div>
-            <div class="swiper-button-next swiper-button-next1"></div>
           </div>
+
         </div>
       </div>
       <div class="knowledge">
@@ -119,10 +106,10 @@
         </div>
         <div class="Preview">
           <div class="Preview-left">
-            <img src="@/assets/Preview1.png" class="Preview1" />
+            <img src="@/assets/Preview1.png" class="Preview1"/>
             <p class="Preview-title">标题一</p>
             <div class="user">
-              <img src="@/assets/no-data.png" class="user-image" />
+              <img src="@/assets/no-data.png" class="user-image"/>
               <div class="userName">
                 <p class="userName-font">汝小果</p>
                 <p class="userName-time">2021-8-5-13 : 19 : 18</p>
@@ -134,10 +121,10 @@
           </div>
           <div class="Preview-middle">
             <div>
-              <img src="@/assets/Preview1.png" class="Preview1" />
+              <img src="@/assets/Preview1.png" class="Preview1"/>
               <p class="Preview-title">标题二</p>
               <div class="user">
-                <img src="@/assets/no-data.png" class="user-image" />
+                <img src="@/assets/no-data.png" class="user-image"/>
 
                 <div class="userName">
                   <p class="userName-font">汝小果</p>
@@ -151,10 +138,10 @@
           </div>
           <div class="Preview-right">
             <div>
-              <img src="@/assets/Preview1.png" class="Preview1" />
+              <img src="@/assets/Preview1.png" class="Preview1"/>
               <p class="Preview-title">标题三</p>
               <div class="user">
-                <img src="@/assets/no-data.png" class="user-image" />
+                <img src="@/assets/no-data.png" class="user-image"/>
                 <div class="userName">
                   <p class="userName-font">汝小果</p>
                   <p class="userName-time">2021-8-5-13 : 19 : 18</p>
@@ -172,7 +159,7 @@
         </div>
       </div>
       <div class="banner2">
-        <img src="@/assets/banner2.png" class="banner2" />
+        <img src="@/assets/banner2.png" class="banner2"/>
       </div>
       <div class="hjealthTreatment">
         <div class="hjealthTreatment-box">
@@ -183,18 +170,18 @@
           <div class="hjealthTreatment-e-font">
             <p class="e-font1">
               Put forward high-quality conditioning scheme for
-              <br />
+              <br/>
               your health
             </p>
           </div>
           <div class="carousel">
             <swiper class="swiper jk" :options="jkOption">
               <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in carouselArr1"
-                :key="index"
+                  class="swiper-slide"
+                  v-for="(item, index) in carouselArr1"
+                  :key="index"
               >
-                <img :src="item" class="swiper-img" />
+                <img :src="item" class="swiper-img"/>
               </swiper-slide>
               <div class="swiper-pagination" slot="pagination"></div>
               <div class="swiper-button-prev" slot="button-prev"></div>
@@ -206,12 +193,8 @@
       <div class="talents">
         <div class="talents-box">
           <div class="talents-title">
-            <span class="talents-font">
-             精选人才
-              </span>
-            <span class="talents-go">
-              <a class="go-rc" href="http://kfxx.smtbs.cn/m/talent">点击进入 ></a> 
-              </span>
+            <span class="talents-font">精选人才</span>
+            <span class="talents-go">点击进入 ></span>
           </div>
           <div class="talents-e-font">
             <p class="e-font1">
@@ -224,18 +207,17 @@
         <p class="healthCheck-font">健康检测</p>
         <p class="e-font">
           Health data test to check whether you are healthy. Come and
-          <br />
+          <br/>
           make an appointment
         </p>
-        <p class="go">
-         <a class="go-jk" href="http://kfxx.smtbs.cn/m/health">点击进入 ></a> </p>
+        <p class="go">点击进入 ></p>
         <div class="evaluate">
-          <div class="evaluate-box" v-for="(item,index) in evaluate" :key="index">
-            <p class="evaluate-title">{{item.data.title}}</p>
+          <div class="evaluate-box">
+            <p class="evaluate-title">体制评估</p>
             <div class="evaluate-Introduction">
-              <img :src="item.imgSrc" class="cirlces4" />
+              <img src="@/assets/cirlces4.png" class="cirlces4"/>
               <div class="evaluate-font">
-                <p class="evaluate-cn">{{item.data.summary}}</p>
+                <p class="evaluate-cn">红外风险自测，你是真的健康吗？</p>
                 <p class="evaluate-en">
                   Infrared risk self-test, are you really healthy?
                 </p>
@@ -252,7 +234,7 @@
 <script>
 // import api from '@/api'
 import Carousel from '@/components/Carousel.vue'
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   name: 'home',
@@ -261,6 +243,7 @@ export default {
   },
   data() {
     return {
+      
       ProductList: [],
       headerOption: {
         //显示分页
@@ -269,8 +252,8 @@ export default {
         },
         //设置点击箭头
         navigation: {
-          nextEl: 'swiper-button-next1',
-          prevEl: '.swiper-button-prev1',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
         //自动轮播
         autoplay: {
@@ -296,7 +279,7 @@ export default {
         on: {
           resize: () => {
             this.$refs.swiper.$swiper.changeDirection(
-              window.innerWidth <= 960 ? 'vertical' : 'horizontal',
+                window.innerWidth <= 960 ? 'vertical' : 'horizontal',
             )
           },
         },
@@ -334,15 +317,12 @@ export default {
         'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F31%2F20170331090940_P2cRe.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637569375&t=5471a9ec63096163bbbcb6354f51991f',
         // 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201811%2F29%2F20181129225734_hpntk.thumb.700_0.jpg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637569375&t=840d415a0cbbac2f56f48251e87070fe',
       ],
-      course: [],
-      commodity: [],
-      homebanner: [],
-      evaluate:[],
+      course:[],
+      commodity:[],
+      homebanner:[]
 
-      groups: 'http://kfxx.smtbs.cn/m/talent',
-      healthy:'http://kfxx.smtbs.cn/m/health',
-      mall:'http://kfxx.smtbs.cn/m/mall'
     }
+
   },
   created() {
     this.getHomeList()
@@ -351,25 +331,12 @@ export default {
     getHomeList() {
       axios.get('/home.json').then((res) => {
         this.data = res
-        this.course = this.data.channels[0].details
-        this.commodity = this.data.channels[1].details
-        this.homebanner = this.data.banners[0].bannerSrc
-        this.evaluate = this.data.channels[2].items[10]
-
-        console.log('vvv', this.data)
+        this.course=this.data.channels[0].details
+        this.commodity=this.data.channels[1].details
+        this.homebanner=this.data.banners[0]
+        console.log('vvv', this.homebanner)
       })
     },
-    
-    rcgo() {
-      window.open(this.groups, '_blank') // 在新窗口打开外链接
-        // window.location.href =this.indexro;//在本页面打开外部链接
-    },
-    jkgo(){
-      window.open(this.healthy, '_blank') 
-    },
-    scgo(){
-      window.open(this.mall, '_blank')
-    }
   },
 }
 </script>
@@ -463,8 +430,8 @@ body
         width 45px
         height 20px
         margin-right 53px
-
-
+    
+      
     .commodity
       width 588px
       height 327px
@@ -789,19 +756,15 @@ body
     .evaluate
       display flex
       justify-content center
-      
-      
+      background-color #fff
+      border-radius 15px
+      border none // 去掉边框
+      outline none // 去掉点击按钮后的边框
+      margin-bottom 93px
 
       .evaluate-box
         width 451px
         height 143px
-        background-color #fff
-        margin 0 12px
-        border-radius 15px
-        border none // 去掉边框
-        outline none // 去掉点击按钮后的边框
-        margin-bottom 93px
-
 
         .evaluate-title
           font-size 22px
@@ -815,8 +778,8 @@ body
           justify-content center
 
           .cirlces4
-            width 36px
-            height 35px
+            width 50px
+            height 29px
             margin-right 27px
 
           .evaluate-font
@@ -849,7 +812,7 @@ body
   height 22px
   display:block
 .course-price
-  color: #FF0F0F
+  color: #FF0F0F 
   font-size 14px
   margin-left 25px
 
@@ -862,49 +825,32 @@ body
    width: 505px
    height: 110px
    margin 23px 0 0 27px
-   position relative
-   .swiper jp
-    overflow hidden
 
-.go-jp
- color #FF9F59
- text-decoration:none
 
-.go-tj
- color #FE96B1
- text-decoration:none
-.go-rc 
- color #000000
- text-decoration:none
-.go-jk
- color #000000
- text-decoration:none
+  
+
 .swiper-jp-image, .swiper-tj-image
   width 106px
   height 106px
   border-radius 25px
 
-.swiper-button-prev, .swiper-button-prev
-  left: -5%;
-  width 36px
-  height 36px
+.jp .swiper-button-prev, .tj .swiper-button-prev
+  left: 0%;
+  width 44px
+  height 44px
   border-radius 50%
   background-color #fff
   border 2px solid #F1F1F1
   color #FE5782
-  
- .swiper-container
-   --swiper-navigation-size 15px  
-.swiper-button-next, .swiper-button-next
-  right: -5%;
-  width 36px
-  height 36px
-  border-radius 50%
-  background-color #fff
-  border 2px solid #F1F1F1
-  color #FE5782
-  
 
+.jp .swiper-button-next, .tj .swiper-button-next
+  right: 0%;
+  width 44px
+  height 44px
+  border-radius 50%
+  background-color #fff
+  border 2px solid #F1F1F1
+  color #FE5782
 
 .kp .swiper-button-prev, .kp .swiper-button-next {
   top: 90%;

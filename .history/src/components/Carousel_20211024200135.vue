@@ -10,7 +10,7 @@
       <el-carousel-item v-for="(item, index) in banner" :key="index">
         <el-image
           style="width: 100%; height: 100%;"
-          :src="item"
+          :src="item.bannerSrc"
           fit="cover"
         ></el-image>
       </el-carousel-item>
@@ -22,7 +22,7 @@ export default {
   props: {
     banner: {
       banner: Array,
-      required: true,
+      required: false,
     },
   },
   data() {
@@ -35,10 +35,6 @@ export default {
       ],
     }
   },
-  created(){
-    console.log('bbb',this.banner);
-  },
-
   mounted() {
     this.className = 'lun-img'
     setTimeout(() => {
