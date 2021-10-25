@@ -79,7 +79,7 @@ export default {
   .logo
     margin-right 303px
   .logo1
-    margin-top 40px
+    margin 40px 0 40px 0 
     display flex
     flex-direction column
     justify-content center
@@ -128,6 +128,9 @@ export default {
       border none   // 去掉边框
       outline none  // 去掉点击按钮后的边框
       border-radius 15px
+      box-shadow 5px 15px 10px 8px rgba(207,202,241,.5)
+      
+      
 
 .el-icon-user
  margin-right 20px      

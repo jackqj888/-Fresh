@@ -27,13 +27,14 @@
             </div>
             <div class="input">
               <input type="text" v-model="form.code" placeholder="输入验证码"/>
-              <button class="verificationCode">获取验证码</button>
-              <div class="get-code" @click="getCode">{{ text }}</div>
+              <button class="verificationCode" @click="getCode" :class="{'disabled-style':getCodeBtnDisable}" >{{verificationCode}}</button>
+             
+<!--              <div class="get-code" @click="getCode">{{ verificationCode }}</div>-->
             </div>
           </template>
           <template v-else>
             <div class="input">
-              <input type="text" v-model="form.username" placeholder="输入手机号"/>
+              <input type="text" v-model="form.username"  placeholder="输入手机号"/>
             </div>
             <div class="input">
               <input :type="inputType" v-model="form.password" placeholder="输入密码"/>
@@ -45,7 +46,7 @@
             </div>
           </template>
           <div to="/index">
-            <div class="btn" @click="login">登录</div>
+            <div class="btn" @click="getLogin">登录</div>
           </div>
           <div class="pact">
             <p>
@@ -66,7 +67,10 @@ export default {
   name: 'login',
   data() {
     return {
+      waitTime:30,
+      verificationCode:'获取验证码',
       inputType: 'password',
+      res:[],
       form: {
         grant_type: 'username',
         scope: 'server',
@@ -76,6 +80,31 @@ export default {
         code: '',
         TERMINAL: 'web',
       },
+      
+      
+    }
+  },
+  computed: {
+    // 用于校验手机号码格式是否正确
+    phoneNumberStyle(){
+      let reg = /^1[3456789]\d{9}$/
+      if(!reg.test(this.form.mobile)){
+        return false
+      }
+      return true
+      
+    },
+    getCodeBtnDisable:{
+      get(){
+        if(this.waitTime === 30){
+          if(this.form.mobile){
+            return false
+          }
+          return true
+        }
+        return true
+      },
+      set(){}
     }
   },
   created() {
@@ -108,8 +137,57 @@ export default {
           this.$router.push('/productlist')
         }
       }
-
+      
     },
+    getCode(){
+      if(this.phoneNumberStyle){
+        // 调用获取短信验证码接口
+        api.login.getCode(this.form.mobile).then(res=>{
+          this.res = res
+          console.log('ccc',this.res)
+          if(this.res.status===200) {
+            this.$message({
+              message: '验证码已发送，请稍候...',
+              type: 'success',
+              center:true
+            })
+          }
+        })
+        // 因为下面用到了定时器，需要保存this指向
+        let that = this
+        that.waitTime--
+        that.getCodeBtnDisable = true
+        that.verificationCode = `${that.waitTime}s 后重新获取`
+        let timer = setInterval(function(){
+          if(that.waitTime>1){
+            that.waitTime--
+            that.verificationCode = `${that.waitTime}s 后重新获取`
+          }else{
+            clearInterval(timer)
+            that.verificationCode = '获取验证码'
+            that.getCodeBtnDisable = false
+            that.waitTime = 30
+          }
+        },1000)
+      } else {
+        this.$message.error('手机号码错误！')
+      }
+    },
+    getLogin(){
+      let data ={
+        mobile:this.form.mobile,
+        code:this.form.code,
+      }
+      api.login.getlogin(data).then(res=>{
+        console.log(res)
+        var access_token = res.access_token;
+        window.localStorage.setItem('access_token',access_token);
+
+        var userInfo = res.user_info;
+        window.localStorage.setItem('user_info',JSON.stringify(userInfo));
+        this.$router.push({name: 'home', params: {data}});
+      })
+    }
   },
 }
 </script>
@@ -202,7 +280,7 @@ export default {
           border none   // 去掉边框
           outline none  // 去掉点击按钮后的边框
           color #fff
-          font-size: 14px
+          font-size: 12px
           border-radius 20px
           width: 85px
           height: 33px
@@ -259,4 +337,8 @@ export default {
          a
            text-decoration: none
            color: #FE8CAA
+.disabled-style
+  background-color #EEEEEE
+  color #CCCCCC
+  
 </style>

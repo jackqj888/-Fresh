@@ -6,12 +6,14 @@ import {
 
 export default {
   login: {
-    getCode: (data) => get("/cart/list", data),
+    getCode: (params) => get(`/health/mp-smt/sms/send/`+ params ),
+    getlogin:(data)=>post(`/auth/mobile/token/sms?scope=server&grant_type=mobile&mobile=SMS@`+data.mobile+`&code=`+data.code),
     loginWidthCode: (data) => postByUrl("/auth/mobile/token/sms", data),
     loginWidthPassword: () => post("/login?userName=mumu4&password=112345678"),
     //获取个人信息,里面有个人积分
     getUserInfo: () => get("/mall/userinfo?login=true"),
     vipEndTime: () => get("/mall/userinfoVipEndTime"),
+    
   },
   logout: {
     getLogout:() =>post(`/user/logout`)
