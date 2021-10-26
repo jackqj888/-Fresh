@@ -2,30 +2,32 @@
   <div class="wrapper">
     <div class="home-head"></div>
     <div class="home-container">
-      <Carousel :banner="homeBanner"></Carousel>
+      <Carousel 
+      :banner="homeBanner"
+      ></Carousel>
       <div class="navigation">
         <div class="groups" @click="goTo('talent')">
-          <img src="@/assets/groups.png" alt="" class="image" />
+          <img src="@/assets/groups.png" alt="" class="image"/>
           <span class="item-name">人才</span>
           <span class="item-title">Personnel</span>
         </div>
         <div class="popularScience" @click="goTo('kpm')">
-          <img src="@/assets/popularScience.png" alt="" class="image" />
+          <img src="@/assets/popularScience.png" alt="" class="image"/>
           <span class="item-name">科普</span>
           <span class="item-title">Popularization of science</span>
         </div>
         <div class="healthy" @click="goTo('health')">
-          <img src="@/assets/healthy.png" alt="" class="image" />
+          <img src="@/assets/healthy.png" alt="" class="image"/>
           <span class="item-name">健康</span>
           <span class="item-title">Healthy</span>
         </div>
         <div class="test" @click="goTo('kaopei')">
-          <img src="@/assets/test.png" alt="" class="image" />
+          <img src="@/assets/test.png" alt="" class="image"/>
           <span class="item-name">考试</span>
           <span class="item-title">Examination</span>
         </div>
         <div class="mall" @click="goTo('mall')">
-          <img src="@/assets/mall.png" alt="" class="image" />
+          <img src="@/assets/mall.png" alt="" class="image"/>
           <span class="item-name">商城</span>
           <span class="item-title">Shopping Mall</span>
         </div>
@@ -41,32 +43,21 @@
           <div class="course-introduction">
             <span class="e-font">
               The examination and training system has launched high-
-              <br />
+              <br/>
               quality courses. I wish you a smooth passing of the
-              <br />
+              <br/>
               examination and training
             </span>
-            <img src="@/assets/cirlces.png" class="image1" />
+            <img src="@/assets/cirlces.png" class="image1"/>
           </div>
           <div class="swiper-jp">
             <swiper class="swiper jp" ref="swiper" :options="jpOption">
-              <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in course"
-                :key="index"
-              >
-                <img
-                  :src="item.imgSrc"
-                  class="swiper-jp-image"
-                  @click="open(item, 'kaopei')"
-                />
-                <span class="courseTitle" @click="open(item, 'kaopei')">
-                  {{ item.name }}
-                </span>
-                <span class="course-price" @click="open(item, 'kaopei')">
-                  ￥ {{ item.price }}
-                </span>
+              <swiper-slide class="swiper-slide" v-for="(item, index) in course" :key="index">
+                <img :src="item.imgSrc" class="swiper-jp-image" @click="open(item, 'kaopei')"/>
+                <span class="courseTitle" @click="open(item, 'kaopei')">{{ item.name }}</span>
+                <span class="course-price" @click="open(item , 'kaopei')">￥ {{ item.price }}</span>
               </swiper-slide>
+
             </swiper>
             <div class="swiper-button-prev swiper-button-prev1"></div>
             <div class="swiper-button-next swiper-button-next1"></div>
@@ -84,33 +75,22 @@
           <div class="commodity-introduction">
             <span class="e-font">
               Shopping mall system shelves recommended
-              <br />
+              <br/>
               goods, value for money, I wish you a happy
-              <br />
+              <br/>
               shopping
             </span>
-            <img src="@/assets/cirlces1.png" class="image2" />
+            <img src="@/assets/cirlces1.png" class="image2"/>
           </div>
 
           <div class="swiper-tj">
             <swiper class="swiper tj" ref="swiper" :options="scOption">
-              <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in commodity"
-                :key="index"
-              >
-                <img
-                  :src="item.imgSrc"
-                  class="swiper-tj-image"
-                  @click="open(item, 'mall')"
-                />
-                <span class="courseTitle" @click="open(item, 'mall')">
-                  {{ item.name }}
-                </span>
-                <span class="course-price" @click="open(item, 'mall')">
-                  ￥ {{ item.price }}
-                </span>
+              <swiper-slide class="swiper-slide" v-for="(item, index) in commodity" :key="index">
+                <img :src="item.imgSrc" class="swiper-tj-image" @click="open(item, 'mall')"/>
+                <span class="courseTitle" @click="open(item , 'mall')">{{ item.name }}</span>
+                <span class="course-price" @click="open(item, 'mall')">￥ {{ item.price }}</span>
               </swiper-slide>
+
             </swiper>
             <div class="swiper-button-prev swiper-button-prev2"></div>
             <div class="swiper-button-next swiper-button-next2"></div>
@@ -126,82 +106,58 @@
           <p class="go"><a class="go-tj" :href="kpmUrl">点击进入 ></a></p>
         </div>
         <swiper class="swiper" :options="kpOption">
-          <!--          <swiper-slide>Slide 1</swiper-slide>-->
-          <swiper-slide
-            class="swiper-slide"
-            v-for="(item, index) in kpmList"
-            :key="index"
-          >
-            <img
-              :src="item.imgSrcPc"
-              class="Preview"
-              @click="open(item, 'kpm')"
-            />
-            <p class="Preview-title" @click="open(item, 'kpm')">
-              {{ item.name }}
-            </p>
+<!--          <swiper-slide>Slide 1</swiper-slide>-->
+          <swiper-slide class="swiper-slide" v-for="(item, index) in kpmList" :key="index">
+            <img :src="item.imgSrcPc" class="Preview" @click="open(item, 'kpm')"/>
+            <p class="Preview-title" @click="open(item, 'kpm')">{{item.name}}</p>
             <div class="user">
               <div>
-                <img :src="item.article.avatar" class="user-image" />
+                <img :src="item.article.avatar" class="user-image"/>
               </div>
-
+            
               <div class="userName">
-                <span class="userName-font">{{ item.article.nickname }}</span>
-                <span class="userName-time">{{ item.article.createTime }}</span>
+                <span class="userName-font">{{item.article.nickname}}</span>
+                <span class="userName-time">{{item.article.createTime}}</span>
               </div>
             </div>
             <div style="text-align: center;">
-              <el-button class="btn" @click="open(item, 'kpm')">
-                点击查看
-              </el-button>
+              <el-button class="btn" @click="open(item, 'kpm')">点击查看</el-button>
             </div>
           </swiper-slide>
+        
         </swiper>
-        <div class="kpbtn">
-          <button class="btnLeft">←</button>
-          <button class="btnRight">→</button>
+        <div style="text-align: center;">
+          <button class=" btnLeft">←</button>
+          <button class=" btnRight">→</button>
         </div>
       </div>
       <div class="banner2">
-        <img src="@/assets/banner2.png" />
+        <img src="@/assets/banner2.png"/>
       </div>
       <div class="hjealthTreatment">
         <div class="hjealthTreatment-box">
           <div class="hjealthTreatment-title">
             <span class="hjealthTreatment-font">健康疗程</span>
-            <span class="hjealthTreatment-go">
-              <a class="go-tj" :href="healthUrl">点击进入 ></a>
-            </span>
+            <span class="hjealthTreatment-go"><a class="go-tj" :href="healthUrl">点击进入 ></a></span>
           </div>
           <div class="hjealthTreatment-e-font">
-            <div>
-              <p class="e-font jk">
+            <p class="e-font1">
               Put forward high-quality conditioning scheme for
-              <br />
+              <br/>
               your health
             </p>
-            </div>
-            
-            <div class="jkbtn">
-            <div class="jkLeft">&lt;</div>
-            <div class="swiper-pagination-bullet"></div>
-            <div class="jkRight">&gt;</div>
           </div>
-          </div>
-          
-          <div class="carousel jk">
+          <div class="carousel">
             <swiper class="swiper jk" :options="jkOption">
-              <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in healthList"
-                :key="index"
-              >
-                <img :src="item.imgSrcPc" class="swiper-img-jk" />
-                <div style="width: 176px; text-align: center; font-size: 14px;">
-                  {{ item.name }}
-                </div>
+              <swiper-slide class="swiper-slide" v-for="(item, index) in healthList" :key="index">
+                <img :src="item.imgSrcPc" class="swiper-img"/>
+                <div style="width: 176px; text-align: center; font-size: 14px">{{item.name}}</div>
               </swiper-slide>
+              <div class="swiper-pagination"></div>
             </swiper>
+            
+            <div class="jkLeft" ></div>
+            <div class="jkRight" ></div>
           </div>
         </div>
       </div>
@@ -211,51 +167,38 @@
             <div class="talents-title">
               <span class="talents-font">精选人才</span>
               <span class="talents-go">
-                <a class="go-rc" :href="talentUrl">点击进入 ></a>
+                <a class="go-rc" :href="talentUrl">点击进入 ></a> 
               </span>
             </div>
           </div>
           <div class="talents-e-font">
-            <p class="e-font1">
-              Talent system to help you better select talents
-            </p>
+            <p class="e-font1">Talent system to help you better select talents</p>
           </div>
-          <div class="talents-swiper" ref="swiper" :options="rcOption">
-            <div
-              class="talents-image"
-              v-for="(item, index) in details"
-              :key="index"
-            >
-              <img :src="item.imgSrc" class="talents-img" />
+          <div class="talents-swiper">
+            <div class="talents-image" v-for="(item,index) in details" :key="index">
+              <img :src="item.imgSrc" class="talents-img"/>
               <p class="talents-name">{{ item.name }}</p>
             </div>
           </div>
-          <div class="rcbtn">
-            <div class="rcLeft">&lt;</div>
-            <div class="swiper-pagination-bullet"></div>
-            <div class="rcRight">&gt;</div>
-          </div>
+          <div class="swiper-pagination-bullet"></div>
+            <div class="rcLeft" ></div>
+            <div class="rcRight" ></div>
         </div>
       </div>
       <div class="healthCheck">
         <p class="healthCheck-font">健康检测</p>
         <p class="e-font">
           Health data test to check whether you are healthy. Come and
-          <br />
+          <br/>
           make an appointment
         </p>
         <p class="go">
-          <a class="go-jk" :href="healthUrl">点击进入 ></a>
-        </p>
+          <a class="go-jk" :href="healthUrl">点击进入 ></a></p>
         <div class="evaluate">
-          <div
-            class="evaluate-box"
-            v-for="(item, index) in evaluate"
-            :key="index"
-          >
+          <div class="evaluate-box" v-for="(item,index) in evaluate" :key="index">
             <p class="evaluate-title">{{ item.data.title }}</p>
-            <div class="evaluate-Introduction" @click="goHealthTo(item)">
-              <img :src="item.imgSrc" class="cirlces4" />
+            <div class="evaluate-Introduction" @click=goHealthTo(item)>
+              <img :src="item.imgSrc" class="cirlces4"/>
               <div class="evaluate-font">
                 <p class="evaluate-cn">{{ item.data.summary }}</p>
                 <p class="evaluate-en">
@@ -274,6 +217,7 @@
 <script>
 import api from '@/api'
 import Carousel from '@/components/Carousel.vue'
+
 
 export default {
   name: 'home',
@@ -313,7 +257,7 @@ export default {
         on: {
           resize: () => {
             this.$refs.swiper.$swiper.changeDirection(
-              window.innerWidth <= 960 ? 'vertical' : 'horizontal',
+                window.innerWidth <= 960 ? 'vertical' : 'horizontal',
             )
           },
         },
@@ -329,7 +273,7 @@ export default {
         on: {
           resize: () => {
             this.$refs.swiper.$swiper.changeDirection(
-              window.innerWidth <= 960 ? 'vertical' : 'horizontal',
+                window.innerWidth <= 960 ? 'vertical' : 'horizontal',
             )
           },
         },
@@ -340,8 +284,8 @@ export default {
         slidesPerGroup: 3,
         navigation: {
           nextEl: '.btnLeft',
-          prevEl: '.btnRight',
-        },
+          prevEl: '.btnRight'
+        }
       },
       jkOption: {
         slidesPerView: 6,
@@ -360,14 +304,14 @@ export default {
           prevEl: '.jkRight',
         },
       },
-      rcOption: {
+        lcOption: {
         slidesPerView: 8,
         spaceBetween: 30,
         slidesPerGroup: 8,
         loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
-          el: '.swiper-pagination-bullet',
+          el: '.swiper-pagination',
           clickable: true,
         },
         navigation: {
@@ -380,43 +324,43 @@ export default {
       homeBanner: [],
       evaluate: [],
       details: [],
-      uInfo: null,
+      uInfo:null,
       channels: [],
       kpmList: [],
-      kaopeiUrl: '',
-      mallUrl: '',
-      kpmUrl: '',
-      healthUrl: '',
-      talentUrl: '',
-      healthList: [],
+      kaopeiUrl: "",
+      mallUrl: "",
+      kpmUrl: "",
+      healthUrl: "",
+      talentUrl: "",
+      healthList: []
     }
   },
   created() {
     this.getHomeList()
-    this.uInfo = JSON.parse(window.localStorage.getItem('user_info'))
+    this.uInfo=JSON.parse(window.localStorage.getItem('user_info'))
     // console.log('zzz',this.uInfo)
   },
   methods: {
     getHomeList() {
-      api.home.HomeList().then((res) => {
+      api.home.HomeList().then(res=>{
         this.data = res
         this.channels = this.data.channels
         this.homeBanner = this.data.banners
-        this.channels.map((item) => {
-          if (item.channel.appCode == 'kaopei') {
+        this.channels.map(item => {
+          if(item.channel.appCode == 'kaopei'){
             this.course = item.details
             this.kaopeiUrl = item.channel.targetUrlPc
-          } else if (item.channel.appCode == 'mall') {
+          } else if(item.channel.appCode == 'mall'){
             this.commodity = item.details
             this.mallUrl = item.channel.targetUrlPc
-          } else if (item.channel.appCode == 'kpm') {
+          } else if(item.channel.appCode == 'kpm'){
             this.kpmList = item.details
             this.kpmUrl = item.channel.targetUrlPc
-          } else if (item.channel.appCode == 'health') {
+          } else if(item.channel.appCode == 'health') {
             this.evaluate = item.items[10]
             this.healthList = item.items[12]
             this.healthUrl = item.channel.targetUrlPc
-          } else if (item.channel.appCode == 'talent') {
+          } else if(item.channel.appCode == 'talent') {
             this.details = item.details
             this.talentUrl = item.channel.targetUrlPc
           }
@@ -424,20 +368,20 @@ export default {
         console.log(this.kpmList)
       })
     },
-    goTo(appCode) {
-      this.channels.map((item) => {
-        if (item.channel.appCode == appCode) {
-          if (item.channel.targetUrlPc) {
+    goTo(appCode){
+      this.channels.map(item => {
+        if(item.channel.appCode == appCode){
+          if(item.channel.targetUrlPc){
             window.open(item.channel.targetUrlPc, '_blank')
           }
         }
       })
     },
-    open(item, appCode) {
+    open(item, appCode){
       let targetUrlPc = ''
-      this.channels.map((item) => {
-        if (item.channel.appCode == appCode) {
-          if (item.channel.targetUrlPc) {
+      this.channels.map(item => {
+        if(item.channel.appCode == appCode){
+          if(item.channel.targetUrlPc){
             targetUrlPc = item.channel.targetUrlPc
           }
         }
@@ -445,10 +389,10 @@ export default {
       let openUrl = targetUrlPc + item.urlPc
       window.open(openUrl, '_blank')
     },
-    goHealthTo(item) {
+    goHealthTo(item){
       let openUrl = this.healthUrl + item.urlPc
       window.open(openUrl, '_blank')
-    },
+    }
   },
 }
 </script>
@@ -530,7 +474,6 @@ body
       .course-font1
         font-size 18px
         color #FF9F59
-        
 
       .course-introduction
         display flex
@@ -643,7 +586,7 @@ body
               font-size 14px
               color #000
               margin 0
-
+             
             }
           .userName-time{
             font-size 13px
@@ -665,202 +608,198 @@ body
         }
       }
     }
-.kpbtn
- margin-top 93px
- text-align center
-.btnLeft
-  width 44px
-  height 44px
-  border-radius 50%
-  background-color #fff
-  margin-right 20px
-  border 2px solid #F1F1F1
-  color #FE5782
-  border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
 
-.btnRight
-  width 44px
-  height 44px
-  border-radius 50%
-  background-color #FFDDE6
-  border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
-  color #FE5782
+  .btnLeft
+    width 44px
+    height 44px
+    border-radius 50%
+    background-color #fff
+    margin-right 20px
+    border 2px solid #F1F1F1
+    color #FE5782
 
-.banner2
-  margin 57px 0 128px 0
-  text-align center
-.hjealthTreatment
-  display flex
-  justify-content center
+  .btnRight
+    width 44px
+    height 44px
+    border-radius 50%
+    background-color #FFDDE6
+    border none // 去掉边框
+    outline none // 去掉点击按钮后的边框
+    color #FE5782
 
-.hjealthTreatment-box
-  width 1200px
-  height 513px
+  .banner2
+    margin 57px 0 128px 0
+    text-align center
 
-.hjealthTreatment-title
-  
-  align-items left
-  margin-bottom 15px
-.hjealthTreatment-font
-  font-size 30px
-  font-family PingFang SC
-  font-weight bold
+  .hjealthTreatment
+    display flex
+    justify-content center
 
-.hjealthTreatment-go
-  margin 25px 30px 0 0
-  ont-size 22px
-  text-align center
-.go-tj
-  margin-left 40px
-  color #000000
-  font-size 22px
-  text-decoration none
-.hjealthTreatment-e-font
- display flex
- justify-content space-between
- margin-bottom 40px
-.e-font1
-  font-size 16px
+    .hjealthTreatment-box
+      width 1200px
+      height 513px
 
-.talents
-  display flex
-  justify-content center
+      .hjealthTreatment-title
+        align-items left
 
-.talents-box
-  width 1200px
-  height 513px
-  background-color #FFDDE6
+        .hjealthTreatment-font
+          font-size 30px
+          font-family PingFang SC
+          font-weight bold
 
-.talents-title
-  display flex
-  justify-content flex-start
-  align-items center
+        .hjealthTreatment-go
+          margin 25px 30px 0 0
+          font-size 22px
+          text-align center
+          .go-tj
+            margin-left 40px
+            color: #000000
+            text-decoration: none
+      .hjealthTreatment-e-font
+        .e-font1
+          font-size 16px
+      .carousel
+        margin-top -55px
 
-.talents-font
-  margin 36px 30px 13px 33px
-  font-size 30px
-  text-align center
-  font-family PingFang SC
-  font-weight bold
+  .talents
+    display flex
+    justify-content center
 
-.talents-go
-  margin 25px 30px 0 0
-  font-size 22px
-  text-align center
-.talents-e-font
-  display flex
-  justify-content flex-start
-  margin-bottom 50px
+    .talents-box
+      width 1200px
+      height 513px
+      background-color #FFDDE6
 
-.e-font jk
-  margin-left 33px
-  font-size 16px
+      .talents-title
+        display flex
+        justify-content flex-start
+        align-items center
 
-.talents-swiper
-  width: 400px
-  height: 235px
-  display: flex
-  justify-content flex-start
-  margin-left 90px
-  margin-right 27px
+        .talents-font
+          margin 36px 30px 13px 33px
+          font-size 30px
+          text-align center
+          font-family PingFang SC
+          font-weight bold
 
-.talents-img
-  width 183px
-  height 231px
-  border-radius 15px
-  margin-right 27px
+        .talents-go
+          margin 25px 30px 0 0
+          font-size 22px
+          text-align center
 
-.talents-name
-  width: 180px
-  height: 27px
-  text-align center
-  margin 0
+      .talents-e-font
+        display flex
+        justify-content flex-start
+        margin-bottom 50px
 
+        .e-font1
+          margin-left 33px
+          font-size 16px
 
-.healthCheck
+      .talents-swiper
+        width: 400px
+        height: 235px
+        display: flex
+        justify-content flex-start
+        margin-left 90px
+        margin-right 27px
+
+        .talents-img
+          width 183px
+          height 231px
+          border-radius 15px
+          margin-right 27px
+
+        .talents-name
+          width: 180px
+          height: 27px
+          text-align center
+          margin 0
+          
+
+  .healthCheck
     display flex
     flex-direction column
     justify-content center
     align-items center
     margin-top 79px
 
-.healthCheck-font
-    font-size 30px
-    font-family PingFang SC
-    font-weight bold
-    text-align center
-    line-height 30px
-    margin 0
+    .healthCheck-font
+      font-size 30px
+      font-family PingFang SC
+      font-weight bold
+      text-align center
+      line-height 30px
+      margin 0
 
-.e-font
-  font-size 16px
-  margin 2px
+    .e-font
+      font-size 16px
+      margin 2px
 
-.go
- font-size 22px
- text-align center
-  margin 30px 0 66px 0
+    .go
+      font-size 22px
+      text-align center
+      margin 30px 0 66px 0
 
-.evaluate
-   display flex
-   justify-content center
-
-
-.evaluate-box
-  width 451px
-  height 143px
-  background-color #fff
-  margin 0 12px
-  border-radius 15px
-  border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
-  margin-bottom 93px
-  box-shadow 5px 20px 10px 8px rgba(207, 202, 241, .5)
+    .evaluate
+      display flex
+      justify-content center
 
 
-.evaluate-title
- font-size 22px
- font-family PingFang SC
- font-weight bold
- text-align center
- margin 15px 0 0 0
+      .evaluate-box
+        width 451px
+        height 143px
+        background-color #fff
+        margin 0 12px
+        border-radius 15px
+        border none // 去掉边框
+        outline none // 去掉点击按钮后的边框
+        margin-bottom 93px
+        box-shadow 5px 20px 10px 8px rgba(207, 202, 241, .5)
 
-.evaluate-Introduction
-  display flex
-  justify-content center
 
-.cirlces4
- width 36px
- height 35px
- margin-right 27px
- opacity 0.6
+        .evaluate-title
+          font-size 22px
+          font-family PingFang SC
+          font-weight bold
+          text-align center
+          margin 15px 0 0 0
 
-.evaluate-font
-    display flex
-    justify-content flex-start
-    flex-direction column
- .evaluate-cn
-    font-size 16px
-    font-family PingFang SC
-    font-weight bold
-    color #3D3D3D
-    text-align left
-    margin 7px 0 0 0
-    overflow hidden
-    text-overflow ellipsis
-    white-space nowrap
-    height: 23px
-    width: 313px
+        .evaluate-Introduction
+          display flex
+          justify-content center
 
-.evaluate-en
-    font-size 14px
-    font-family PingFang SC
-    font-weight bold
-    color #3D3D3D
-    text-align left
-    margin 14px 0 0 0
+          .cirlces4
+            width 36px
+            height 35px
+            margin-right 27px
+            opacity 0.6
+
+          .evaluate-font
+            display flex
+            justify-content flex-start
+            flex-direction column
+
+          .evaluate-cn
+            font-size 16px
+            font-family PingFang SC
+            font-weight bold
+            color #3D3D3D
+            text-align left
+            margin 7px 0 0 0
+            overflow hidden
+            text-overflow ellipsis
+            white-space nowrap
+            height: 23px
+            width: 313px
+
+          .evaluate-en
+            font-size 14px
+            font-family PingFang SC
+            font-weight bold
+            color #3D3D3D
+            text-align left
+            margin 14px 0 0 0
 
 .courseTitle
   margin 0 0 0 10px
@@ -895,9 +834,9 @@ body
   color #FF9F59
   text-decoration: none
 
-// .go-tj
-//   color #FE96B1
-//   text-decoration: none
+.go-tj
+  color #FE96B1
+  text-decoration: none
 
 .go-rc
   color #000000
@@ -947,51 +886,51 @@ body
 .kp .swiper-button-next {
   right: 45%;
 }
-// .jk{
-//   img {
-//     width 176px;
-//     height 247px;
-//     border-radius 10px;
-//   }
-//   .swiper-slide{
-//     margin-top: 100px;
-//   }
-//   .swiper-button-prev {
-//     left: 80%;
-//   }
-//   .swiper-button-prev, .swiper-button-next {
-//     top: 10%;
-//   }
-//   .swiper-pagination {
-//     width: 200px;
-//     height: 20px;
-//     left: 85%;
-//     top: 5%;
-//     .swiper-pagination-bullet{
-//       width: 7px;
-//       height: 7px;
-//       border-radius: 50%;
-//       background: #FFDDE6;
-//     }
-//     .swiper-pagination-bullet-active{
-//       width: 7px;
-//       height: 7px;
-//       border-radius: 50%;
-//       background: #FE5782;
-//     }
-//   }
-//   .swiper-button-prev, .swiper-button-next{
-//     width 23px
-//     height 23px
-//     border-radius 50%
-//     background-color #FE5782
-//     border 2px solid #F1F1F1
-//     color #fff
-//   }
-//   .swiper-button-prev:after, .swiper-button-next:after{
-//     font-size :10px
-//   }
-// }
+.jk{
+  img {
+    width 176px;
+    height 247px;
+    border-radius 10px;
+  }
+  .swiper-slide{
+    margin-top: 100px;
+  }
+  .swiper-button-prev {
+    left: 80%;
+  }
+  .swiper-button-prev, .swiper-button-next {
+    top: 10%;
+  }
+  .swiper-pagination {
+    width: 200px;
+    height: 20px;
+    left: 85%;
+    top: 5%;
+    .swiper-pagination-bullet{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FFDDE6;
+    }
+    .swiper-pagination-bullet-active{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FE5782;
+    }
+  }
+  .swiper-button-prev, .swiper-button-next{
+    width 23px
+    height 23px
+    border-radius 50%
+    background-color #FE5782
+    border 2px solid #F1F1F1
+    color #fff
+  }
+  .swiper-button-prev:after, .swiper-button-next:after{
+    font-size :10px
+  }
+}
 
 #pa >>> .swiper-pagination-bullet {
     width: 20px;
@@ -1007,68 +946,21 @@ body
     color:#fff;
     background: #ff51d6;
   }
-
-.rcbtn
-  width 400px
-  height 50px
-  display flex
-  justify-content space-around
-  margin 20px 0 0 50px
-  align-items center
-  text-align: center
-
 .rcLeft
-  width 22px
-  height 22px
-  border-radius 50%
-  background-color #fff
-  margin-right 20px
-  border 2px solid #F1F1F1
-  color #FE5782
+    width 44px
+    height 44px
+    border-radius 50%
+    background-color #fff
+    margin-right 20px
+    border 2px solid #F1F1F1
+    color #FE5782
 
-.rcRight
-  width 22px
-  height 22px
-  border-radius 50%
-  background-color #fff
-  border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
-  color #FE5782
-
-.jkbtn
-  height 50px
-  display flex
-  justify-content flex-end
-  margin-bottom 10px
-  align-items center
-  text-align: center
-.jkLeft
-  width 22px
-  height 22px
-  border-radius 50%
-  background-color #FFDDE6
-  margin-right 20px
-  border 2px solid #F1F1F1
-  color #FE5782
-.jkRight
-  width 22px
-  height 22px
-  border-radius 50%
-  background-color #FFDDE6
-  border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
-  color #FE5782
-  margin 0 50px 0 50px
-
-.carousel jk
-  height 340px
-
-.e-font jk
- width 395px
- height 40px 
-.swiper-img-jk
-  width 176px
-  height 247px
-  border-radius 10px
-  margin-bottom 13px
+  .rcRight
+    width 44px
+    height 44px
+    border-radius 50%
+    background-color #FFDDE6
+    border none // 去掉边框
+    outline none // 去掉点击按钮后的边框
+    color #FE5782  
 </style>

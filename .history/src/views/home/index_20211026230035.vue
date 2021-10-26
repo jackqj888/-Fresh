@@ -174,14 +174,11 @@
             </span>
           </div>
           <div class="hjealthTreatment-e-font">
-            <div>
-              <p class="e-font jk">
+            <p class="e-font jk">
               Put forward high-quality conditioning scheme for
               <br />
               your health
             </p>
-            </div>
-            
             <div class="jkbtn">
             <div class="jkLeft">&lt;</div>
             <div class="swiper-pagination-bullet"></div>
@@ -196,7 +193,7 @@
                 v-for="(item, index) in healthList"
                 :key="index"
               >
-                <img :src="item.imgSrcPc" class="swiper-img-jk" />
+                <img :src="item.imgSrcPc" class="swiper-img" />
                 <div style="width: 176px; text-align: center; font-size: 14px;">
                   {{ item.name }}
                 </div>
@@ -700,9 +697,8 @@ body
   height 513px
 
 .hjealthTreatment-title
-  
+  margin-left 30px
   align-items left
-  margin-bottom 15px
 .hjealthTreatment-font
   font-size 30px
   font-family PingFang SC
@@ -718,9 +714,6 @@ body
   font-size 22px
   text-decoration none
 .hjealthTreatment-e-font
- display flex
- justify-content space-between
- margin-bottom 40px
 .e-font1
   font-size 16px
 
@@ -1039,7 +1032,7 @@ body
   height 50px
   display flex
   justify-content flex-end
-  margin-bottom 10px
+  margin 0
   align-items center
   text-align: center
 .jkLeft
@@ -1065,10 +1058,5 @@ body
 
 .e-font jk
  width 395px
- height 40px 
-.swiper-img-jk
-  width 176px
-  height 247px
-  border-radius 10px
-  margin-bottom 13px
+ height 40px  
 </style>

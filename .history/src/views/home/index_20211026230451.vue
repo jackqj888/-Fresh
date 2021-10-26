@@ -196,7 +196,7 @@
                 v-for="(item, index) in healthList"
                 :key="index"
               >
-                <img :src="item.imgSrcPc" class="swiper-img-jk" />
+                <img :src="item.imgSrcPc" class="swiper-img" />
                 <div style="width: 176px; text-align: center; font-size: 14px;">
                   {{ item.name }}
                 </div>
@@ -700,9 +700,8 @@ body
   height 513px
 
 .hjealthTreatment-title
-  
+  margin-left 30px
   align-items left
-  margin-bottom 15px
 .hjealthTreatment-font
   font-size 30px
   font-family PingFang SC
@@ -1065,10 +1064,5 @@ body
 
 .e-font jk
  width 395px
- height 40px 
-.swiper-img-jk
-  width 176px
-  height 247px
-  border-radius 10px
-  margin-bottom 13px
+ height 40px  
 </style>

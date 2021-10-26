@@ -174,34 +174,29 @@
             </span>
           </div>
           <div class="hjealthTreatment-e-font">
-            <div>
-              <p class="e-font jk">
+            <p class="e-font1">
               Put forward high-quality conditioning scheme for
               <br />
               your health
             </p>
-            </div>
-            
-            <div class="jkbtn">
-            <div class="jkLeft">&lt;</div>
-            <div class="swiper-pagination-bullet"></div>
-            <div class="jkRight">&gt;</div>
           </div>
-          </div>
-          
-          <div class="carousel jk">
+          <div class="carousel">
             <swiper class="swiper jk" :options="jkOption">
               <swiper-slide
                 class="swiper-slide"
                 v-for="(item, index) in healthList"
                 :key="index"
               >
-                <img :src="item.imgSrcPc" class="swiper-img-jk" />
+                <img :src="item.imgSrcPc" class="swiper-img" />
                 <div style="width: 176px; text-align: center; font-size: 14px;">
                   {{ item.name }}
                 </div>
               </swiper-slide>
+              <div class="swiper-pagination"></div>
             </swiper>
+
+            <div class="jkLeft"></div>
+            <div class="jkRight"></div>
           </div>
         </div>
       </div>
@@ -231,9 +226,9 @@
             </div>
           </div>
           <div class="rcbtn">
-            <div class="rcLeft">&lt;</div>
+            <div class="rcLeft">←</div>
             <div class="swiper-pagination-bullet"></div>
-            <div class="rcRight">&gt;</div>
+            <div class="rcRight">→</div>
           </div>
         </div>
       </div>
@@ -530,7 +525,6 @@ body
       .course-font1
         font-size 18px
         color #FF9F59
-        
 
       .course-introduction
         display flex
@@ -699,113 +693,111 @@ body
   width 1200px
   height 513px
 
-.hjealthTreatment-title
-  
-  align-items left
-  margin-bottom 15px
-.hjealthTreatment-font
-  font-size 30px
-  font-family PingFang SC
-  font-weight bold
+  .hjealthTreatment-title
+    align-items left
 
-.hjealthTreatment-go
-  margin 25px 30px 0 0
-  ont-size 22px
-  text-align center
-.go-tj
-  margin-left 40px
-  color #000000
-  font-size 22px
-  text-decoration none
-.hjealthTreatment-e-font
- display flex
- justify-content space-between
- margin-bottom 40px
-.e-font1
-  font-size 16px
+    .hjealthTreatment-font
+      font-size 30px
+      font-family PingFang SC
+      font-weight bold
 
-.talents
+     .hjealthTreatment-go
+       margin 25px 30px 0 0
+       font-size 22px
+       text-align center
+      .go-tj
+        margin-left 40px
+        color: #000000
+        text-decoration: none
+    .hjealthTreatment-e-font
+      .e-font1
+        font-size 16px
+    .carousel
+        argin-top -55px
+
+ .talents
   display flex
   justify-content center
 
-.talents-box
-  width 1200px
-  height 513px
-  background-color #FFDDE6
+  .talents-box
+    width 1200px
+    height 513px
+    background-color #FFDDE6
 
-.talents-title
-  display flex
-  justify-content flex-start
-  align-items center
+      .talents-title
+        display flex
+        justify-content flex-start
+        align-items center
 
-.talents-font
-  margin 36px 30px 13px 33px
-  font-size 30px
-  text-align center
-  font-family PingFang SC
-  font-weight bold
+        .talents-font
+          margin 36px 30px 13px 33px
+          font-size 30px
+          text-align center
+          font-family PingFang SC
+          font-weight bold
 
-.talents-go
-  margin 25px 30px 0 0
-  font-size 22px
-  text-align center
-.talents-e-font
-  display flex
-  justify-content flex-start
-  margin-bottom 50px
+        .talents-go
+          margin 25px 30px 0 0
+          font-size 22px
+          text-align center
 
-.e-font jk
-  margin-left 33px
-  font-size 16px
+      .talents-e-font
+        display flex
+        justify-content flex-start
+        margin-bottom 50px
 
-.talents-swiper
-  width: 400px
-  height: 235px
-  display: flex
-  justify-content flex-start
-  margin-left 90px
-  margin-right 27px
+        .e-font1
+          margin-left 33px
+          font-size 16px
 
-.talents-img
-  width 183px
-  height 231px
-  border-radius 15px
-  margin-right 27px
+      .talents-swiper
+        width: 400px
+        height: 235px
+        display: flex
+        justify-content flex-start
+        margin-left 90px
+        margin-right 27px
 
-.talents-name
-  width: 180px
-  height: 27px
-  text-align center
-  margin 0
+        .talents-img
+          width 183px
+          height 231px
+          border-radius 15px
+          margin-right 27px
+
+        .talents-name
+          width: 180px
+          height: 27px
+          text-align center
+          margin 0
 
 
-.healthCheck
+  .healthCheck
     display flex
     flex-direction column
     justify-content center
     align-items center
     margin-top 79px
 
-.healthCheck-font
-    font-size 30px
-    font-family PingFang SC
-    font-weight bold
-    text-align center
-    line-height 30px
-    margin 0
+    .healthCheck-font
+      font-size 30px
+      font-family PingFang SC
+      font-weight bold
+      text-align center
+      line-height 30px
+      margin 0
 
-.e-font
-  font-size 16px
-  margin 2px
+    .e-font
+      font-size 16px
+      margin 2px
 
-.go
- font-size 22px
- text-align center
-  margin 30px 0 66px 0
+    .go
+      font-size 22px
+      text-align center
+      margin 30px 0 66px 0
 
-.evaluate
-   display flex
-   justify-content center
+    .evaluate
+      display flex
+      justify-content center
 
 
 .evaluate-box
@@ -895,9 +887,9 @@ body
   color #FF9F59
   text-decoration: none
 
-// .go-tj
-//   color #FE96B1
-//   text-decoration: none
+.go-tj
+  color #FE96B1
+  text-decoration: none
 
 .go-rc
   color #000000
@@ -947,51 +939,51 @@ body
 .kp .swiper-button-next {
   right: 45%;
 }
-// .jk{
-//   img {
-//     width 176px;
-//     height 247px;
-//     border-radius 10px;
-//   }
-//   .swiper-slide{
-//     margin-top: 100px;
-//   }
-//   .swiper-button-prev {
-//     left: 80%;
-//   }
-//   .swiper-button-prev, .swiper-button-next {
-//     top: 10%;
-//   }
-//   .swiper-pagination {
-//     width: 200px;
-//     height: 20px;
-//     left: 85%;
-//     top: 5%;
-//     .swiper-pagination-bullet{
-//       width: 7px;
-//       height: 7px;
-//       border-radius: 50%;
-//       background: #FFDDE6;
-//     }
-//     .swiper-pagination-bullet-active{
-//       width: 7px;
-//       height: 7px;
-//       border-radius: 50%;
-//       background: #FE5782;
-//     }
-//   }
-//   .swiper-button-prev, .swiper-button-next{
-//     width 23px
-//     height 23px
-//     border-radius 50%
-//     background-color #FE5782
-//     border 2px solid #F1F1F1
-//     color #fff
-//   }
-//   .swiper-button-prev:after, .swiper-button-next:after{
-//     font-size :10px
-//   }
-// }
+.jk{
+  img {
+    width 176px;
+    height 247px;
+    border-radius 10px;
+  }
+  .swiper-slide{
+    margin-top: 100px;
+  }
+  .swiper-button-prev {
+    left: 80%;
+  }
+  .swiper-button-prev, .swiper-button-next {
+    top: 10%;
+  }
+  .swiper-pagination {
+    width: 200px;
+    height: 20px;
+    left: 85%;
+    top: 5%;
+    .swiper-pagination-bullet{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FFDDE6;
+    }
+    .swiper-pagination-bullet-active{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FE5782;
+    }
+  }
+  .swiper-button-prev, .swiper-button-next{
+    width 23px
+    height 23px
+    border-radius 50%
+    background-color #FE5782
+    border 2px solid #F1F1F1
+    color #fff
+  }
+  .swiper-button-prev:after, .swiper-button-next:after{
+    font-size :10px
+  }
+}
 
 #pa >>> .swiper-pagination-bullet {
     width: 20px;
@@ -1018,57 +1010,20 @@ body
   text-align: center
 
 .rcLeft
-  width 22px
-  height 22px
-  border-radius 50%
-  background-color #fff
-  margin-right 20px
-  border 2px solid #F1F1F1
-  color #FE5782
+    width 22px
+    height 22px
+    border-radius 50%
+    background-color #fff
+    margin-right 20px
+    border 2px solid #F1F1F1
+    color #FE5782
 
-.rcRight
-  width 22px
-  height 22px
-  border-radius 50%
-  background-color #fff
-  border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
-  color #FE5782
-
-.jkbtn
-  height 50px
-  display flex
-  justify-content flex-end
-  margin-bottom 10px
-  align-items center
-  text-align: center
-.jkLeft
-  width 22px
-  height 22px
-  border-radius 50%
-  background-color #FFDDE6
-  margin-right 20px
-  border 2px solid #F1F1F1
-  color #FE5782
-.jkRight
-  width 22px
-  height 22px
-  border-radius 50%
-  background-color #FFDDE6
-  border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
-  color #FE5782
-  margin 0 50px 0 50px
-
-.carousel jk
-  height 340px
-
-.e-font jk
- width 395px
- height 40px 
-.swiper-img-jk
-  width 176px
-  height 247px
-  border-radius 10px
-  margin-bottom 13px
+  .rcRight
+    width 22px
+    height 22px
+    border-radius 50%
+    background-color #fff
+    border none // 去掉边框
+    outline none // 去掉点击按钮后的边框
+    color #FE5782
 </style>

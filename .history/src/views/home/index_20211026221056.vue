@@ -174,29 +174,25 @@
             </span>
           </div>
           <div class="hjealthTreatment-e-font">
-            <div>
-              <p class="e-font jk">
+            <p class="e-font1">
               Put forward high-quality conditioning scheme for
               <br />
               your health
             </p>
-            </div>
-            
-            <div class="jkbtn">
-            <div class="jkLeft">&lt;</div>
-            <div class="swiper-pagination-bullet"></div>
-            <div class="jkRight">&gt;</div>
           </div>
-          </div>
-          
           <div class="carousel jk">
+            <div class="jkbtn">
+              <div class="jkLeft">←</div>
+              <div class="swiper-pagination-bullet"></div>
+              <div class="jkRight">→</div>
+            </div>
             <swiper class="swiper jk" :options="jkOption">
               <swiper-slide
                 class="swiper-slide"
                 v-for="(item, index) in healthList"
                 :key="index"
               >
-                <img :src="item.imgSrcPc" class="swiper-img-jk" />
+                <img :src="item.imgSrcPc" class="swiper-img" />
                 <div style="width: 176px; text-align: center; font-size: 14px;">
                   {{ item.name }}
                 </div>
@@ -231,9 +227,9 @@
             </div>
           </div>
           <div class="rcbtn">
-            <div class="rcLeft">&lt;</div>
+            <div class="rcLeft">←</div>
             <div class="swiper-pagination-bullet"></div>
-            <div class="rcRight">&gt;</div>
+            <div class="rcRight">→</div>
           </div>
         </div>
       </div>
@@ -530,7 +526,6 @@ body
       .course-font1
         font-size 18px
         color #FF9F59
-        
 
       .course-introduction
         display flex
@@ -700,9 +695,8 @@ body
   height 513px
 
 .hjealthTreatment-title
-  
+  margin-left 30px
   align-items left
-  margin-bottom 15px
 .hjealthTreatment-font
   font-size 30px
   font-family PingFang SC
@@ -718,9 +712,6 @@ body
   font-size 22px
   text-decoration none
 .hjealthTreatment-e-font
- display flex
- justify-content space-between
- margin-bottom 40px
 .e-font1
   font-size 16px
 
@@ -754,7 +745,7 @@ body
   justify-content flex-start
   margin-bottom 50px
 
-.e-font jk
+.e-font1
   margin-left 33px
   font-size 16px
 
@@ -947,51 +938,51 @@ body
 .kp .swiper-button-next {
   right: 45%;
 }
-// .jk{
-//   img {
-//     width 176px;
-//     height 247px;
-//     border-radius 10px;
-//   }
-//   .swiper-slide{
-//     margin-top: 100px;
-//   }
-//   .swiper-button-prev {
-//     left: 80%;
-//   }
-//   .swiper-button-prev, .swiper-button-next {
-//     top: 10%;
-//   }
-//   .swiper-pagination {
-//     width: 200px;
-//     height: 20px;
-//     left: 85%;
-//     top: 5%;
-//     .swiper-pagination-bullet{
-//       width: 7px;
-//       height: 7px;
-//       border-radius: 50%;
-//       background: #FFDDE6;
-//     }
-//     .swiper-pagination-bullet-active{
-//       width: 7px;
-//       height: 7px;
-//       border-radius: 50%;
-//       background: #FE5782;
-//     }
-//   }
-//   .swiper-button-prev, .swiper-button-next{
-//     width 23px
-//     height 23px
-//     border-radius 50%
-//     background-color #FE5782
-//     border 2px solid #F1F1F1
-//     color #fff
-//   }
-//   .swiper-button-prev:after, .swiper-button-next:after{
-//     font-size :10px
-//   }
-// }
+.jk{
+  img {
+    width 176px;
+    height 247px;
+    border-radius 10px;
+  }
+  .swiper-slide{
+    margin-top: 100px;
+  }
+  .swiper-button-prev {
+    left: 80%;
+  }
+  .swiper-button-prev, .swiper-button-next {
+    top: 10%;
+  }
+  .swiper-pagination {
+    width: 200px;
+    height: 20px;
+    left: 85%;
+    top: 5%;
+    .swiper-pagination-bullet{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FFDDE6;
+    }
+    .swiper-pagination-bullet-active{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FE5782;
+    }
+  }
+  .swiper-button-prev, .swiper-button-next{
+    width 23px
+    height 23px
+    border-radius 50%
+    background-color #FE5782
+    border 2px solid #F1F1F1
+    color #fff
+  }
+  .swiper-button-prev:after, .swiper-button-next:after{
+    font-size :10px
+  }
+}
 
 #pa >>> .swiper-pagination-bullet {
     width: 20px;
@@ -1035,13 +1026,14 @@ body
   outline none // 去掉点击按钮后的边框
   color #FE5782
 
-.jkbtn
+.jkbtn 
+  width 400px
   height 50px
   display flex
   justify-content flex-end
-  margin-bottom 10px
+  margin 20px 0 0 50px
   align-items center
-  text-align: center
+  text-align: center 
 .jkLeft
   width 22px
   height 22px
@@ -1058,17 +1050,9 @@ body
   border none // 去掉边框
   outline none // 去掉点击按钮后的边框
   color #FE5782
-  margin 0 50px 0 50px
 
-.carousel jk
-  height 340px
-
-.e-font jk
- width 395px
- height 40px 
-.swiper-img-jk
-  width 176px
-  height 247px
-  border-radius 10px
-  margin-bottom 13px
+.swiper jk 
+  display flex
+  align-items center
+  
 </style>

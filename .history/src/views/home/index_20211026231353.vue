@@ -196,7 +196,7 @@
                 v-for="(item, index) in healthList"
                 :key="index"
               >
-                <img :src="item.imgSrcPc" class="swiper-img-jk" />
+                <img :src="item.imgSrcPc" class="swiper-img jk" />
                 <div style="width: 176px; text-align: center; font-size: 14px;">
                   {{ item.name }}
                 </div>
@@ -1066,9 +1066,8 @@ body
 .e-font jk
  width 395px
  height 40px 
-.swiper-img-jk
+.swiper-img jk
   width 176px
   height 247px
   border-radius 10px
-  margin-bottom 13px
 </style>

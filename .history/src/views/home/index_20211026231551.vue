@@ -1070,5 +1070,4 @@ body
   width 176px
   height 247px
   border-radius 10px
-  margin-bottom 13px
 </style>
