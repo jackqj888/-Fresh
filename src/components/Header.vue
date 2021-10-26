@@ -9,8 +9,8 @@
         <span class="siteName1">Ruguo AI portal system</span>
       </div>
       <div class="user" v-if="uInfo1 === null">
-        <el-button class="btn" @click="goLogin">快速登入</el-button>
-        <el-button class="btn1" icon="el-icon-user" @click="goLogin">账号登入</el-button>
+        <el-button class="btn" @click="goLogin('mobile')">快速登入</el-button>
+        <el-button class="btn1" icon="el-icon-user" @click="goLogin('password')">账号登入</el-button>
       </div>
       <div v-else class="userName">
         <img src="@/assets/popularScience.png" alt="" class="image"/>
@@ -129,7 +129,7 @@ export default {
   },
   created() {
     this.uInfo1 = JSON.parse(window.localStorage.getItem('user_info'))
-    this.addForm.mobile = this.uInfo1.phone ? this.uInfo1.phone : ''
+    this.addForm.mobile = this.uInfo1 && this.uInfo1.phone ? this.uInfo1.phone : ''
   },
   methods: {
     dialogVisibleClosed() {
@@ -180,9 +180,12 @@ export default {
         }
       })
     },
-    goLogin() {
+    goLogin(type) {
       this.$router.push({
         path: `/login`,
+        query: {
+          type: type
+        }
       })
     },
     logout() {
@@ -404,5 +407,9 @@ export default {
 }
 .el-input__inner{
   padding-left: 10px;
+}
+.el-dropdown-menu__item:focus, .el-dropdown-menu__item:hover{
+  background-color: #ffa0b4 !important;
+  color: #ffffff !important;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
   <div class="login">
     <div class="main bgimg">
+      <div class="top_left"></div>
       <div class="login1">
         <div class="login-box">
           <div class="login-top">
@@ -86,6 +87,7 @@
           </div>
         </div>
       </div>
+      <div class="bottom_right"></div>
     </div>
   </div>
 </template>
@@ -138,6 +140,9 @@ export default {
     const a = getToken()
     if (a) {
       this.$router.replace('/index')
+    }
+    if(this.$route.query.type){
+      this.form.grant_type = this.$route.query.type
     }
   },
   methods: {
@@ -242,13 +247,37 @@ export default {
     background-color: #FE8CAA
     position relative
     justify-content center
-
+    overflow hidden
+    .top_left{
+      position: absolute;
+      width: 750px;
+      height: 750px;
+      left: -16%;
+      top: -40%;
+      background: rgba(255, 255, 255, 0.2);
+      box-sizing: border-box;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 160px;
+      transform: rotate(-45deg);
+      z-index: 1;
+    }
+    .bottom_right{
+      position: absolute;
+      width: 750px;
+      height: 750px;
+      left: 55%;
+      top: 38%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 160px;
+      transform: rotate(-45deg);
+      z-index: 1;
+    }
     .login1
       height 100vh
       display: flex
       justify-content: center
       align-items: center
-
+      z-index: 100;
 
       .logo
         width 148px
@@ -263,7 +292,7 @@ export default {
         padding 50px 40px 75px
         box-sizing border-box
         border-radius: 50px
-
+        z-index: 100;
         .login-top
           height 130px
 
