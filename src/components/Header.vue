@@ -9,8 +9,8 @@
         <span class="siteName1">Ruguo AI portal system</span>
       </div>
       <div class="user" v-if="uInfo1 === null">
-        <el-button class="btn">快速登入</el-button>
-        <el-button class="btn1" icon="el-icon-user">账号登入</el-button>
+        <el-button class="btn" @click="goLogin">快速登入</el-button>
+        <el-button class="btn1" icon="el-icon-user" @click="goLogin">账号登入</el-button>
       </div>
       <div v-else class="userName">
         <img src="@/assets/popularScience.png" alt="" class="image"/>
@@ -179,16 +179,12 @@ export default {
         this.$message.error('手机号码错误！')
       }
     },
-    Jump() {
+    goLogin() {
       this.$router.push({
         path: `/login`,
       })
     },
-    goHome() {
-      this.$router.push({
-        path: `/productlist`,
-      })
-    },
+   
     logout() {
       // 这里实现登出逻辑
       api.logout.getLogout().then(() => {
@@ -322,7 +318,9 @@ export default {
   outline none
   border-radius 15px
   margin-right 18px
-
+.btn:hover
+  background #FE8CAA
+  color: #ffffff
 .btn1
   width 177px
   height 60px
@@ -333,6 +331,10 @@ export default {
   outline none
   border-radius 15px
   box-shadow 5px 15px 10px 8px rgba(207, 202, 241, .5)
+.btn1:hover
+  background #FE5782
+  color: #ffffff
+  
 .btn5
   width 100%
   background-color: #FFBCCD
@@ -368,6 +370,6 @@ export default {
 
 .el-select
   padding-right: 0
- 
 
+  
 </style>

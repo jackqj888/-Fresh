@@ -886,6 +886,11 @@ body
             color #3D3D3D
             text-align left
             margin 7px 0 0 0
+            overflow hidden
+            text-overflow ellipsis
+            white-space nowrap
+            height: 23px
+            width: 313px
 
           .evaluate-en
             font-size 14px
