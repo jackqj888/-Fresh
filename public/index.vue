@@ -6,27 +6,29 @@
       :banner="homeBanner"
       ></Carousel>
       <div class="navigation">
-        <div class="groups" @click="goTo('talent')">
+        <div class="groups" @click="rcgo">
           <img src="@/assets/groups.png" alt="" class="image"/>
           <span class="item-name">人才</span>
           <span class="item-title">Personnel</span>
         </div>
-        <div class="popularScience" @click="goTo('kpm')">
+        <div class="popularScience">
           <img src="@/assets/popularScience.png" alt="" class="image"/>
           <span class="item-name">科普</span>
           <span class="item-title">Popularization of science</span>
         </div>
-        <div class="healthy" @click="goTo('health')">
+        <div class="healthy" @click="jkgo">
           <img src="@/assets/healthy.png" alt="" class="image"/>
           <span class="item-name">健康</span>
           <span class="item-title">Healthy</span>
         </div>
-        <div class="test" @click="goTo('kaopei')">
+        <div class="test">
           <img src="@/assets/test.png" alt="" class="image"/>
-          <span class="item-name">考试</span>
+          <span class="item-name">
+            考试
+          </span>
           <span class="item-title">Examination</span>
         </div>
-        <div class="mall" @click="goTo('mall')">
+        <div class="mall" @click="scgo">
           <img src="@/assets/mall.png" alt="" class="image"/>
           <span class="item-name">商城</span>
           <span class="item-title">Shopping Mall</span>
@@ -35,9 +37,13 @@
       <div class="courseCommodity">
         <div class="course">
           <div class="course-title">
-            <span class="course-font">精品课程</span>
+            <span class="course-font">
+              精品课程
+            </span>
             <span class="course-font1">
-              <a class="go-jp" :href="kaopeiUrl">进入考培 ></a>
+              <a class="go-jp" href="http://kfxx.smtbs.cn/m/kaopei">
+                进入考培 >
+              </a>
             </span>
           </div>
           <div class="course-introduction">
@@ -52,10 +58,14 @@
           </div>
           <div class="swiper-jp">
             <swiper class="swiper jp" ref="swiper" :options="jpOption">
-              <swiper-slide class="swiper-slide" v-for="(item, index) in course" :key="index">
-                <img :src="item.imgSrc" class="swiper-jp-image" @click="open(item, 'kaopei')"/>
-                <span class="courseTitle" @click="open(item, 'kaopei')">{{ item.name }}</span>
-                <span class="course-price" @click="open(item , 'kaopei')">￥ {{ item.price }}</span>
+              <swiper-slide
+                  class="swiper-slide"
+                  v-for="(item, index) in course"
+                  :key="index"
+              >
+                <img :src="item.imgSrc" class="swiper-jp-image"/>
+                <span class="courseTitle">{{ item.name }}</span>
+                <span class="course-price">￥ {{ item.price }}</span>
               </swiper-slide>
 
             </swiper>
@@ -69,7 +79,7 @@
               推荐商品
             </span>
             <span class="commodity-font1">
-              <a class="go-tj" :href="mallUrl">进入商城 ></a>
+              <a class="go-tj" href="http://kfxx.smtbs.cn/m/mall">进入商城 ></a>
             </span>
           </div>
           <div class="commodity-introduction">
@@ -85,10 +95,14 @@
 
           <div class="swiper-tj">
             <swiper class="swiper tj" ref="swiper" :options="jpOption">
-              <swiper-slide class="swiper-slide" v-for="(item, index) in commodity" :key="index">
-                <img :src="item.imgSrc" class="swiper-tj-image" @click="open(item, 'mall')"/>
-                <span class="courseTitle" @click="open(item , 'mall')">{{ item.name }}</span>
-                <span class="course-price" @click="open(item, 'mall')">￥ {{ item.price }}</span>
+              <swiper-slide
+                  class="swiper-slide"
+                  v-for="(item, index) in commodity"
+                  :key="index"
+              >
+                <img :src="item.imgSrc" class="swiper-tj-image"/>
+                <span class="courseTitle">{{ item.name }}</span>
+                <span class="course-price">￥ {{ item.price }}</span>
               </swiper-slide>
 
             </swiper>
@@ -103,7 +117,7 @@
           <p class="e-font">
             Popular science knowledge solution, your breast management expert
           </p>
-          <p class="go"><a class="go-tj" :href="kpmUrl">进入商城 ></a></p>
+          <p class="go">点击进入 ></p>
         </div>
         <div class="Preview">
           <div class="Preview-left">
@@ -166,7 +180,7 @@
         <div class="hjealthTreatment-box">
           <div class="hjealthTreatment-title">
             <span class="hjealthTreatment-font">健康疗程</span>
-            <span class="hjealthTreatment-go"><a class="go-tj" :href="healthUrl">点击进入 ></a></span>
+            <span class="hjealthTreatment-go">点击进入 ></span>
           </div>
           <div class="hjealthTreatment-e-font">
             <p class="e-font1">
@@ -193,16 +207,20 @@
       </div>
       <div class="talents">
         <div class="talents-box">
-          <div class="talents-top-left">
-            <div class="talents-title">
-              <span class="talents-font">精选人才</span>
-              <span class="talents-go">
-                <a class="go-rc" :href="talentUrl">点击进入 ></a> 
+            <div class="talents-top-left">
+              <div class="talents-title">
+            <span class="talents-font">
+             精选人才
               </span>
+                <span class="talents-go">
+              <a class="go-rc" href="http://kfxx.smtbs.cn/m/talent">点击进入 ></a> 
+              </span>
+              </div>
             </div>
-          </div>
           <div class="talents-e-font">
-            <p class="e-font1">Talent system to help you better select talents</p>
+            <p class="e-font1">
+              Talent system to help you better select talents
+            </p>
           </div>
           <div class="talents-swiper">
             <div class="talents-image" v-for="(item,index) in details" :key="index">
@@ -220,11 +238,11 @@
           make an appointment
         </p>
         <p class="go">
-          <a class="go-jk" :href="healthUrl">点击进入 ></a></p>
+          <a class="go-jk" href="http://kfxx.smtbs.cn/m/health">点击进入 ></a></p>
         <div class="evaluate">
           <div class="evaluate-box" v-for="(item,index) in evaluate" :key="index">
             <p class="evaluate-title">{{ item.data.title }}</p>
-            <div class="evaluate-Introduction" @click=goHealthTo(item)>
+            <div class="evaluate-Introduction">
               <img :src="item.imgSrc" class="cirlces4"/>
               <div class="evaluate-font">
                 <p class="evaluate-cn">{{ item.data.summary }}</p>
@@ -332,72 +350,51 @@ export default {
       evaluate: [],
       details: [],
       uInfo:null,
-      channels: [],
-      kpmList: [],
-      kaopeiUrl: "",
-      mallUrl: "",
-      kpmUrl: "",
-      healthUrl: "",
-      talentUrl: ""
+
+      groups: 'http://kfxx.smtbs.cn/m/talent',
+      healthy: 'http://kfxx.smtbs.cn/m/health',
+      mall: 'http://kfxx.smtbs.cn/m/mall'
     }
   },
   created() {
     this.getHomeList()
     this.uInfo=JSON.parse(window.localStorage.getItem('user_info'))
-    // console.log('zzz',this.uInfo)
+    console.log('zzz',this.uInfo)
   },
   methods: {
     getHomeList() {
       api.home.HomeList().then(res=>{
         this.data = res
-        this.channels = this.data.channels
-        this.homeBanner = this.data.banners
-        this.channels.map(item => {
-          if(item.channel.appCode == 'kaopei'){
-            this.course = item.details
-            this.kaopeiUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'mall'){
-            this.commodity = item.details
-            this.mallUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'kpm'){
-            this.kpmList = item.details
-            this.kpmUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'health') {
-            this.evaluate = item.items[10]
-            this.healthUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'talent') {
-            this.details = item.details
-            this.talentUrl = item.channel.targetUrlPc
-          }
-        })
-        // console.log(res)
+          this.course = this.data.channels[0].details
+          this.commodity = this.data.channels[1].details
+          this.homeBanner = this.data.banners
+          this.evaluate = this.data.channels[2].items[10]
+          this.details = this.data.channels[3].details
+        console.log(res)
       })
+      // axios.get('/home.json').then((res) => {
+      //   this.data = res
+      //   this.course = this.data.channels[0].details
+      //   this.commodity = this.data.channels[1].details
+      //   this.homeBanner = this.data.banners
+      //   this.evaluate = this.data.channels[2].items[10]
+      //   this.details = this.data.channels[3].details
+      //
+      //   console.log('vvv', this.data)
+      //   console.log('bbb', this.details)
+      // })
     },
-    goTo(appCode){
-      this.channels.map(item => {
-        if(item.channel.appCode == appCode){
-          if(item.channel.targetUrlPc){
-            window.open(item.channel.targetUrlPc, '_blank')
-          }
-        }
-      })
+
+    rcgo() {
+      window.open(this.groups, '_blank') // 在新窗口打开外链接
+      // window.location.href =this.indexro;//在本页面打开外部链接
     },
-    open(item, appCode){
-      let targetUrlPc = ''
-      this.channels.map(item => {
-        if(item.channel.appCode == appCode){
-          if(item.channel.targetUrlPc){
-            targetUrlPc = item.channel.targetUrlPc
-          }
-        }
-      })
-      let openUrl = targetUrlPc + item.urlPc
-      window.open(openUrl, '_blank')
+    jkgo() {
+      window.open(this.healthy, '_blank')
     },
-    goHealthTo(item){
-      let openUrl = this.healthUrl + item.urlPc
-      window.open(openUrl, '_blank')
-    }
+    scgo() {
+      window.open(this.mall, '_blank')
+    },
   },
 }
 </script>
@@ -432,7 +429,7 @@ body
       flex-direction column
       justify-content center
       align-items center
-      cursor pointer
+
       .image
         width 66px
         height 66px
