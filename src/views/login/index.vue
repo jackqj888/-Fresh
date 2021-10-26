@@ -44,8 +44,6 @@
               >
                 {{ verificationCode }}
               </button>
-
-              <!--              <div class="get-code" @click="getCode">{{ verificationCode }}</div>-->
             </div>
           </template>
           <template v-else>
