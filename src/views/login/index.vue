@@ -92,7 +92,7 @@
 
 <script>
 import api from '@/api'
-import {getToken, setUser} from '@/utils/storage'
+import {getToken} from '@/utils/storage'
 
 export default {
   name: 'login',
@@ -103,13 +103,12 @@ export default {
       inputType: 'password',
       res: [],
       form: {
-        grant_type: 'username',
+        grant_type: 'password',
         scope: 'server',
         username: '',
         password: '',
         mobile: '',
         code: '',
-        TERMINAL: 'web',
       },
     }
   },
@@ -143,79 +142,79 @@ export default {
     }
   },
   methods: {
-    async login() {
-      let res = null
-      if (this.form.grant_type === 'mobile') {
-        console.log(111)
-      } else {
-        if (!this.form.username) {
-          return this.$message('请输入用户名')
-        }
-        if (!this.form.password) {
-          return this.$message('请输入密码')
-        }
-        const formData = new FormData()
-        formData.append('grant_type', 'password')
-        formData.append('username', this.form.username)
-        formData.append('password', this.form.password)
-        formData.append('scope', this.form.scope)
-        res = await api.login.loginWidthPassword(formData)
-        if (res.username) {
-          setUser(res.username)
-          this.$store.commit('setUser', res.username)
-          this.$router.push('/productlist')
-        }
-      }
-    },
     getCode() {
       if (this.phoneNumberStyle) {
         // 调用获取短信验证码接口
         api.login.getCode(this.form.mobile).then((res) => {
           this.res = res
-          console.log('ccc', this.res)
-          if (this.res.status === 200) {
+          if (res) {
             this.$message({
               message: '验证码已发送，请稍候...',
               type: 'success',
               center: true,
             })
-             // 因为下面用到了定时器，需要保存this指向
-            let that = this
-            that.waitTime--
-            that.getCodeBtnDisable = true
-            that.verificationCode = `${that.waitTime}s 后重新获取`
-            let timer = setInterval(function () {
-              if (that.waitTime > 1) {
-                that.waitTime--
-                that.verificationCode = `${that.waitTime}s 后重新获取`
-              } else {
-                clearInterval(timer)
-                that.verificationCode = '获取验证码'
-                that.getCodeBtnDisable = false
-                that.waitTime = 30
-              }
-            }, 1000)
+            this.checkTime()
           }
         })
-
       } else {
         this.$message.error('手机号码错误！')
       }
     },
+    checkTime(){
+      // 因为下面用到了定时器，需要保存this指向
+      let that = this
+      that.waitTime--
+      that.getCodeBtnDisable = true
+      that.verificationCode = `${that.waitTime}s 后重新获取`
+      let timer = setInterval(function () {
+        if (that.waitTime > 1) {
+          that.waitTime--
+          that.verificationCode = `${that.waitTime}s 后重新获取`
+        } else {
+          clearInterval(timer)
+          that.verificationCode = '获取验证码'
+          that.getCodeBtnDisable = false
+          that.waitTime = 30
+        }
+      }, 1000)
+    },
     getLogin() {
-      let data = {
-        mobile: this.form.mobile,
-        code: this.form.code,
+      if(this.form.grant_type === 'password') {
+        console.log(this.form)
+        if(this.form.username !== '' && this.form.password !== ''){
+          let data = {
+            username: this.form.username,
+            password: this.form.password,
+            grant_type: this.form.grant_type,
+            scope: this.form.scope
+          }
+          api.login.goLogin(data).then((res) => {
+            let access_token = res.access_token
+            window.localStorage.setItem('access_token', access_token)
+            let userInfo = res.user_info
+            window.localStorage.setItem('user_info', JSON.stringify(userInfo))
+            this.$router.push({name: 'home', params: {data}})
+          })
+        } else {
+          this.$message.error('请输入手机号和密码！')
+        }
+      } else {
+        if(this.form.mobile !== '' && this.form.code !== ''){
+          let data = {
+            mobile: this.form.mobile,
+            code: this.form.code,
+          }
+          api.login.getlogin(data).then((res) => {
+            let access_token = res.access_token
+            window.localStorage.setItem('access_token', access_token)
+            let userInfo = res.user_info
+            window.localStorage.setItem('user_info', JSON.stringify(userInfo))
+            this.$router.push({name: 'home', params: {data}})
+          })
+        } else {
+          this.$message.error('请输入手机号和验证码！')
+        }
       }
-      api.login.getlogin(data).then((res) => {
-        console.log(res)
-        var access_token = res.access_token
-        window.localStorage.setItem('access_token', access_token)
-
-        var userInfo = res.user_info
-        window.localStorage.setItem('user_info', JSON.stringify(userInfo))
-        this.$router.push({name: 'home', params: {data}})
-      })
     },
   },
 }
