@@ -84,7 +84,7 @@
           </div>
 
           <div class="swiper-tj">
-            <swiper class="swiper tj" ref="swiper" :options="jpOption">
+            <swiper class="swiper tj" ref="swiper" :options="scOption">
               <swiper-slide class="swiper-slide" v-for="(item, index) in commodity" :key="index">
                 <img :src="item.imgSrc" class="swiper-tj-image" @click="open(item, 'mall')"/>
                 <span class="courseTitle" @click="open(item , 'mall')">{{ item.name }}</span>
@@ -92,8 +92,8 @@
               </swiper-slide>
 
             </swiper>
-            <div class="swiper-button-prev swiper-button-prev1"></div>
-            <div class="swiper-button-next swiper-button-next1"></div>
+            <div class="swiper-button-prev swiper-button-prev2"></div>
+            <div class="swiper-button-next swiper-button-next2"></div>
           </div>
         </div>
       </div>
@@ -111,10 +111,13 @@
             <img :src="item.imgSrcPc" class="Preview" @click="open(item, 'kpm')"/>
             <p class="Preview-title" @click="open(item, 'kpm')">{{item.name}}</p>
             <div class="user">
-              <img :src="item.article.avatar" class="user-image"/>
+              <div>
+                <img :src="item.article.avatar" class="user-image"/>
+              </div>
+            
               <div class="userName">
-                <p class="userName-font">{{item.article.nickname}}</p>
-                <p class="userName-time">{{item.article.createTime}}</p>
+                <span class="userName-font">{{item.article.nickname}}</span>
+                <span class="userName-time">{{item.article.createTime}}</span>
               </div>
             </div>
             <div style="text-align: center;">
@@ -151,10 +154,11 @@
                 <img :src="item.imgSrcPc" class="swiper-img"/>
                 <div style="width: 176px; text-align: center; font-size: 14px">{{item.name}}</div>
               </swiper-slide>
-              <div class="swiper-pagination" slot="pagination"></div>
-              <div class="swiper-button-prev" slot="button-prev"></div>
-              <div class="swiper-button-next" slot="button-next"></div>
+              
             </swiper>
+            <div class="swiper-pagination swiper-button-prev-jk"  ></div>
+            <div class="swiper-button-prev swiper-button-prev1" ></div>
+            <div class="swiper-button-next swiper-button-prev1" ></div>
           </div>
         </div>
       </div>
@@ -241,6 +245,22 @@ export default {
         loop: true,
       },
       jpOption: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        direction: 'horizontal',
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        on: {
+          resize: () => {
+            this.$refs.swiper.$swiper.changeDirection(
+                window.innerWidth <= 960 ? 'vertical' : 'horizontal',
+            )
+          },
+        },
+      },
+      scOption: {
         slidesPerView: 4,
         spaceBetween: 30,
         direction: 'horizontal',
@@ -528,11 +548,12 @@ body
           font-size 22px
           font-family PingFang SC
           font-weight bold
+          margin-left 22px
+          margin-bottom 22px
         }
         .user{
           display flex
           justify-content flex-start
-          margin-bottom 38px
           .user-image{
             width 44px
             height 44px
@@ -540,19 +561,22 @@ body
             margin-right 8px
           }
           .userName{
-            width 187px
-            height 16px
+            margin 0
+            display: flex
+            justify-content center
+            flex-direction column
             .userName-font{
               font-size 14px
               color #000
               margin 0
-              margin-bottom 10px
+             
             }
-            .userName-time{
-              font-size 13px
-              color #9C9B9B
-              margin 0
-            }
+          .userName-time{
+            font-size 13px
+            color #9C9B9B
+            margin-top 10px
+
+          }
           }
         }
         .btn{
@@ -810,7 +834,7 @@ body
   height 106px
   border-radius 25px
 
-.swiper-button-prev, .swiper-button-prev
+.swiper-button-prev1, .swiper-button-prev2
   left: -5%;
   width 36px
   height 36px
@@ -819,10 +843,7 @@ body
   border 2px solid #F1F1F1
   color #FE5782
 
-.swiper-button-prev1, .swiper-button-next1
-  --swiper-navigation-size 15px
-
-.swiper-button-next, .swiper-button-next
+.swiper-button-next1, .swiper-button-next2
   right: -5%;
   width 36px
   height 36px
@@ -831,6 +852,11 @@ body
   border 2px solid #F1F1F1
   color #FE5782
 
+
+.swiper-button-prev1, .swiper-button-next1
+  --swiper-navigation-size 15px
+.swiper-button-prev2, .swiper-button-next2
+  --swiper-navigation-size 15px
 
 .kp .swiper-button-prev, .kp .swiper-button-next {
   top: 90%;
