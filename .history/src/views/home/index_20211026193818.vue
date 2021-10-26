@@ -124,11 +124,12 @@
               <el-button class="btn" @click="open(item, 'kpm')">点击查看</el-button>
             </div>
           </swiper-slide>
-        
+          <div class="swiper-button-prev" slot="button-prev"></div>
+          <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
         <div style="text-align: center;">
-          <button class=" btnLeft">←</button>
-          <button class=" btnRight">→</button>
+          <button class="btn1">←</button>
+          <button class="btn2">→</button>
         </div>
       </div>
       <div class="banner2">
@@ -155,9 +156,9 @@
               </swiper-slide>
               
             </swiper>
-            <div class="jkPagination"></div>
-            <div class="jkLeft" ></div>
-            <div class="jkRight" ></div>
+            <div class="swiper-pagination swiper-button-prev-jk"  ></div>
+            <div class="swiper-button-prev swiper-button-prev1" ></div>
+            <div class="swiper-button-next swiper-button-prev1" ></div>
           </div>
         </div>
       </div>
@@ -230,10 +231,10 @@ export default {
           el: '.swiper-pagination',
         },
         //设置点击箭头
-        // navigation: {
-        //   nextEl: 'swiper-button-next1',
-        //   prevEl: '.swiper-button-prev1',
-        // },
+        navigation: {
+          nextEl: 'swiper-button-next1',
+          prevEl: '.swiper-button-prev1',
+        },
         //自动轮播
         autoplay: {
           delay: 2000,
@@ -248,8 +249,8 @@ export default {
         spaceBetween: 30,
         direction: 'horizontal',
         navigation: {
-          nextEl: '.swiper-button-next1',
-          prevEl: '.swiper-button-prev1',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
         on: {
           resize: () => {
@@ -264,8 +265,8 @@ export default {
         spaceBetween: 30,
         direction: 'horizontal',
         navigation: {
-          nextEl: '.swiper-button-next2',
-          prevEl: '.swiper-button-prev2',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
         on: {
           resize: () => {
@@ -280,8 +281,8 @@ export default {
         spaceBetween: 20,
         slidesPerGroup: 3,
         navigation: {
-          nextEl: '.btnLeft',
-          prevEl: '.btnRight'
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
         }
       },
       jkOption: {
@@ -297,8 +298,8 @@ export default {
           // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
-          nextEl: '.jkLeft',
-          prevEl: '.jkRight',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
       },
       course: [],
@@ -591,7 +592,7 @@ body
       }
     }
 
-  .btnLeft
+  .btn1
     width 44px
     height 44px
     border-radius 50%
@@ -600,7 +601,7 @@ body
     border 2px solid #F1F1F1
     color #FE5782
 
-  .btnRight
+  .btn2
     width 44px
     height 44px
     border-radius 50%

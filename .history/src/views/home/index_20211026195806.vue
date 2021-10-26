@@ -127,8 +127,8 @@
         
         </swiper>
         <div style="text-align: center;">
-          <button class=" btnLeft">←</button>
-          <button class=" btnRight">→</button>
+          <button class=" btn1">←</button>
+          <button class=" btn2">→</button>
         </div>
       </div>
       <div class="banner2">
@@ -155,9 +155,9 @@
               </swiper-slide>
               
             </swiper>
-            <div class="jkPagination"></div>
-            <div class="jkLeft" ></div>
-            <div class="jkRight" ></div>
+            <div class="swiper-pagination swiper-button-prev-jk"  ></div>
+            <div class="swiper-button-prev swiper-button-prev1" ></div>
+            <div class="swiper-button-next swiper-button-prev1" ></div>
           </div>
         </div>
       </div>
@@ -280,8 +280,8 @@ export default {
         spaceBetween: 20,
         slidesPerGroup: 3,
         navigation: {
-          nextEl: '.btnLeft',
-          prevEl: '.btnRight'
+          nextEl: '.btn1',
+          prevEl: '.btn2'
         }
       },
       jkOption: {
@@ -297,8 +297,8 @@ export default {
           // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
-          nextEl: '.jkLeft',
-          prevEl: '.jkRight',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
       },
       course: [],
@@ -591,7 +591,7 @@ body
       }
     }
 
-  .btnLeft
+  .btn1
     width 44px
     height 44px
     border-radius 50%
@@ -600,7 +600,7 @@ body
     border 2px solid #F1F1F1
     color #FE5782
 
-  .btnRight
+  .btn2
     width 44px
     height 44px
     border-radius 50%
@@ -737,7 +737,7 @@ body
         border none // 去掉边框
         outline none // 去掉点击按钮后的边框
         margin-bottom 93px
-        box-shadow 5px 20px 10px 8px rgba(207, 202, 241, .5)
+        
 
 
         .evaluate-title
