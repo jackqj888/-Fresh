@@ -1,7 +1,8 @@
 import {
   get,
   post,
-  postByUrl
+  postByUrl,
+    del
 } from "./request";
 
 export default {
@@ -16,7 +17,7 @@ export default {
     
   },
   logout: {
-    getLogout:() =>post(`/user/logout`)
+    getLogout:() =>del(`/auth/token/logout`)
   },
   home: {
     ProductList: (id) => get(`/product/list?categoryId=`+id),

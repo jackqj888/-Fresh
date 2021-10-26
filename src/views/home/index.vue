@@ -570,6 +570,7 @@ body
         font-size 22px
         font-family PingFang SC
         font-weight bold
+        margin-left 22px
 
       .user
         display flex
@@ -614,6 +615,7 @@ body
         font-size 22px
         font-family PingFang SC
         font-weight bold
+        margin-left 22px
 
       .user
         display flex
@@ -656,6 +658,7 @@ body
         font-size 22px
         font-family PingFang SC
         font-weight bold
+        margin-left 22px
 
       .user
         display flex
@@ -725,7 +728,7 @@ body
 
       .hjealthTreatment-title
         display flex
-        justify-content center
+        justify-content flex-start
         align-items center
 
         .hjealthTreatment-font
@@ -742,7 +745,7 @@ body
 
       .hjealthTreatment-e-font
         display flex
-        justify-content center
+        justify-content flex-start
         margin-bottom 47px
 
         .e-font1
