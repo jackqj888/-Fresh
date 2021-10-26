@@ -155,9 +155,9 @@
               </swiper-slide>
               
             </swiper>
-            <div class="jkPagination"></div>
-            <div class="jkLeft" ></div>
-            <div class="jkRight" ></div>
+            <div class="swiper-pagination swiper-button-prev-jk"  ></div>
+            <div class="swiper-button-prev swiper-button-prev1" ></div>
+            <div class="swiper-button-next swiper-button-prev1" ></div>
           </div>
         </div>
       </div>
@@ -297,8 +297,8 @@ export default {
           // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
-          nextEl: '.jkLeft',
-          prevEl: '.jkRight',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
       },
       course: [],
