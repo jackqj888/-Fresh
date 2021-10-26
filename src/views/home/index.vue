@@ -103,64 +103,34 @@
           <p class="e-font">
             Popular science knowledge solution, your breast management expert
           </p>
-          <p class="go"><a class="go-tj" :href="kpmUrl">进入商城 ></a></p>
+          <p class="go"><a class="go-tj" :href="kpmUrl">点击进入 ></a></p>
         </div>
-        <div class="Preview">
-          <div class="Preview-left">
-            <img src="@/assets/Preview1.png" class="Preview1"/>
-            <p class="Preview-title">标题一</p>
+        <swiper class="swiper" :options="kpOption">
+<!--          <swiper-slide>Slide 1</swiper-slide>-->
+          <swiper-slide class="swiper-slide" v-for="(item, index) in kpmList" :key="index">
+            <img :src="item.imgSrcPc" class="Preview" @click="open(item, 'kpm')"/>
+            <p class="Preview-title" @click="open(item, 'kpm')">{{item.name}}</p>
             <div class="user">
-              <img src="@/assets/no-data.png" class="user-image"/>
+              <img :src="item.article.avatar" class="user-image"/>
               <div class="userName">
-                <p class="userName-font">汝小果</p>
-                <p class="userName-time">2021-8-5-13 : 19 : 18</p>
+                <p class="userName-font">{{item.article.nickname}}</p>
+                <p class="userName-time">{{item.article.createTime}}</p>
               </div>
             </div>
             <div style="text-align: center;">
-              <el-button class="btn">点击查看</el-button>
+              <el-button class="btn" @click="open(item, 'kpm')">点击查看</el-button>
             </div>
-          </div>
-          <div class="Preview-middle">
-            <div>
-              <img src="@/assets/Preview1.png" class="Preview1"/>
-              <p class="Preview-title">标题二</p>
-              <div class="user">
-                <img src="@/assets/no-data.png" class="user-image"/>
-
-                <div class="userName">
-                  <p class="userName-font">汝小果</p>
-                  <p class="userName-time">2021-8-5-13 : 19 : 18</p>
-                </div>
-              </div>
-              <div style="text-align: center;">
-                <el-button class="btn">点击查看</el-button>
-              </div>
-            </div>
-          </div>
-          <div class="Preview-right">
-            <div>
-              <img src="@/assets/Preview1.png" class="Preview1"/>
-              <p class="Preview-title">标题三</p>
-              <div class="user">
-                <img src="@/assets/no-data.png" class="user-image"/>
-                <div class="userName">
-                  <p class="userName-font">汝小果</p>
-                  <p class="userName-time">2021-8-5-13 : 19 : 18</p>
-                </div>
-              </div>
-              <div style="text-align: center;">
-                <el-button class="btn">点击查看</el-button>
-              </div>
-            </div>
-          </div>
-        </div>
+          </swiper-slide>
+          <div class="swiper-button-prev" slot="button-prev"></div>
+          <div class="swiper-button-next" slot="button-next"></div>
+        </swiper>
         <div style="text-align: center;">
           <button class="btn1">←</button>
           <button class="btn2">→</button>
         </div>
       </div>
       <div class="banner2">
-        <img src="@/assets/banner2.png" class="banner2"/>
+        <img src="@/assets/banner2.png"/>
       </div>
       <div class="hjealthTreatment">
         <div class="hjealthTreatment-box">
@@ -177,12 +147,9 @@
           </div>
           <div class="carousel">
             <swiper class="swiper jk" :options="jkOption">
-              <swiper-slide
-                  class="swiper-slide"
-                  v-for="(item, index) in carouselArr1"
-                  :key="index"
-              >
-                <img :src="item" class="swiper-img"/>
+              <swiper-slide class="swiper-slide" v-for="(item, index) in healthList" :key="index">
+                <img :src="item.imgSrcPc" class="swiper-img"/>
+                <div style="width: 176px; text-align: center; font-size: 14px">{{item.name}}</div>
               </swiper-slide>
               <div class="swiper-pagination" slot="pagination"></div>
               <div class="swiper-button-prev" slot="button-prev"></div>
@@ -273,10 +240,6 @@ export default {
         //开启循环模式
         loop: true,
       },
-      carouselArr: [
-        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201409%2F27%2F20140927123921_3wcGw.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637566152&t=b20087e9c028676a1f1ed8a3b3ec1a66',
-        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201701%2F26%2F20170126150835_YBKeL.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637566275&t=74230dc00d7ffbd8b5bfeaff3e989acb',
-      ],
       jpOption: {
         slidesPerView: 4,
         spaceBetween: 30,
@@ -295,12 +258,12 @@ export default {
       },
       kpOption: {
         slidesPerView: 3,
-        spaceBetween: 30,
-        direction: 'horizontal',
+        spaceBetween: 20,
+        slidesPerGroup: 3,
         navigation: {
           nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
+          prevEl: '.swiper-button-prev'
+        }
       },
       jkOption: {
         slidesPerView: 6,
@@ -311,21 +274,14 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
+          // bulletClass: 'my-bullet',
+          // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
       },
-      carouselArr1: [
-        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201409%2F27%2F20140927123921_3wcGw.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637566152&t=b20087e9c028676a1f1ed8a3b3ec1a66',
-        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201701%2F26%2F20170126150835_YBKeL.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637566275&t=74230dc00d7ffbd8b5bfeaff3e989acb',
-        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20190124%2Fc602bf5eb25b4c58ac3f73e06327237b.jpeg&refer=http%3A%2F%2F5b0988e595225.cdn.sohucs.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637569375&t=ddf4829aec6788dba094c0620f499147',
-        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn10114%2F440%2Fw640h600%2F20190416%2F7ea8-hvsckth5821051.jpg&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637569375&t=51d1095c66990b66aaf980b4ee2d556f',
-        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F20181%2F28%2F2018128122935_B2FfX.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637569375&t=bbecbe70af00064affe09bba3de2951e',
-        'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F31%2F20170331090940_P2cRe.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637569375&t=5471a9ec63096163bbbcb6354f51991f',
-        // 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201811%2F29%2F20181129225734_hpntk.thumb.700_0.jpg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637569375&t=840d415a0cbbac2f56f48251e87070fe',
-      ],
       course: [],
       commodity: [],
       homeBanner: [],
@@ -338,7 +294,8 @@ export default {
       mallUrl: "",
       kpmUrl: "",
       healthUrl: "",
-      talentUrl: ""
+      talentUrl: "",
+      healthList: []
     }
   },
   created() {
@@ -364,13 +321,14 @@ export default {
             this.kpmUrl = item.channel.targetUrlPc
           } else if(item.channel.appCode == 'health') {
             this.evaluate = item.items[10]
+            this.healthList = item.items[12]
             this.healthUrl = item.channel.targetUrlPc
           } else if(item.channel.appCode == 'talent') {
             this.details = item.details
             this.talentUrl = item.channel.targetUrlPc
           }
         })
-        // console.log(res)
+        console.log(this.kpmList)
       })
     },
     goTo(appCode){
@@ -406,7 +364,6 @@ export default {
 html,
 body
   height: 100%;
-
 .wrapper
   display: flex;
   flex-direction: column;
@@ -552,149 +509,64 @@ body
       font-size 22px
       text-align center
       margin-top 30px
-
-  .Preview
-    display flex
-    justify-content center
-    margin-bottom 93px
-
-    .Preview-left
-      width 380px
-      height 460px
-      border 2px solid #F1F1F1
-      border-radius 15px
-
-      .Preview1
-        width 380px
-        height 226px
+      .go-tj
+        color #333333
+    .swiper-container{
+      width: 1200px;
+      margin: 0 auto;
+      .swiper-slide{
+        width 380px !important
+        height 460px
+        border 2px solid #F1F1F1
         border-radius 15px
-
-      .Preview-title
-        font-size 22px
-        font-family PingFang SC
-        font-weight bold
-
-      .user
-        display flex
-        justify-content flex-start
-        margin-bottom 38px
-
-        .user-image
-          width 44px
+        .Preview{
+          width: 100%;
+          height:227px;
+          border-radius 15px
+        }
+        .Preview-title{
+          font-size 22px
+          font-family PingFang SC
+          font-weight bold
+        }
+        .user{
+          display flex
+          justify-content flex-start
+          margin-bottom 38px
+          .user-image{
+            width 44px
+            height 44px
+            border-radius 50%
+            margin-right 8px
+          }
+          .userName{
+            width 187px
+            height 16px
+            .userName-font{
+              font-size 14px
+              color #000
+              margin 0
+              margin-bottom 10px
+            }
+            .userName-time{
+              font-size 13px
+              color #9C9B9B
+              margin 0
+            }
+          }
+        }
+        .btn{
+          width 169px
           height 44px
-          border-radius 50%
-          margin-right 8px
-
-        .userName
-          width 187px
-          height 16px
-
-          .userName-font
-            font-size 14px
-            color #000
-            margin 0
-            margin-bottom 10px
-
-          .userName-time
-            font-size 13px
-            color #9C9B9B
-            margin 0
-
-    .Preview-middle
-      width 380px
-      height 460px
-      border 2px solid #F1F1F1
-      border-radius 15px
-      margin 0 13px
-      background-color #ffffff
-
-      .Preview1
-        width 380px
-        height 226px
-        border-radius 15px
-
-      .Preview-title
-        font-size 22px
-        font-family PingFang SC
-        font-weight bold
-
-      .user
-        display flex
-        justify-content flex-start
-        margin-bottom 38px
-
-        .user-image
-          width 44px
-          height 44px
-          border-radius 50%
-          margin-right 8px
-
-        .userName
-          width 187px
-          height 16px
-
-          .userName-font
-            font-size 14px
-            color #000
-            margin 0
-            margin-bottom 10px
-
-          .userName-time
-            font-size 13px
-            color #9C9B9B
-            margin 0
-
-    .Preview-right
-      width 380px
-      height 460px
-      border 2px solid #F1F1F1
-      border-radius 15px
-
-      .Preview1
-        width 380px
-        height 226px
-        border-radius 15px
-
-      .Preview-title
-        font-size 22px
-        font-family PingFang SC
-        font-weight bold
-
-      .user
-        display flex
-        justify-content flex-start
-        margin-bottom 38px
-
-        .user-image
-          width 44px
-          height 44px
-          border-radius 50%
-          margin-right 8px
-
-        .userName
-          width 187px
-          height 16px
-
-          .userName-font
-            font-size 14px
-            color #000
-            margin 0
-            margin-bottom 10px
-
-          .userName-time
-            font-size 13px
-            color #9C9B9B
-            margin 0
-
-    .btn
-      width 169px
-      height 44px
-      color #fff
-      font-size 18px
-      background #FE5782
-      border none // 去掉边框
-      outline none // 去掉点击按钮后的边框
-      border-radius 15px
+          color #fff
+          font-size 18px
+          background #FE5782
+          border none // 去掉边框
+          outline none // 去掉点击按钮后的边框
+          border-radius 15px
+        }
+      }
+    }
 
   .btn1
     width 44px
@@ -715,7 +587,7 @@ body
     color #FE5782
 
   .banner2
-    margin 57px 0 90px 0
+    margin 57px 0 128px 0
     text-align center
 
   .hjealthTreatment
@@ -727,14 +599,10 @@ body
       height 513px
 
       .hjealthTreatment-title
-        display flex
-        justify-content center
-        align-items center
+        align-items left
 
         .hjealthTreatment-font
-          margin 36px 30px 13px 33px
           font-size 30px
-          text-align center
           font-family PingFang SC
           font-weight bold
 
@@ -742,20 +610,15 @@ body
           margin 25px 30px 0 0
           font-size 22px
           text-align center
-
+          .go-tj
+            margin-left 40px
+            color: #000000
+            text-decoration: none
       .hjealthTreatment-e-font
-        display flex
-        justify-content center
-        margin-bottom 47px
-
         .e-font1
-          margin-left 33px
           font-size 16px
-
       .carousel
-        display flex
-        justify-content center
-        align-items center
+        margin-top -55px
 
   .talents
     display flex
@@ -975,23 +838,49 @@ body
 .kp .swiper-button-next {
   right: 45%;
 }
-
-.jk .swiper-wrapper {
-  padding-top: 50px;
-}
-
-.jk .swiper-button-prev {
-  left: 80%;
-}
-
-.jk .swiper-button-prev, .jk .swiper-button-next {
-  top: 10%;
-}
-
-.jk .swiper-pagination {
-  width: 200px;
-  height: 20px;
-  left: 85%;
-  top: 5%;
+.jk{
+  img {
+    width 176px;
+    height 247px;
+    border-radius 10px;
+  }
+  .swiper-slide{
+    margin-top: 100px;
+  }
+  .swiper-button-prev {
+    left: 80%;
+  }
+  .swiper-button-prev, .swiper-button-next {
+    top: 10%;
+  }
+  .swiper-pagination {
+    width: 200px;
+    height: 20px;
+    left: 85%;
+    top: 5%;
+    .swiper-pagination-bullet{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FFDDE6;
+    }
+    .swiper-pagination-bullet-active{
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #FE5782;
+    }
+  }
+  .swiper-button-prev, .swiper-button-next{
+    width 23px
+    height 23px
+    border-radius 50%
+    background-color #FE5782
+    border 2px solid #F1F1F1
+    color #fff
+  }
+  .swiper-button-prev:after, .swiper-button-next:after{
+    font-size :10px
+  }
 }
 </style>
