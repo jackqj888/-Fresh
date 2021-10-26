@@ -13,7 +13,7 @@
         <el-button class="btn1" icon="el-icon-user">账号登入</el-button>
       </div>
       <div v-else class="userName">
-        <img src="@/assets/popularScience.png" alt="" class="image"/>
+        <img src="@/assets/popularScience.png" alt="" class="image" @click="dialogVisible = true" />
         <span class="username">{{ uInfo1.username }}</span>
 
         <el-dropdown>
@@ -24,28 +24,14 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>我的课程</el-dropdown-item>
             <el-dropdown-item>我的简历</el-dropdown-item>
-            <el-dropdown-item @click.native="dialogVisible = true">
+            <el-dropdown-item @click="dialogVisible = true">
               修改密码
             </el-dropdown-item>
             <el-dropdown-item>退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
-      <el-dialog title="修改密码" :visible.sync="dialogVisible" width="20%" @close="dialogVisibleClosed" >
-        <el-form :model="addForm" :rules="addFormRules" ref="addFormRefs" label-width="30%" class="formPosition" >
-         <el-form-item  prop="mobile">
-          <el-input class="put" v-model="addForm.mobile" placeholder="手机号码"></el-input>
-        </el-form-item>
-        <el-form-item  prop="verificationCode">
-          <el-input class="put" v-model="addForm.verificationCode" placeholder="短信验证码"></el-input>
-        </el-form-item>
-        <el-form-item  prop="newPassword">
-          <el-input class="put" v-model="addForm.newPassword" placeholder="输入新密码"></el-input>
-        </el-form-item>
-        <el-form-item  prop="confirmNewPassword">
-          <el-input class="put" v-model="addForm.confirmNewPassword" placeholder="确认新密码"></el-input>
-        </el-form-item>
-        </el-form>
+      <el-dialog title="修改密码" :visible.sync="dialogVisible" width="30%">
         <span slot="footer" class="dialog-footer">
           <el-button type="primary" @click="dialogVisible = false">
             确 定
@@ -66,27 +52,6 @@ export default {
       dialogVisible: false,
       message: '请登入',
       uInfo1: '',
-      addForm:{
-        mobile:'',
-        verificationCode:'',
-        newPassword:'',
-        confirmNewPassword:''
-      },
-      addFormRules:{
-        mobile:[
-        {required: true, message:'请输入手机号码', trigger: 'blur'}
-      ],
-       verificationCode:[
-        {required: true, message:'请输入验证码', trigger: 'blur'}
-      ],
-       newPassword:[
-        {required: true, message:'请输入新密码', trigger: 'blur'}
-      ],
-       confirmNewPassword:[
-        {required: true, message:'请确认新密码', trigger: 'blur'}
-      ]
-      },
-      
       
     }
   },
@@ -100,10 +65,6 @@ export default {
     },
   },
   methods: {
-
-    dialogVisibleClosed (){
-      this.$refs.addFormRefs.resetFields()
-    },
     Jump() {
       this.$router.push({
         path: `/login`,
@@ -127,7 +88,7 @@ export default {
 }
 </script>
 
-<style  lang="stylus">
+<style scoped lang="stylus">
 .home-header {
   background-color: #d2cdcd;
   color: #333;
@@ -179,38 +140,14 @@ export default {
       width 180px
       height 60px
       font-size 18px
-      
-.el-dropdown-menu el-popper
 
- top 10px
 
 
 .router-link-active
   text-decoration: none;
 
-.el-dialog {
-  display: flex;
-  flex-direction: column;
-  margin: 0 !important;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-height: calc(100% - 30px);
-  max-width: calc(100% - 30px);
-  border-radius 15px
-}
-
-.el-dialog .el-dialog__body {
-  flex: 1;
-  overflow: auto;
-}
 
 
-.el-form formPosition
-  display flex
-  justify-content center
-  flex-direction: column
 .user
    display flex
    justify-content flex-start
@@ -238,8 +175,7 @@ export default {
       border-radius 15px
       box-shadow 5px 15px 10px 8px rgba(207,202,241,.5)
 
-.el-dropdown
- margin 0
+
 
 .el-icon-user
  margin-right 20px

@@ -11,7 +11,7 @@
           <span class="item-name">人才</span>
           <span class="item-title">Personnel</span>
         </div>
-        <div class="popularScience">
+        <div class="popularScience" @click="dialogVisible = true">
           <img src="@/assets/popularScience.png" alt="" class="image"/>
           <span class="item-name">科普</span>
           <span class="item-title">Popularization of science</span>

@@ -31,8 +31,8 @@
           </el-dropdown-menu>
         </el-dropdown>
       </div>
-      <el-dialog title="修改密码" :visible.sync="dialogVisible" width="20%" @close="dialogVisibleClosed" >
-        <el-form :model="addForm" :rules="addFormRules" ref="addFormRefs" label-width="30%" class="formPosition" >
+      <el-dialog title="修改密码" :visible.sync="dialogVisible" width="20%" >
+        <el-form :model="addForm" :rules="addFormRules" ref="ruleForm" label-width="30%" class="formPosition" >
          <el-form-item  prop="mobile">
           <el-input class="put" v-model="addForm.mobile" placeholder="手机号码"></el-input>
         </el-form-item>
@@ -100,10 +100,6 @@ export default {
     },
   },
   methods: {
-
-    dialogVisibleClosed (){
-      this.$refs.addFormRefs.resetFields()
-    },
     Jump() {
       this.$router.push({
         path: `/login`,

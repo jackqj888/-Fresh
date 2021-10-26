@@ -1,78 +1,47 @@
 <template>
-  <div class="login">
-    <div class="main bgimg">
+  <div class="login ">
+    <div class="main bgimg ">
       <div class="login1">
         <div class="login-box">
           <div class="login-top">
             <div class="tabs">
-              <div
-                class="tab"
-                :class="{ active: form.grant_type === 'mobile' }"
-                @click="form.grant_type = 'mobile'"
-              >
+              <div class="tab"
+                   :class="{ active: form.grant_type === 'mobile' }"
+                   @click="form.grant_type = 'mobile'">
                 快捷登录
               </div>
-              <div
-                class="tab"
-                :class="{ active: form.grant_type === 'password' }"
-                @click="form.grant_type = 'password'"
-              >
+              <div class="tab"
+                   :class="{ active: form.grant_type === 'password' }"
+                   @click="form.grant_type = 'password'">
                 登录
               </div>
             </div>
             <div>
-              <span>
-                Without entering a password, the first SMS login is regarded as
-                the first time login was successful
-              </span>
+              <span>Without entering a password, the first SMS login is regarded as the first time
+                login was successful</span>
             </div>
           </div>
           <template v-if="form.grant_type === 'mobile'">
             <div class="input">
-              <input
-                type="text"
-                v-model="form.mobile"
-                placeholder="输入手机号"
-              />
+              <input type="text" v-model="form.mobile" placeholder="输入手机号"/>
             </div>
             <div class="input">
-              <input type="text" v-model="form.code" placeholder="输入验证码" />
-              <button
-                class="verificationCode"
-                @click="getCode"
-                :class="{ 'disabled-style': getCodeBtnDisable }"
-              >
-                {{ verificationCode }}
-              </button>
-
-              <!--              <div class="get-code" @click="getCode">{{ verificationCode }}</div>-->
+              <input type="text" v-model="form.code" placeholder="输入验证码"/>
+              <button class="verificationCode" @click="getCode" :class="{'disabled-style':getCodeBtnDisable}" >{{verificationCode}}</button>
+             
+<!--              <div class="get-code" @click="getCode">{{ verificationCode }}</div>-->
             </div>
           </template>
           <template v-else>
             <div class="input">
-              <input
-                type="text"
-                v-model="form.username"
-                placeholder="输入手机号"
-              />
+              <input type="text" v-model="form.username"  placeholder="输入手机号"/>
             </div>
             <div class="input">
-              <input
-                :type="inputType"
-                v-model="form.password"
-                placeholder="输入密码"
-              />
+              <input :type="inputType" v-model="form.password" placeholder="输入密码"/>
               <div class="view">
-                <img
-                  src="@/assets/eye_open.svg"
-                  v-if="inputType === 'text'"
-                  @click="inputType = 'password'"
-                />
-                <img
-                  src="@/assets/eye_close.svg"
-                  v-else
-                  @click="inputType = 'text'"
-                />
+                <img src="@/assets/eye_open.svg" v-if="inputType === 'text'"
+                     @click="inputType = 'password'"/>
+                <img src="@/assets/eye_close.svg" v-else @click="inputType = 'text'"/>
               </div>
             </div>
           </template>
@@ -81,10 +50,8 @@
           </div>
           <div class="pact">
             <p>
-              登入则同意
-              <a href="url">《汝美堂用户协议》</a>
-              ? Sign In
-            </p>
+              登入则同意 <a href="url" >《汝美堂用户协议》</a> ? Sign In
+            </p> 
           </div>
         </div>
       </div>
@@ -94,16 +61,16 @@
 
 <script>
 import api from '@/api'
-import { getToken, setUser } from '@/utils/storage'
+import {getToken, setUser} from '@/utils/storage'
 
 export default {
   name: 'login',
   data() {
     return {
-      waitTime: 30,
-      verificationCode: '获取验证码',
+      waitTime:30,
+      verificationCode:'获取验证码',
       inputType: 'password',
-      res: [],
+      res:[],
       form: {
         grant_type: 'username',
         scope: 'server',
@@ -113,29 +80,32 @@ export default {
         code: '',
         TERMINAL: 'web',
       },
+      
+      
     }
   },
   computed: {
     // 用于校验手机号码格式是否正确
-    phoneNumberStyle() {
+    phoneNumberStyle(){
       let reg = /^1[3456789]\d{9}$/
-      if (!reg.test(this.form.mobile)) {
+      if(!reg.test(this.form.mobile)){
         return false
       }
       return true
+      
     },
-    getCodeBtnDisable: {
-      get() {
-        if (this.waitTime === 30) {
-          if (this.form.mobile) {
+    getCodeBtnDisable:{
+      get(){
+        if(this.waitTime === 30){
+          if(this.form.mobile){
             return false
           }
           return true
         }
         return true
       },
-      set() {},
-    },
+      set(){}
+    }
   },
   created() {
     const a = getToken()
@@ -167,56 +137,57 @@ export default {
           this.$router.push('/productlist')
         }
       }
+      
     },
-    getCode() {
-      if (this.phoneNumberStyle) {
+    getCode(){
+      if(this.phoneNumberStyle){
         // 调用获取短信验证码接口
-        api.login.getCode(this.form.mobile).then((res) => {
+        api.login.getCode(this.form.mobile).then(res=>{
           this.res = res
-          console.log('ccc', this.res)
-          if (this.res.status === 200) {
+          console.log('ccc',this.res)
+          if(this.res.status===200) {
             this.$message({
               message: '验证码已发送，请稍候...',
               type: 'success',
-              center: true,
+              center:true
             })
-            // 因为下面用到了定时器，需要保存this指向
-            let that = this
-            that.waitTime--
-            that.getCodeBtnDisable = true
-            that.verificationCode = `${that.waitTime}s 后重新获取`
-            let timer = setInterval(function () {
-              if (that.waitTime > 1) {
-                that.waitTime--
-                that.verificationCode = `${that.waitTime}s 后重新获取`
-              } else {
-                clearInterval(timer)
-                that.verificationCode = '获取验证码'
-                that.getCodeBtnDisable = false
-                that.waitTime = 30
-              }
-            }, 1000)
           }
         })
+        // 因为下面用到了定时器，需要保存this指向
+        let that = this
+        that.waitTime--
+        that.getCodeBtnDisable = true
+        that.verificationCode = `${that.waitTime}s 后重新获取`
+        let timer = setInterval(function(){
+          if(that.waitTime>1){
+            that.waitTime--
+            that.verificationCode = `${that.waitTime}s 后重新获取`
+          }else{
+            clearInterval(timer)
+            that.verificationCode = '获取验证码'
+            that.getCodeBtnDisable = false
+            that.waitTime = 30
+          }
+        },1000)
       } else {
         this.$message.error('手机号码错误！')
       }
     },
-    getLogin() {
-      let data = {
-        mobile: this.form.mobile,
-        code: this.form.code,
+    getLogin(){
+      let data ={
+        mobile:this.form.mobile,
+        code:this.form.code,
       }
-      api.login.getlogin(data).then((res) => {
+      api.login.getlogin(data).then(res=>{
         console.log(res)
-        var access_token = res.access_token
-        window.localStorage.setItem('access_token', access_token)
+        var access_token = res.access_token;
+        window.localStorage.setItem('access_token',access_token);
 
-        var userInfo = res.user_info
-        window.localStorage.setItem('user_info', JSON.stringify(userInfo))
-        this.$router.push({ name: 'home', params: { data } })
+        var userInfo = res.user_info;
+        window.localStorage.setItem('user_info',JSON.stringify(userInfo));
+        this.$router.push({name: 'home', params: {data}});
       })
-    },
+    }
   },
 }
 </script>
@@ -265,7 +236,7 @@ export default {
         padding 50px 40px 75px
         box-sizing border-box
         border-radius: 50px
-
+        
         .login-top
           height 130px
 
@@ -300,7 +271,7 @@ export default {
           font-size 16px
           display block
           border-radius 10px
-
+        
         .verificationCode
           position absolute
           top 18px
@@ -322,7 +293,7 @@ export default {
           font-size 18px
           line-height 62px
           background #FE8CAA
-
+          
           cursor pointer
           border-radius 10px
           display:block
@@ -344,7 +315,7 @@ export default {
             position relative
             line-height 33px
             cursor pointer
-
+            
 
             &.active
               color #FE8CAA
@@ -369,4 +340,5 @@ export default {
 .disabled-style
   background-color #EEEEEE
   color #CCCCCC
+  
 </style>
