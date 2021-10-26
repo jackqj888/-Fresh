@@ -106,7 +106,6 @@
           <p class="go"><a class="go-tj" :href="kpmUrl">点击进入 ></a></p>
         </div>
         <swiper class="swiper" :options="kpOption">
-<!--          <swiper-slide>Slide 1</swiper-slide>-->
           <swiper-slide class="swiper-slide" v-for="(item, index) in kpmList" :key="index">
             <img :src="item.imgSrcPc" class="Preview" @click="open(item, 'kpm')"/>
             <p class="Preview-title" @click="open(item, 'kpm')">{{item.name}}</p>
@@ -163,23 +162,40 @@
       </div>
       <div class="talents">
         <div class="talents-box">
-          <div class="talents-top-left">
-            <div class="talents-title">
-              <span class="talents-font">精选人才</span>
-              <span class="talents-go">
-                <a class="go-rc" :href="talentUrl">点击进入 ></a> 
+          <div style="display: flex">
+            <div>
+              <div class="talents-top-left">
+                <div class="talents-title">
+                  <span class="talents-font">精选人才</span>
+                  <span class="talents-go">
+                <a class="go-rc" :href="talentUrl">点击进入 ></a>
               </span>
+                </div>
+              </div>
+              <div class="talents-e-font">
+                <p class="e-font1">Talent system to help you better select talents</p>
+              </div>
+              <div class="talents-swiper">
+                <swiper class="swiper" :options="bigTalentOption">
+                  <swiper-slide class="swiper-slide" v-for="(item, index) in details" :key="index">
+                    <img :src="item.imgSrc" class="talents-img"/>
+                    <p class="talents-name">{{ item.name }}</p>
+                  </swiper-slide>
+                </swiper>
+              </div>
+            </div>
+            <div class="smallTalent">
+              <swiper class="swiper" :options="smallTalentOption">
+                <swiper-slide class="swiper-slide" v-for="(item, index) in details" :key="index">
+                  <img :src="item.imgSrc" class="talents-img"/>
+                  <div class="talents-name">{{ item.name }}</div>
+                </swiper-slide>
+              </swiper>
             </div>
           </div>
-          <div class="talents-e-font">
-            <p class="e-font1">Talent system to help you better select talents</p>
-          </div>
-          <div class="talents-swiper">
-            <div class="talents-image" v-for="(item,index) in details" :key="index">
-              <img :src="item.imgSrc" class="talents-img"/>
-              <p class="talents-name">{{ item.name }}</p>
-            </div>
-          </div>
+          <div class="talent-pagination"></div>
+          <div class="talentLeft" ></div>
+          <div class="talentRight" ></div>
         </div>
       </div>
       <div class="healthCheck">
@@ -229,11 +245,6 @@ export default {
         pagination: {
           el: '.swiper-pagination',
         },
-        //设置点击箭头
-        // navigation: {
-        //   nextEl: 'swiper-button-next1',
-        //   prevEl: '.swiper-button-prev1',
-        // },
         //自动轮播
         autoplay: {
           delay: 2000,
@@ -293,12 +304,37 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          // bulletClass: 'my-bullet',
-          // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
           nextEl: '.jkLeft',
           prevEl: '.jkRight',
+        },
+      },
+      bigTalentOption:{
+        slidesPerView: 2,
+        spaceBetween: 30,
+        freeMode: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        navigation: {
+          nextEl: '.talentLeft',
+          prevEl: '.talentRight',
+        },
+      },
+      smallTalentOption:{
+        slidesPerView: 3,
+        slidesPerColumn: 2,
+        slidesPerColumnFill : 'row',
+        spaceBetween: 30,
+        pagination: {
+          el: '.talent-pagination',
+          clickable: true
+        },
+        navigation: {
+          nextEl: '.talentLeft',
+          prevEl: '.talentRight',
         },
       },
       course: [],
@@ -658,7 +694,7 @@ body
         align-items center
 
         .talents-font
-          margin 36px 30px 13px 33px
+          margin 36px 30px 13px 9px
           font-size 30px
           text-align center
           font-family PingFang SC
@@ -670,17 +706,14 @@ body
           text-align center
 
       .talents-e-font
-        display flex
-        justify-content flex-start
         margin-bottom 62px
-
         .e-font1
-          margin-left 33px
+          margin-left 9px
           font-size 16px
 
       .talents-swiper
         width: 400px
-        height: 235px
+        height: 273px
         display: flex
         justify-content flex-start
         margin-left 90px
@@ -698,6 +731,7 @@ body
           text-align center
           margin 0
           margin-top 15px
+          font-size 16px
 
   .healthCheck
     display flex
@@ -913,4 +947,27 @@ body
     font-size :10px
   }
 }
+  .smallTalent{
+    flex 1
+    margin-top 49px
+    .swiper-container{
+       width 456px
+      .swiper-wrapper{
+        width 456px
+      }
+      .swiper-slide{
+        width: 129px !important;
+        height: 209px;
+        img{
+          width 129px
+          height 164px
+          margin-bottom 12px
+          border-radius 20px
+        }
+        .talents-name{
+          text-align center
+        }
+      }
+    }
+  }
 </style>

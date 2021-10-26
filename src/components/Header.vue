@@ -13,7 +13,7 @@
         <el-button class="btn1" icon="el-icon-user" @click="goLogin('password')">账号登入</el-button>
       </div>
       <div v-else class="userName">
-        <img src="@/assets/popularScience.png" alt="" class="image"/>
+        <img :src="avatar" alt="" class="image"/>
         <span class="username">{{ uInfo1.username }}</span>
 
         <el-dropdown placement="bottom">
@@ -102,7 +102,8 @@ export default {
           {required: true, message: '请确认新密码', trigger: 'blur'}
         ]
       },
-      disabled: true
+      disabled: true,
+      avatar: ''
     }
   },
   computed: {
@@ -130,6 +131,7 @@ export default {
   created() {
     this.uInfo1 = JSON.parse(window.localStorage.getItem('user_info'))
     this.addForm.mobile = this.uInfo1 && this.uInfo1.phone ? this.uInfo1.phone : ''
+    this.avatar =  this.uInfo1 && this.uInfo1.avatar !== '' ? this.uInfo1.avatar : ""
   },
   methods: {
     dialogVisibleClosed() {
