@@ -31,8 +31,7 @@
         </div>
       </div>
       <div>
-        <i></i>
-        <i></i>
+       <span class="record"><b>公安备案号</b> - © {{recordNum}}</span>
       </div>
     </div>
   </div>
@@ -41,7 +40,9 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      recordNum:'2021 All Rights Reserved'
+    }
   },
 }
 </script>
@@ -61,10 +62,14 @@ export default {
         justify-content center
         lign-items center
       .logo
-        margin-top 35px
-      .company
+        margin 0
+        margin-top 30px
+
+  .company
         font-size 35px
         margin-top 35px
+        color #11142D
+        font-weight bold
       .company1
         font-size 13px
         margin-bottom: 10px
@@ -72,7 +77,7 @@ export default {
   .scanCode
     display: flex
     justify-content center
-    margin-top 30px
+    margin 30px 0 67px 0 
     .scanCode-left
       margin-right 343px 
     .scanCode-right
@@ -93,4 +98,10 @@ export default {
         .phone
           font-size: 18px
           margin-right 10px
+  .record 
+    font-size 16px
+    color: #464B70
+    //font-weight bold
+    margin-top 67px
+
 </style> 

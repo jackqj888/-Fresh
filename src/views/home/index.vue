@@ -183,14 +183,15 @@
             </div>
             
             <div class="jkbtn">
+             
              <div class="jkLeft">&lt;</div>
-             <div class="swiper-pagination-bullet"></div>
+              <div class="swiper-pagination2" ></div>
              <div class="jkRight">&gt;</div>
             </div>
           </div>
           
           <div class="carousel jk">
-            <swiper class="swiper jk" :options="jkOption">
+            <swiper class="swiper jk"  :options="jkOption">
               <swiper-slide
                 class="swiper-slide"
                 v-for="(item, index) in healthList"
@@ -201,6 +202,7 @@
                   {{ item.name }}
                 </div>
               </swiper-slide>
+              
             </swiper>
           </div>
         </div>
@@ -285,9 +287,9 @@ export default {
       ProductList: [],
       headerOption: {
         //显示分页
-        pagination: {
-          el: '.swiper-pagination',
-        },
+        // pagination: {
+        //   el: '.swiper-pagination',
+        // },
         //设置点击箭头
         // navigation: {
         //   nextEl: 'swiper-button-next1',
@@ -367,7 +369,7 @@ export default {
         loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
-          el: '.swiper-pagination-bullet',
+          el: '.swiper-pagination',
           clickable: true,
           // bulletClass: 'my-bullet',
           // bulletActiveClass: 'my-bullet-active'
@@ -470,13 +472,14 @@ body
   flex-direction column
   justify-content center
   lign-items center
+  background-color: #fff
 
   .navigation
     display flex
     justify-content center
     align-items center
     width 100%
-    margin-top: 110px
+    margin-top: 176px
 
 
     .groups, .popularScience, .healthy, .test, .mall
@@ -677,10 +680,9 @@ body
   border-radius 50%
   background-color #fff
   margin-right 20px
-  border 2px solid #F1F1F1
+  border 2px solid #F0EEFF
   color #FE5782
-  border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
+ 
 
 .btnRight
   width 44px
@@ -804,7 +806,7 @@ body
 .go
  font-size 22px
  text-align center
-  margin 30px 0 66px 0
+ margin 30px 0 66px 0
 
 .evaluate
    display flex
@@ -950,77 +952,22 @@ body
 .kp .swiper-button-next {
   right: 45%;
 }
-// .jk{
-//   img {
-//     width 176px;
-//     height 247px;
-//     border-radius 10px;
-//   }
-//   .swiper-slide{
-//     margin-top: 100px;
-//   }
-//   .swiper-button-prev {
-//     left: 80%;
-//   }
-//   .swiper-button-prev, .swiper-button-next {
-//     top: 10%;
-//   }
-//   .swiper-pagination {
-//     width: 200px;
-//     height: 20px;
-//     left: 85%;
-//     top: 5%;
-//     .swiper-pagination-bullet{
-//       width: 7px;
-//       height: 7px;
-//       border-radius: 50%;
-//       background: #FFDDE6;
-//     }
-//     .swiper-pagination-bullet-active{
-//       width: 7px;
-//       height: 7px;
-//       border-radius: 50%;
-//       background: #FE5782;
-//     }
-//   }
-//   .swiper-button-prev, .swiper-button-next{
-//     width 23px
-//     height 23px
-//     border-radius 50%
-//     background-color #FE5782
-//     border 2px solid #F1F1F1
-//     color #fff
-//   }
-//   .swiper-button-prev:after, .swiper-button-next:after{
-//     font-size :10px
-//   }
-// }
 
-// #pa >>> .swiper-pagination-bullet {
-//     width: 20px;
-//     height: 20px;
-//     text-align: center;
-//     line-height: 20px;
-//     font-size: 12px;
-//     color:#fff;
-//     opacity: 1;
-//     background: rgba(0,0,0,0.2);
-//   }
-//   #pa >>> .swiper-pagination-bullet-active {
-//     color:#fff;
-//     background: #ff51d6;
-//   }
-.swiper-pagination-bullet
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #FFDDE6;
-  .swiper-pagination-bullet-active
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #FE5782;
-    
+.jkbtn >>> .swiper-pagination-bullet {
+     width: 8px;
+     height: 8px;
+     text-align: center;
+     //line-height: 8px;
+     font-size: 12px;
+     //opacity: 1;
+     background: #FFDDE6
+     margin 0 20px
+     //display block
+   }
+   .jkbtn >>> .swiper-pagination-bullet-active {
+     color:#fff;
+     background: #ff51d6
+   }
 
 .rcbtn
 
@@ -1055,18 +1002,21 @@ body
 .jkbtn
   height 50px
   display flex
-  justify-content flex-end
+  justify-content space-around
   margin-bottom 10px
   align-items center
-  text-align: center
+  text-align center
+  
 .jkLeft
   width 22px
   height 22px
   border-radius 50%
   background-color #FFDDE6
-  margin-right 20px
+  margin-right 15px
   border 2px solid #F1F1F1
   color #FE5782
+  border none // 去掉边框
+  outline none // 去掉点击按钮后的边框
 .jkRight
   width 22px
   height 22px
@@ -1075,7 +1025,8 @@ body
   border none // 去掉边框
   outline none // 去掉点击按钮后的边框
   color #FE5782
-  margin 0 50px 0 50px
+  margin 0 30px 0 30px
+  
 
 .carousel jk
   height 340px

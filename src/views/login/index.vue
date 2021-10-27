@@ -6,16 +6,16 @@
           <div class="login-top">
             <div class="tabs">
               <div
-                class="tab"
-                :class="{ active: form.grant_type === 'mobile' }"
-                @click="form.grant_type = 'mobile'"
+                  class="tab"
+                  :class="{ active: form.grant_type === 'mobile' }"
+                  @click="form.grant_type = 'mobile'"
               >
                 快捷登录
               </div>
               <div
-                class="tab"
-                :class="{ active: form.grant_type === 'password' }"
-                @click="form.grant_type = 'password'"
+                  class="tab"
+                  :class="{ active: form.grant_type === 'password' }"
+                  @click="form.grant_type = 'password'"
               >
                 登录
               </div>
@@ -30,17 +30,17 @@
           <template v-if="form.grant_type === 'mobile'">
             <div class="input">
               <input
-                type="text"
-                v-model="form.mobile"
-                placeholder="输入手机号"
+                  type="text"
+                  v-model="form.mobile"
+                  placeholder="输入手机号"
               />
             </div>
             <div class="input">
-              <input type="text" v-model="form.code" placeholder="输入验证码" />
+              <input type="text" v-model="form.code" placeholder="输入验证码"/>
               <button
-                class="verificationCode"
-                @click="getCode"
-                :class="{ 'disabled-style': getCodeBtnDisable }"
+                  class="verificationCode"
+                  @click="getCode"
+                  :class="{ 'disabled-style': getCodeBtnDisable }"
               >
                 {{ verificationCode }}
               </button>
@@ -51,27 +51,27 @@
           <template v-else>
             <div class="input">
               <input
-                type="text"
-                v-model="form.username"
-                placeholder="输入手机号"
+                  type="text"
+                  v-model="form.username"
+                  placeholder="输入手机号"
               />
             </div>
             <div class="input">
               <input
-                :type="inputType"
-                v-model="form.password"
-                placeholder="输入密码"
+                  :type="inputType"
+                  v-model="form.password"
+                  placeholder="输入密码"
               />
               <div class="view">
                 <img
-                  src="@/assets/eye_open.svg"
-                  v-if="inputType === 'text'"
-                  @click="inputType = 'password'"
+                    src="@/assets/eye_open.svg"
+                    v-if="inputType === 'text'"
+                    @click="inputType = 'password'"
                 />
                 <img
-                  src="@/assets/eye_close.svg"
-                  v-else
-                  @click="inputType = 'text'"
+                    src="@/assets/eye_close.svg"
+                    v-else
+                    @click="inputType = 'text'"
                 />
               </div>
             </div>
@@ -94,7 +94,7 @@
 
 <script>
 import api from '@/api'
-import { getToken, setUser } from '@/utils/storage'
+import {getToken, setUser} from '@/utils/storage'
 
 export default {
   name: 'login',
@@ -134,7 +134,8 @@ export default {
         }
         return true
       },
-      set() {},
+      set() {
+      },
     },
   },
   created() {
@@ -172,33 +173,34 @@ export default {
       if (this.phoneNumberStyle) {
         // 调用获取短信验证码接口
         api.login.getCode(this.form.mobile).then((res) => {
+          debugger
           this.res = res
           console.log('ccc', this.res)
-          if (this.res.status === 200) {
+          if (res) {
             this.$message({
               message: '验证码已发送，请稍候...',
               type: 'success',
               center: true,
             })
-
+            // 因为下面用到了定时器，需要保存this指向
+            let that = this
+            that.waitTime--
+            that.getCodeBtnDisable = true
+            that.verificationCode = `${that.waitTime}s 后重新获取`
+            let timer = setInterval(function () {
+              if (that.waitTime > 1) {
+                that.waitTime--
+                that.verificationCode = `${that.waitTime}s 后重新获取`
+              } else {
+                clearInterval(timer)
+                that.verificationCode = '获取验证码'
+                that.getCodeBtnDisable = false
+                that.waitTime = 30
+              }
+            }, 1000)
           }
         })
-        // 因为下面用到了定时器，需要保存this指向
-        let that = this
-        that.waitTime--
-        that.getCodeBtnDisable = true
-        that.verificationCode = `${that.waitTime}s 后重新获取`
-        let timer = setInterval(function () {
-          if (that.waitTime > 1) {
-            that.waitTime--
-            that.verificationCode = `${that.waitTime}s 后重新获取`
-          } else {
-            clearInterval(timer)
-            that.verificationCode = '获取验证码'
-            that.getCodeBtnDisable = false
-            that.waitTime = 30
-          }
-        }, 1000)
+
       } else {
         this.$message.error('手机号码错误！')
       }
@@ -215,7 +217,7 @@ export default {
 
         var userInfo = res.user_info
         window.localStorage.setItem('user_info', JSON.stringify(userInfo))
-        this.$router.push({ name: 'home', params: { data } })
+        this.$router.push({name: 'home', params: {data}})
       })
     },
   },
@@ -307,8 +309,8 @@ export default {
           top 18px
           right 0
           background-color #909090
-          border none   // 去掉边框
-          outline none  // 去掉点击按钮后的边框
+          border none // 去掉边框
+          outline none // 去掉点击按钮后的边框
           color #fff
           font-size: 12px
           border-radius 20px
@@ -326,8 +328,8 @@ export default {
 
           cursor pointer
           border-radius 10px
-          display:block
-          margin:30px auto 0 auto
+          display: block
+          margin: 30px auto 0 auto
 
         .router-link-active {
           text-decoration: none;
@@ -362,11 +364,14 @@ export default {
                 left 50%
                 transform translateX(-50%)
                 margin-top 5px
+
         .pact
           margin-top 25px
-         a
-           text-decoration: none
-           color: #FE8CAA
+
+        a
+          text-decoration: none
+          color: #FE8CAA
+
 .disabled-style
   background-color #EEEEEE
   color #CCCCCC
