@@ -2,7 +2,7 @@
   <div class="home-header wrap">
     <div class="top">
       <div class="logo">
-        <img src="@/assets/login.png" alt="login"/>
+        <img src="@/assets/headerLogo.png" alt="headerLogo"/>
       </div>
       <div class="logo1">
         <span class="siteName">汝果AI门户系统</span>
@@ -224,7 +224,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .home-header {
   background-color: #d2cdcd;
   color: #333;
@@ -240,7 +240,12 @@ export default {
 
 .logo
   margin-right 303px
-
+  width 175px
+  height 144px
+  img{
+    max-height 100%
+    max-width 100%
+  }
 .logo1
   margin 40px 0 40px 0
   display flex
@@ -413,5 +418,8 @@ export default {
 .el-dropdown-menu__item:focus, .el-dropdown-menu__item:hover{
   background-color: #ffa0b4 !important;
   color: #ffffff !important;
+}
+>>> .el-dialog{
+  border-radius 10px
 }
 </style>

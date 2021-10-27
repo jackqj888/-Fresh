@@ -6,10 +6,7 @@
       </div>
       <div class="name">
         <span class="company">杭州汝果智能健康科技有限公司</span>
-        <span
-          style="width: auto; display: block; text-align: left;"
-          class="company1"
-        >
+        <span style="width: auto; display: block; text-align: left;" class="company1">
           Hangzhou Ruguo Intelligent Health Technology Co., Ltd
         </span>
       </div>
@@ -31,8 +28,7 @@
         </div>
       </div>
       <div>
-        <i></i>
-        <i></i>
+        <div class="safeCode"><span>公安备案号  -   © 2021 All Rights Reserved</span></div>
       </div>
     </div>
   </div>
@@ -61,14 +57,20 @@ export default {
         justify-content center
         lign-items center
       .logo
-        margin-top 35px
+        margin-top 25px
       .company
         font-size 35px
-        margin-top 35px
+        margin-top 25px
       .company1
         font-size 13px
         margin-bottom: 10px
         line-height: 30px
+      .image
+        width 103px
+        height 85px
+        img
+          max-width 100%
+          max-height 100%
   .scanCode
     display: flex
     justify-content center
@@ -93,4 +95,11 @@ export default {
         .phone
           font-size: 18px
           margin-right 10px
+
+.safeCode{
+  margin-top 63px
+  padding-bottom 36px
+  font-size 16px
+  color: #464B70;
+}
 </style> 

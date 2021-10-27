@@ -113,7 +113,6 @@
               <div>
                 <img :src="item.article.avatar" class="user-image"/>
               </div>
-            
               <div class="userName">
                 <span class="userName-font">{{item.article.nickname}}</span>
                 <span class="userName-time">{{item.article.createTime}}</span>
@@ -123,9 +122,8 @@
               <el-button class="btn" @click="open(item, 'kpm')">点击查看</el-button>
             </div>
           </swiper-slide>
-        
         </swiper>
-        <div style="text-align: center;">
+        <div style="text-align: center;margin-top: 30px">
           <button class=" btnLeft">←</button>
           <button class=" btnRight">→</button>
         </div>
@@ -140,23 +138,27 @@
             <span class="hjealthTreatment-go"><a class="go-tj" :href="healthUrl">点击进入 ></a></span>
           </div>
           <div class="hjealthTreatment-e-font">
-            <p class="e-font1">
+            <div class="e-font1">
               Put forward high-quality conditioning scheme for
               <br/>
               your health
-            </p>
+            </div>
+            <div style="display: flex;justify-content: right;align-items: center;flex: 1">
+              <div class="jkLeft" >&lt;</div>
+              <div class="jkPagination"></div>
+              <div class="jkRight">&gt;</div>
+            </div>
           </div>
           <div class="carousel">
             <swiper class="swiper jk" :options="jkOption">
               <swiper-slide class="swiper-slide" v-for="(item, index) in healthList" :key="index">
-                <img :src="item.imgSrcPc" class="swiper-img"/>
-                <div style="width: 176px; text-align: center; font-size: 14px">{{item.name}}</div>
+                <div class="swiper-img">
+                  <img :src="item.imgSrcPc" @click="open(item, 'health')"/>
+                </div>
+                <div style="width: 176px; text-align: center; font-size: 14px; cursor: pointer"
+                     @click="open(item, 'health')">{{item.name}}</div>
               </swiper-slide>
-              
             </swiper>
-            <div class="jkPagination"></div>
-            <div class="jkLeft" ></div>
-            <div class="jkRight" ></div>
           </div>
         </div>
       </div>
@@ -178,8 +180,8 @@
               <div class="talents-swiper">
                 <swiper class="swiper" :options="bigTalentOption">
                   <swiper-slide class="swiper-slide" v-for="(item, index) in details" :key="index">
-                    <img :src="item.imgSrc" class="talents-img"/>
-                    <p class="talents-name">{{ item.name }}</p>
+                    <img :src="item.imgSrc" class="talents-img" @click="open(item, 'talent')"/>
+                    <p class="talents-name" @click="open(item, 'talent')">{{ item.name }}</p>
                   </swiper-slide>
                 </swiper>
               </div>
@@ -187,15 +189,17 @@
             <div class="smallTalent">
               <swiper class="swiper" :options="smallTalentOption">
                 <swiper-slide class="swiper-slide" v-for="(item, index) in details" :key="index">
-                  <img :src="item.imgSrc" class="talents-img"/>
-                  <div class="talents-name">{{ item.name }}</div>
+                  <img :src="item.imgSrc" class="talents-img" @click="open(item, 'talent')"/>
+                  <div class="talents-name" @click="open(item, 'talent')">{{ item.name }}</div>
                 </swiper-slide>
               </swiper>
             </div>
           </div>
-          <div class="talent-pagination"></div>
-          <div class="talentLeft" ></div>
-          <div class="talentRight" ></div>
+          <div class="talent-pagination-box">
+            <div class="talentLeft" >&lt;</div>
+            <div class="talent-pagination"></div>
+            <div class="talentRight" >&gt;</div>
+          </div>
         </div>
       </div>
       <div class="healthCheck">
@@ -299,10 +303,9 @@ export default {
         slidesPerView: 6,
         spaceBetween: 30,
         slidesPerGroup: 6,
-        loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
-          el: '.swiper-pagination',
+          el: '.jkPagination',
           clickable: true,
         },
         navigation: {
@@ -430,7 +433,7 @@ body
   flex-direction column
   justify-content center
   lign-items center
-
+  background #ffffff
   .navigation
     display flex
     justify-content center
@@ -566,9 +569,15 @@ body
       margin-top 30px
       .go-tj
         color #333333
+    .swiper{
+      height 520px
+    }
     .swiper-container{
       width: 1200px;
       margin: 0 auto;
+      .swiper-slide:hover{
+        box-shadow: 0px 25px 33px rgba(108, 93, 211, 0.25);
+      }
       .swiper-slide{
         width 380px !important
         height 460px
@@ -622,7 +631,7 @@ body
           background #FE5782
           border none // 去掉边框
           outline none // 去掉点击按钮后的边框
-          border-radius 15px
+          border-radius 14px
         }
       }
     }
@@ -633,18 +642,20 @@ body
     border-radius 50%
     background-color #fff
     margin-right 20px
-    border 2px solid #F1F1F1
     color #FE5782
-
+    border: 2px solid #f0eeff;
   .btnRight
     width 44px
     height 44px
     border-radius 50%
-    background-color #FFDDE6
-    border none // 去掉边框
-    outline none // 去掉点击按钮后的边框
+    background-color #fff
+    outline none
     color #FE5782
-
+    border: 2px solid #f0eeff;
+  .btnLeft:hover, .btnRight:hover{
+    border none
+    background-color #FFDDE6
+  }
   .banner2
     margin 57px 0 128px 0
     text-align center
@@ -674,10 +685,30 @@ body
             color: #000000
             text-decoration: none
       .hjealthTreatment-e-font
+        display flex
         .e-font1
           font-size 16px
-      .carousel
-        margin-top -55px
+          margin-top 13px
+        .jkLeft, .jkRight{
+          width 23px
+          height 23px
+          border-radius 50%
+          background-color #FFDDE6
+          border none // 去掉边框
+          outline none // 去掉点击按钮后的边框
+          color #FE5782
+          text-align center
+          cursor pointer
+        }
+        .jkLeft:hover , .jkRight:hover {
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+        .jkLeft{
+          margin-right 10px
+        }
+        .jkPagination{
+          margin-right 20px
+        }
 
   .talents
     display flex
@@ -685,7 +716,7 @@ body
 
     .talents-box
       width 1200px
-      height 513px
+      height 535px
       background-color #FFDDE6
 
       .talents-title
@@ -724,6 +755,7 @@ body
           height 231px
           border-radius 15px
           margin-right 27px
+          cursor pointer
 
         .talents-name
           width: 180px
@@ -732,6 +764,7 @@ body
           margin 0
           margin-top 15px
           font-size 16px
+          cursor pointer
 
   .healthCheck
     display flex
@@ -751,11 +784,13 @@ body
     .e-font
       font-size 16px
       margin 2px
+      text-align center
+      color: rgba(0, 0, 0, 0.6);
 
     .go
       font-size 22px
       text-align center
-      margin 30px 0 66px 0
+      margin 20px 0 56px 0
 
     .evaluate
       display flex
@@ -771,9 +806,8 @@ body
         border none // 去掉边框
         outline none // 去掉点击按钮后的边框
         margin-bottom 93px
-        box-shadow 5px 20px 10px 8px rgba(207, 202, 241, .5)
-
-
+        cursor pointer
+        border: 2px solid #F0EEFF;
         .evaluate-title
           font-size 22px
           font-family PingFang SC
@@ -816,7 +850,8 @@ body
             color #3D3D3D
             text-align left
             margin 14px 0 0 0
-
+      .evaluate-box:hover
+        box-shadow 5px 20px 10px 8px rgba(207, 202, 241, .5)
 .courseTitle
   margin 0 0 0 10px
   font-size 16px
@@ -836,6 +871,7 @@ body
   width: 176px;
   height: 247px;
   margin 0 7px
+  cursor pointer
 
 .swiper-jp, .swiper-tj
   width: 505px
@@ -904,47 +940,12 @@ body
 }
 .jk{
   img {
-    width 176px;
-    height 247px;
-    border-radius 10px;
+    width 100%
+    height 100%
+    border-radius 10px
   }
   .swiper-slide{
-    margin-top: 100px;
-  }
-  .swiper-button-prev {
-    left: 80%;
-  }
-  .swiper-button-prev, .swiper-button-next {
-    top: 10%;
-  }
-  .swiper-pagination {
-    width: 200px;
-    height: 20px;
-    left: 85%;
-    top: 5%;
-    .swiper-pagination-bullet{
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #FFDDE6;
-    }
-    .swiper-pagination-bullet-active{
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #FE5782;
-    }
-  }
-  .swiper-button-prev, .swiper-button-next{
-    width 23px
-    height 23px
-    border-radius 50%
-    background-color #FE5782
-    border 2px solid #F1F1F1
-    color #fff
-  }
-  .swiper-button-prev:after, .swiper-button-next:after{
-    font-size :10px
+    margin-top: 50px;
   }
 }
   .smallTalent{
@@ -970,4 +971,47 @@ body
       }
     }
   }
+  .talent-pagination-box{
+    display flex
+    color #FE5782
+    justify-content center
+    margin-bottom 20xp
+    .talent-pagination{
+      text-align center
+      width auto
+    }
+    .talentLeft{
+      width 22px
+      height 22px
+      border-radius 50%
+      background-color #FFDDE6
+      margin-right 20px
+      border none
+      color #FE5782
+      text-align center
+    }
+    .talentRight{
+      width 22px
+      height 22px
+      border-radius 50%
+      background-color #FFDDE6
+      border none // 去掉边框
+      outline none // 去掉点击按钮后的边框
+      color #FE5782
+      margin-left 30px
+      text-align center
+    }
+    .talentLeft:hover , .talentRight:hover {
+      background: rgba(254, 87, 130, 0.2);
+      cursor pointer
+    }
+  }
+>>> .swiper-pagination-bullet{
+  background: #fff
+  opacity 1
+  margin-left 10px
+}
+>>> .swiper-pagination-bullet-active{
+  background: #FE5782
+}
 </style>
