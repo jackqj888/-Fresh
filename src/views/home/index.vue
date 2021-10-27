@@ -2,45 +2,37 @@
   <div class="wrapper">
     <div class="home-head"></div>
     <div class="home-container">
-      <Carousel 
-      :banner="homeBanner"
-      ></Carousel>
-      <div class="navigation">
-        <div class="groups" @click="goTo('talent')">
-          <img src="@/assets/groups.png" alt="" class="image"/>
-          <span class="item-name">人才</span>
-          <span class="item-title">Personnel</span>
-        </div>
-        <div class="popularScience" @click="goTo('kpm')">
-          <img src="@/assets/popularScience.png" alt="" class="image"/>
-          <span class="item-name">科普</span>
-          <span class="item-title">Popularization of science</span>
-        </div>
-        <div class="healthy" @click="goTo('health')">
-          <img src="@/assets/healthy.png" alt="" class="image"/>
-          <span class="item-name">健康</span>
-          <span class="item-title">Healthy</span>
-        </div>
-        <div class="test" @click="goTo('kaopei')">
-          <img src="@/assets/test.png" alt="" class="image"/>
-          <span class="item-name">考试</span>
-          <span class="item-title">Examination</span>
-        </div>
-        <div class="mall" @click="goTo('mall')">
-          <img src="@/assets/mall.png" alt="" class="image"/>
-          <span class="item-name">商城</span>
-          <span class="item-title">Shopping Mall</span>
-        </div>
+      <div class="banner">
+        <swiper class="swiper" :options="headerOption">
+          <swiper-slide v-for="(item, index) in homeBanner" :key="index">
+            <img :src="item.bannerSrc" alt="" class="image"/>
+          </swiper-slide>
+        </swiper>
+        <div class="headerPagination" slot="pagination"></div>
+      </div>
+      <div class="navigation" style="margin: 75px auto 0 auto">
+        <swiper class="swiper jk" :options="navigationOption">
+          <swiper-slide class="swiper-slide" v-for="(item, index) in navigationList" :key="index">
+            <div class="groups" @click="navigationTo(item)">
+              <img :src="item.imgPcSrc" alt="" class="image"/>
+              <div class="item-name">{{item.title}}</div>
+<!--                <div class="item-title">Personnel</div>-->
+            </div>
+          </swiper-slide>
+        </swiper>
+        <div class="navigationPagination"></div>
       </div>
       <div class="courseCommodity">
-        <div class="course">
-          <div class="course-title">
-            <span class="course-font">精品课程</span>
-            <span class="course-font1">
+        <el-row :gutter="24">
+          <el-col :lg="12" :md="24">
+            <div class="course">
+              <div class="course-title">
+                <span class="course-font">精品课程</span>
+                <span class="course-font1">
               <a class="go-jp" :href="kaopeiUrl">进入考培 ></a>
             </span>
-          </div>
-          <div class="course-introduction">
+              </div>
+              <div class="course-introduction">
             <span class="e-font">
               The examination and training system has launched high-
               <br/>
@@ -48,31 +40,32 @@
               <br/>
               examination and training
             </span>
-            <img src="@/assets/cirlces.png" class="image1"/>
-          </div>
-          <div class="swiper-jp">
-            <swiper class="swiper jp" ref="swiper" :options="jpOption">
-              <swiper-slide class="swiper-slide" v-for="(item, index) in course" :key="index">
-                <img :src="item.imgSrc" class="swiper-jp-image" @click="open(item, 'kaopei')"/>
-                <span class="courseTitle" @click="open(item, 'kaopei')">{{ item.name }}</span>
-                <span class="course-price" @click="open(item , 'kaopei')">￥ {{ item.price }}</span>
-              </swiper-slide>
-
-            </swiper>
-            <div class="swiper-button-prev swiper-button-prev1"></div>
-            <div class="swiper-button-next swiper-button-next1"></div>
-          </div>
-        </div>
-        <div class="commodity">
-          <div class="commodity-title">
-            <span class="commodity-font">
-              推荐商品
-            </span>
-            <span class="commodity-font1">
-              <a class="go-tj" :href="mallUrl">进入商城 ></a>
-            </span>
-          </div>
-          <div class="commodity-introduction">
+                <img src="@/assets/cirlces.png" class="image1"/>
+              </div>
+              <div class="swiper-jp">
+                <swiper class="swiper jp" ref="swiper" :options="jpOption">
+                  <swiper-slide class="swiper-slide" v-for="(item, index) in course" :key="index">
+                    <img :src="item.imgSrc" class="swiper-jp-image" @click="open(item, 'kaopei')"/>
+                    <span class="courseTitle" @click="open(item, 'kaopei')">{{ item.name }}</span>
+                    <span class="course-price" @click="open(item , 'kaopei')">￥ {{ item.price }}</span>
+                  </swiper-slide>
+                </swiper>
+                <div class="swiper-button-prev swiper-button-prev1"></div>
+                <div class="swiper-button-next swiper-button-next1"></div>
+              </div>
+            </div>
+          </el-col>
+          <el-col :lg="12" :md="24">
+            <div class="commodity">
+              <div class="commodity-title">
+                <span class="commodity-font">
+                  推荐商品
+                </span>
+                    <span class="commodity-font1">
+                  <a class="go-tj" :href="mallUrl">进入商城 ></a>
+                </span>
+              </div>
+              <div class="commodity-introduction">
             <span class="e-font">
               Shopping mall system shelves recommended
               <br/>
@@ -80,22 +73,23 @@
               <br/>
               shopping
             </span>
-            <img src="@/assets/cirlces1.png" class="image2"/>
-          </div>
+                <img src="@/assets/cirlces1.png" class="image2"/>
+              </div>
+              <div class="swiper-tj">
+                <swiper class="swiper tj" ref="swiper" :options="scOption">
+                  <swiper-slide class="swiper-slide" v-for="(item, index) in commodity" :key="index">
+                    <img :src="item.imgSrc" class="swiper-tj-image" @click="open(item, 'mall')"/>
+                    <span class="courseTitle" @click="open(item , 'mall')">{{ item.name }}</span>
+                    <span class="course-price" @click="open(item, 'mall')">￥ {{ item.price }}</span>
+                  </swiper-slide>
 
-          <div class="swiper-tj">
-            <swiper class="swiper tj" ref="swiper" :options="scOption">
-              <swiper-slide class="swiper-slide" v-for="(item, index) in commodity" :key="index">
-                <img :src="item.imgSrc" class="swiper-tj-image" @click="open(item, 'mall')"/>
-                <span class="courseTitle" @click="open(item , 'mall')">{{ item.name }}</span>
-                <span class="course-price" @click="open(item, 'mall')">￥ {{ item.price }}</span>
-              </swiper-slide>
-
-            </swiper>
-            <div class="swiper-button-prev swiper-button-prev2"></div>
-            <div class="swiper-button-next swiper-button-next2"></div>
-          </div>
-        </div>
+                </swiper>
+                <div class="swiper-button-prev swiper-button-prev2"></div>
+                <div class="swiper-button-next swiper-button-next2"></div>
+              </div>
+            </div>
+          </el-col>
+        </el-row>
       </div>
       <div class="knowledge">
         <div>
@@ -131,13 +125,13 @@
       <div class="banner2">
         <img src="@/assets/banner2.png"/>
       </div>
-      <div class="hjealthTreatment">
-        <div class="hjealthTreatment-box">
-          <div class="hjealthTreatment-title">
-            <span class="hjealthTreatment-font">健康疗程</span>
-            <span class="hjealthTreatment-go"><a class="go-tj" :href="healthUrl">点击进入 ></a></span>
+      <div class="healthTreatment">
+        <div class="healthTreatment-box">
+          <div class="healthTreatment-title">
+            <span class="healthTreatment-font">健康疗程</span>
+            <span class="healthTreatment-go"><a class="go-tj" :href="healthUrl">点击进入 ></a></span>
           </div>
-          <div class="hjealthTreatment-e-font">
+          <div class="healthTreatment-e-font">
             <div class="e-font1">
               Put forward high-quality conditioning scheme for
               <br/>
@@ -212,18 +206,22 @@
         <p class="go">
           <a class="go-jk" :href="healthUrl">点击进入 ></a></p>
         <div class="evaluate">
-          <div class="evaluate-box" v-for="(item,index) in evaluate" :key="index">
-            <p class="evaluate-title">{{ item.data.title }}</p>
-            <div class="evaluate-Introduction" @click=goHealthTo(item)>
-              <img :src="item.imgSrc" class="cirlces4"/>
-              <div class="evaluate-font">
-                <p class="evaluate-cn">{{ item.data.summary }}</p>
-                <p class="evaluate-en">
-                  Infrared risk self-test, are you really healthy?
-                </p>
+          <el-row :gutter="24">
+            <el-col :sm="24" :md="8" v-for="(item,index) in evaluate" :key="index">
+              <div class="evaluate-box">
+                <p class="evaluate-title">{{ item.data.title }}</p>
+                <div class="evaluate-Introduction" @click=goHealthTo(item)>
+                  <img :src="item.imgSrc" class="cirlces4"/>
+                  <div class="evaluate-font">
+                    <p class="evaluate-cn">{{ item.data.summary }}</p>
+                    <p class="evaluate-en">
+                      Infrared risk self-test, are you really healthy?
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </el-col>
+          </el-row>
         </div>
       </div>
     </div>
@@ -233,30 +231,28 @@
 
 <script>
 import api from '@/api'
-import Carousel from '@/components/Carousel.vue'
-
 
 export default {
   name: 'home',
-  components: {
-    Carousel,
-  },
+  components: {},
   data() {
     return {
       ProductList: [],
       headerOption: {
-        //显示分页
         pagination: {
-          el: '.swiper-pagination',
-        },
-        //自动轮播
-        autoplay: {
-          delay: 2000,
-          //当用户滑动图片后继续自动轮播
-          disableOnInteraction: false,
+          el: '.headerPagination',
         },
         //开启循环模式
         loop: true,
+      },
+      navigationOption: {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        slidesPerGroup: 5,
+        pagination: {
+          el: '.navigationPagination',
+          clickable: true,
+        },
       },
       jpOption: {
         slidesPerView: 4,
@@ -266,13 +262,6 @@ export default {
           nextEl: '.swiper-button-next1',
           prevEl: '.swiper-button-prev1',
         },
-        on: {
-          resize: () => {
-            this.$refs.swiper.$swiper.changeDirection(
-                window.innerWidth <= 960 ? 'vertical' : 'horizontal',
-            )
-          },
-        },
       },
       scOption: {
         slidesPerView: 4,
@@ -281,13 +270,6 @@ export default {
         navigation: {
           nextEl: '.swiper-button-next2',
           prevEl: '.swiper-button-prev2',
-        },
-        on: {
-          resize: () => {
-            this.$refs.swiper.$swiper.changeDirection(
-                window.innerWidth <= 960 ? 'vertical' : 'horizontal',
-            )
-          },
         },
       },
       kpOption: {
@@ -353,7 +335,8 @@ export default {
       kpmUrl: "",
       healthUrl: "",
       talentUrl: "",
-      healthList: []
+      healthList: [],
+      navigationList: []
     }
   },
   created() {
@@ -367,6 +350,7 @@ export default {
         this.data = res
         this.channels = this.data.channels
         this.homeBanner = this.data.banners
+        console.log(this.homeBanner)
         this.channels.map(item => {
           if(item.channel.appCode == 'kaopei'){
             this.course = item.details
@@ -386,8 +370,15 @@ export default {
             this.talentUrl = item.channel.targetUrlPc
           }
         })
-        console.log(this.kpmList)
+        this.data.navigation.map(item => {
+          item.map(eItem => {
+            this.navigationList.push(eItem)
+          })
+        })
       })
+    },
+    navigationTo(item){
+      window.open(item.url, '_blank')
     },
     goTo(appCode){
       this.channels.map(item => {
@@ -434,47 +425,83 @@ body
   justify-content center
   lign-items center
   background #ffffff
-  .navigation
-    display flex
-    justify-content center
-    align-items center
+  .banner{
     width 100%
-    margin-top: 110px
-
-
+    height 500px
+    .swiper-container{
+      height 100%
+      width 100%
+      img{
+        object-fit: cover
+      }
+    }
+    >>> .swiper-pagination-bullets{
+      margin-top 47px
+      text-align center
+      .swiper-pagination-bullet{
+        background  #FBD0D0
+      }
+      .swiper-pagination-bullet-active{
+        background #FE5782
+      }
+    }
+  }
+  .navigation
+    width 1200px
+    margin-top: 75px
     .groups, .popularScience, .healthy, .test, .mall
-      display flex
-      flex-direction column
-      justify-content center
-      align-items center
       cursor pointer
+      text-align center
       .image
         width 66px
         height 66px
-        margin 0 80px
-
       .item-name
         font-size: 30px
         line-height 22px
-
         font-family PingFang SC
         margin-bottom 8px
-        margin 30px 80px 0 80px
-
+        margin-top 28px
       .item-title
         font-size 20px
         font-family PingFang SC
         color #AAAAAA
-        line-height 22px
+        line-height 22p
         font-weight bold
-        margin-top 10px
-        margin 30px 80px 0 80px
-
+        margin-top 20px
+    >>> .swiper-pagination-clickable{
+      text-align center
+      margin-top 60px
+      .swiper-pagination-bullet{
+        background  #FBD0D0
+      }
+      .swiper-pagination-bullet-active{
+        background #FE5782
+      }
+    }
+  @media screen and ( max-width: 980px ) {
+    .navigation{
+      min-width 1200px
+      .groups{
+        .image{
+          width 40px
+          height 40px
+        }
+        .item-name {
+          font-size 20px
+          margin-top 15px
+        }
+        .item-title{
+          font-size 12px
+          margin-top 10px
+          margin-bottom 10px
+        }
+      }
+    }
+  }
   .courseCommodity
     display flex
     justify-content center
-    margin-top 157px
-
+    margin-top 83px
     .course
       width 588px
       height 329px
@@ -485,7 +512,7 @@ body
       .course-title
         display flex
         justify-content space-between
-        margin 25px 38px 2px 49px
+        padding 25px 38px 2px 49px
 
       .course-font
         font-size 30px
@@ -520,7 +547,7 @@ body
     .commodity-title
       display flex
       justify-content space-between
-      margin 25px 24px 2px 49px
+      padding 25px 24px 2px 49px
 
       .commodity-font
         font-size 30px
@@ -543,7 +570,16 @@ body
       width 20px
       height 45px
       margin-right 48px
-
+  @media screen and ( max-width: 1200px ) {
+    .courseCommodity{
+      .course, .commodity{
+        margin 0 auto
+      }
+      .commodity{
+        margin-top 20px
+      }
+    }
+  }
   .knowledge
     display flex
     flex-direction column
@@ -574,6 +610,7 @@ body
     }
     .swiper-container{
       width: 1200px;
+      min-width 1200px
       margin: 0 auto;
       .swiper-slide:hover{
         box-shadow: 0px 25px 33px rgba(108, 93, 211, 0.25);
@@ -660,23 +697,24 @@ body
     margin 57px 0 128px 0
     text-align center
 
-  .hjealthTreatment
+  .healthTreatment
     display flex
     justify-content center
 
-    .hjealthTreatment-box
+    .healthTreatment-box
       width 1200px
+      min-width 1200px
       height 513px
 
-      .hjealthTreatment-title
+      .healthTreatment-title
         align-items left
 
-        .hjealthTreatment-font
+        .healthTreatment-font
           font-size 30px
           font-family PingFang SC
           font-weight bold
 
-        .hjealthTreatment-go
+        .healthTreatment-go
           margin 25px 30px 0 0
           font-size 22px
           text-align center
@@ -684,7 +722,7 @@ body
             margin-left 40px
             color: #000000
             text-decoration: none
-      .hjealthTreatment-e-font
+      .healthTreatment-e-font
         display flex
         .e-font1
           font-size 16px
@@ -708,6 +746,12 @@ body
         }
         .jkPagination{
           margin-right 20px
+          >>>.swiper-pagination-bullet{
+            background  #FBD0D0
+          }
+          >>>.swiper-pagination-bullet-active{
+            background #FE5782
+          }
         }
 
   .talents
@@ -716,6 +760,7 @@ body
 
     .talents-box
       width 1200px
+      min-width 1200px
       height 535px
       background-color #FFDDE6
 
@@ -793,10 +838,7 @@ body
       margin 20px 0 56px 0
 
     .evaluate
-      display flex
-      justify-content center
-
-
+      width 1400px
       .evaluate-box
         width 451px
         height 143px
@@ -852,6 +894,14 @@ body
             margin 14px 0 0 0
       .evaluate-box:hover
         box-shadow 5px 20px 10px 8px rgba(207, 202, 241, .5)
+    @media screen and ( max-width: 992px ) {
+      .evaluate{
+        max-width: 500px;
+        .evaluate-box{
+          margin 10px auto 0 auto
+        }
+      }
+    }
 .courseTitle
   margin 0 0 0 10px
   font-size 16px

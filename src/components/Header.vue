@@ -1,70 +1,70 @@
 <template>
   <div class="home-header wrap">
-    <div class="top">
-      <div class="logo">
+    <el-row class="top">
+      <el-col :md="8" :sm="24"><div class="logo">
         <img src="@/assets/headerLogo.png" alt="headerLogo"/>
-      </div>
-      <div class="logo1">
+      </div></el-col>
+      <el-col :md="8" :sm="24"><div class="logo1">
         <span class="siteName">汝果AI门户系统</span>
         <span class="siteName1">Ruguo AI portal system</span>
-      </div>
-      <div class="user" v-if="uInfo1 === null">
+      </div></el-col>
+      <el-col :md="8" :sm="24"><div class="user" v-if="uInfo1 === null">
         <el-button class="btn" @click="goLogin('mobile')">快速登入</el-button>
         <el-button class="btn1" icon="el-icon-user" @click="goLogin('password')">账号登入</el-button>
       </div>
-      <div v-else class="userName">
-        <img :src="avatar" alt="" class="image"/>
-        <span class="username">{{ uInfo1.username }}</span>
+        <div v-else class="userName">
+          <img :src="avatar" alt="" class="image"/>
+          <span class="username">{{ uInfo1.username }}</span>
 
-        <el-dropdown placement="bottom">
-          <el-button type="primary" class="my">
-            我的订单
-            <i class="el-icon-arrow-down el-icon--right"></i>
-          </el-button>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>我的课程</el-dropdown-item>
-            <el-dropdown-item>我的简历</el-dropdown-item>
-            <el-dropdown-item @click.native="dialogVisible = true">
-              修改密码
-            </el-dropdown-item>
-            <el-dropdown-item @click.native="logout">退出登录</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-      </div>
-      <el-dialog title="修改密码" :visible.sync="dialogVisible" width="360px" @close="dialogVisibleClosed">
-        <el-form :model="addForm" :rules="addFormRules" ref="addForm"  class="formPosition">
-          <el-form-item prop="mobile">
-            <el-input placeholder="手机号码" v-model="addForm.mobile" class="input-with-select">
-              <el-select v-model="select" slot="prepend" placeholder="+86">
-                <el-option label="+86" value="1"></el-option>
-              </el-select>
-            </el-input>
-          </el-form-item>
-          <el-form-item prop="verificationCode">
-            <el-input class="put" v-model="addForm.verificationCode" placeholder="短信验证码" ></el-input>
-            <el-button
-                class="verificationCode"
-                @click="getCode"
-                :class="{ 'disabled-style': getCodeBtnDisable }"
-            >
-              {{ verificationCode1 }}
+          <el-dropdown placement="bottom">
+            <el-button type="primary" class="my">
+              我的订单
+              <i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
-          </el-form-item>
-          <el-form-item prop="newPassword">
-            <el-input class="put" v-model="addForm.newPassword" placeholder="输入新密码" type="password"></el-input>
-          </el-form-item>
-          <el-form-item prop="confirmNewPassword">
-            <el-input class="put" v-model="addForm.confirmNewPassword" placeholder="确认新密码" type="password"
-            @blur="blur"></el-input>
-          </el-form-item>
-        </el-form>
-        <span slot="footer" class="dialog-footer">
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="goTo('study')">我的课程</el-dropdown-item>
+              <el-dropdown-item @click.native="goTo('myPage')">我的简历</el-dropdown-item>
+              <el-dropdown-item @click.native="dialogVisible = true">
+                修改密码
+              </el-dropdown-item>
+              <el-dropdown-item @click.native="logout">退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div></el-col>
+    </el-row>
+    <el-dialog title="修改密码" :visible.sync="dialogVisible" width="360px" @close="dialogVisibleClosed">
+      <el-form :model="addForm" :rules="addFormRules" ref="addForm"  class="formPosition">
+        <el-form-item prop="mobile">
+          <el-input placeholder="手机号码" v-model="addForm.mobile" class="input-with-select">
+            <el-select v-model="select" slot="prepend" placeholder="+86">
+              <el-option label="+86" value="1"></el-option>
+            </el-select>
+          </el-input>
+        </el-form-item>
+        <el-form-item prop="verificationCode">
+          <el-input class="put" v-model="addForm.verificationCode" placeholder="短信验证码" ></el-input>
+          <el-button
+              class="verificationCode"
+              @click="getCode"
+              :class="{ 'disabled-style': getCodeBtnDisable }"
+          >
+            {{ verificationCode1 }}
+          </el-button>
+        </el-form-item>
+        <el-form-item prop="newPassword">
+          <el-input class="put" v-model="addForm.newPassword" placeholder="输入新密码" type="password"></el-input>
+        </el-form-item>
+        <el-form-item prop="confirmNewPassword">
+          <el-input class="put" v-model="addForm.confirmNewPassword" placeholder="确认新密码" type="password"
+                    @blur="blur"></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
           <el-button class="btn5" type="primary" @click="onSubmit('addForm')" :disabled="disabled">
             完 成
           </el-button>
         </span>
-      </el-dialog>
-    </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -190,6 +190,13 @@ export default {
         }
       })
     },
+    goTo(type){
+      if(type === 'study'){
+        window.open('http://kfxx.smtbs.cn/kaopei/pages/myStudy/index', '_blank')
+      } else {
+        window.open('http://kfxx.smtbs.cn/talent/pages/my/post', '_blank')
+      }
+    },
     logout() {
       // 这里实现登出逻辑
       api.logout.getLogout().then(() => {
@@ -226,20 +233,17 @@ export default {
 
 <style lang="stylus" scoped>
 .home-header {
-  background-color: #d2cdcd;
   color: #333;
-
   line-height: 60px;
-
+  background-color: #fff
 }
 
 .top
-  display: flex;
   justify-content: center
-  background-color: #fff
+  max-width: 1200px
+  margin: 0 auto
 
 .logo
-  margin-right 303px
   width 175px
   height 144px
   img{
@@ -247,18 +251,16 @@ export default {
     max-width 100%
   }
 .logo1
-  margin 40px 0 40px 0
   display flex
   flex-direction column
-  justify-content center
   lign-items center
-
-  margin-right 170px
 
   .siteName
     font-size 30px
     line-height: 30px;
     margin-bottom 10px
+    margin-top 40px
+    text-align center
 
   .siteName1
     font-size 13px
@@ -421,5 +423,39 @@ export default {
 }
 >>> .el-dialog{
   border-radius 10px
+}
+  @media screen and ( max-width: 980px ) {
+    .top{
+      .logo{
+        margin 0 auto
+      }
+      .siteName{
+        margin-top 0
+      }
+      .userName{
+        margin-bottom 30px
+      }
+    }
+  }@media screen and ( max-width: 414px ) {
+  .top{
+    .userName{
+      .image {
+        width 40px
+        height 40px
+      }
+      .username{
+        font-size 14px
+        line-height 40px
+      }
+      .my{
+        width 120px
+        height 40px
+        font-size 14px
+      }
+      .el-dropdown{
+        top: -10px
+      }
+    }
+  }
 }
 </style>
