@@ -996,31 +996,20 @@ body
 //   }
 // }
 
-// #pa >>> .swiper-pagination-bullet {
-//     width: 20px;
-//     height: 20px;
-//     text-align: center;
-//     line-height: 20px;
-//     font-size: 12px;
-//     color:#fff;
-//     opacity: 1;
-//     background: rgba(0,0,0,0.2);
-//   }
-//   #pa >>> .swiper-pagination-bullet-active {
-//     color:#fff;
-//     background: #ff51d6;
-//   }
-.swiper-pagination-bullet
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #FFDDE6;
-  .swiper-pagination-bullet-active
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #FE5782;
-    
+#pa >>> .swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color:#000;
+    opacity: 1;
+    background: rgba(0,0,0,0.2);
+  }
+  #pa >>> .swiper-pagination-bullet-active {
+    color:#fff;
+    background: #ff51d6;
+  }
 
 .rcbtn
 

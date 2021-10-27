@@ -1010,17 +1010,6 @@ body
 //     color:#fff;
 //     background: #ff51d6;
 //   }
-.swiper-pagination-bullet
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #FFDDE6;
-  .swiper-pagination-bullet-active
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #FE5782;
-    
 
 .rcbtn
 

@@ -996,31 +996,20 @@ body
 //   }
 // }
 
-// #pa >>> .swiper-pagination-bullet {
-//     width: 20px;
-//     height: 20px;
-//     text-align: center;
-//     line-height: 20px;
-//     font-size: 12px;
-//     color:#fff;
-//     opacity: 1;
-//     background: rgba(0,0,0,0.2);
-//   }
-//   #pa >>> .swiper-pagination-bullet-active {
-//     color:#fff;
-//     background: #ff51d6;
-//   }
-.swiper-pagination-bullet
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #FFDDE6;
-  .swiper-pagination-bullet-active
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #FE5782;
-    
+#pa >>> .swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color:#000;
+    opacity: 1;
+    background: rgba(0,0,0,0.2);
+  }
+  #pa >>> .swiper-pagination-bullet-active {
+    color:#fff;
+    background: #ff51d6;
+  }
 
 .rcbtn
 
@@ -1035,22 +1024,19 @@ body
   width 22px
   height 22px
   border-radius 50%
-  background-color #FFC2D2
+  background-color #fff
   margin-right 20px
   border 2px solid #F1F1F1
   color #FE5782
-  border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
 
 .rcRight
   width 22px
   height 22px
   border-radius 50%
-  background-color #FFC2D2
+  background-color #fff
   border none // 去掉边框
   outline none // 去掉点击按钮后的边框
   color #FE5782
-  margin-left 30px
 
 .jkbtn
   height 50px

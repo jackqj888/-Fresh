@@ -1,0 +1,239 @@
+[33mcommit 1e575e273ae2ee21702df21284d33d5f8707f1ce[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 42a34dc 58196d9
+Author: jackqj888 <11325176@qq.com>
+Date:   Wed Oct 27 00:00:13 2021 +0800
+
+    轮播图按键基本完成
+
+[33mcommit 42a34dc927ccdb8da5805f425b43241b6c2cc00b[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 26 23:19:44 2021 +0800
+
+    轮播图按键功能基本完成
+
+[33mcommit 58196d9e3a784bb20b22e0a2da8ef3723b5962f5[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: haoming <291053702@qq.com>
+Date:   Tue Oct 26 23:04:06 2021 +0800
+
+    精选人才滑动插件，头部avatar获取
+
+[33mcommit aff2b92239466fffe9969c52a3289320ff490265[m
+Author: haoming <291053702@qq.com>
+Date:   Tue Oct 26 21:45:47 2021 +0800
+
+    快速登录和账号登录带参跳转，dropdown menu修改hover样式，
+
+[33mcommit fa4de8c58e1ad313ae187f739924050a2ee5b5df[m
+Merge: 17f293b 642a978
+Author: haoming <291053702@qq.com>
+Date:   Tue Oct 26 20:55:20 2021 +0800
+
+    Merge branch 'master' of https://github.com/jackqj888/-Fresh
+
+[33mcommit 17f293b7948e7be9602578f84fccbb126f1267ca[m
+Merge: 0290556 908c9e7
+Author: haoming <291053702@qq.com>
+Date:   Tue Oct 26 20:55:12 2021 +0800
+
+    merge
+
+[33mcommit 642a978b541910c65cb04959128615a45b080adb[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 26 20:09:46 2021 +0800
+
+    轮播图按键部分完成
+
+[33mcommit 908c9e7d33009aafaa3e9ca26d7cb6d0e2ab7bd8[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 26 17:51:02 2021 +0800
+
+    home修改轮播图
+
+[33mcommit 0290556951eab2c2367136796f2e79a76f2abf0d[m
+Author: haoming <291053702@qq.com>
+Date:   Tue Oct 26 17:43:44 2021 +0800
+
+    登录验证，接口对接
+
+[33mcommit b964fad5bf7cb8da38f24c0c5f90ce3d1471243b[m
+Author: haoming <291053702@qq.com>
+Date:   Tue Oct 26 17:21:22 2021 +0800
+
+    修改密码 逻辑+接口对接
+
+[33mcommit 8bc6a85ecec61583f71c314f6a66cbdb71497dfd[m
+Merge: d8be736 a33ccec
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 26 15:38:22 2021 +0800
+
+    Merge branch 'master' of https://github.com/jackqj888/-Fresh
+
+[33mcommit d8be736b650c932b7c93bc72d310a8c3728d4c8e[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 26 15:38:13 2021 +0800
+
+    退出完成
+
+[33mcommit a33ccec2aec78d8d858c907b2f1154f906d69e87[m
+Merge: 56fac5b 29e281d
+Author: haoming <291053702@qq.com>
+Date:   Tue Oct 26 15:35:06 2021 +0800
+
+    科普知识 数据接入
+
+[33mcommit 29e281d902204decf411adb1fd7bddcce1763606[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 26 15:31:59 2021 +0800
+
+    退出完成
+
+[33mcommit 56fac5b1e407b0a18a98775d4aabc1dc9ba22ec6[m
+Author: haoming <291053702@qq.com>
+Date:   Tue Oct 26 15:29:29 2021 +0800
+
+    科普知识 数据接入
+
+[33mcommit 930fc9d1612af9665b17b600c5d159ebeb7cb153[m
+Merge: 0f31a14 28cd963
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 26 14:45:22 2021 +0800
+
+    Merge branch 'master' of https://github.com/jackqj888/-Fresh
+
+[33mcommit 0f31a14d6e84ae7c4769b6905e9b81102553be2d[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 26 14:44:06 2021 +0800
+
+    退出完成
+
+[33mcommit 28cd963bdf5a588643dd741a59b35cc9dab874cc[m
+Author: haoming <291053702@qq.com>
+Date:   Tue Oct 26 12:08:02 2021 +0800
+
+    精品课程，推荐商品，健康监测等数据接入+跳转添加
+
+[33mcommit 5dd23d9f97f4a161cd5c3d6c7ff0d93d3b0a58f1[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 26 09:04:32 2021 +0800
+
+    修改密码样式基本完成
+
+[33mcommit 89fdb7a07ddb8ea282af6c1788ef476bd4299c29[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Mon Oct 25 18:04:22 2021 +0800
+
+    login基本完成
+
+[33mcommit 41375805096765ff5f2a54dc3aa9c008c49d7393[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Sun Oct 24 23:56:13 2021 +0800
+
+    首页继续完善
+
+[33mcommit 295df0f222a93f404922ed6d22e21d3fe06c5e12[m[33m ([m[1;31morigin/rumeitang[m[33m, [m[1;32mrumeitang[m[33m)[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Sun Oct 24 16:41:03 2021 +0800
+
+    首页基本完成
+
+[33mcommit 89fef8a43d530fafd2d61808538b70c47ff964e6[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Sat Oct 23 23:28:25 2021 +0800
+
+    home 页面基本完成
+
+[33mcommit fcc709c474469963cf3b5107ceb068cca83cee1b[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Thu Oct 21 17:57:23 2021 +0800
+
+    login和首页部分完成
+
+[33mcommit 83ad515e5461587e38ef92369a4a7c5478d81efc[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 19 15:45:23 2021 +0800
+
+    购物车页面完成
+
+[33mcommit 0cf2aa0e675f8cf2991cb84838384644d6a44749[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Wed Oct 13 17:53:35 2021 +0800
+
+    购物车基本完成
+
+[33mcommit 9b23ddc6c6a9f987cd06eb969d5fa48701936c4f[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Oct 12 17:17:17 2021 +0800
+
+    购物车开始写逻辑
+
+[33mcommit e06b6c63d1ad4bb148c43f96f0f7da28966972f6[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Mon Oct 11 17:50:00 2021 +0800
+
+    购物车样式完成
+
+[33mcommit d8d8fa1a2e8947640eca5d9ce7b78e640abccad8[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Sat Oct 9 17:27:10 2021 +0800
+
+    产品列表页面完成
+
+[33mcommit 9f6e143e861f063796a14e3e0c0d1a613f81f8c6[m
+Author: haoming <291053702@qq.com>
+Date:   Wed Oct 6 10:31:31 2021 +0800
+
+    实现登录，记住用户名逻辑
+
+[33mcommit eef031cdd3c52ea39d283830a5c4d5e236f1ec29[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Thu Sep 30 18:01:26 2021 +0800
+
+    一阶段功能完成
+
+[33mcommit 50bc3420708c3a875a9815b279b55dd267a8cd41[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Wed Sep 29 15:51:49 2021 +0800
+
+    详情页面完成
+
+[33mcommit deed06165de40c40833b42a0f39e21a1c0264dd4[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Wed Sep 29 12:34:18 2021 +0800
+
+    详情页面初步完成
+
+[33mcommit d257818a46d0aa4d07470e7c259c33f0c6012f1c[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Tue Sep 28 17:11:13 2021 +0800
+
+    列表页完成
+
+[33mcommit 6e8e9f50bb28030662cc5209ab37d1e0ecf67566[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Mon Sep 27 17:56:25 2021 +0800
+
+    商品列表页框架完成
+
+[33mcommit 4274e53b02f99b9119a40b8c046389158c4a345f[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Sun Sep 26 17:49:16 2021 +0800
+
+    配置好element
+
+[33mcommit 8270a464496c935773c1a2f75fb07657987edab1[m
+Author: haoming <291053702@qq.com>
+Date:   Sun Sep 26 16:27:07 2021 +0800
+
+    登录
+
+[33mcommit c1258e6eb74ed05fa60141fb7c804ee155cd513d[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Wed Sep 22 17:37:06 2021 +0800
+
+    配置好element
+
+[33mcommit 892e3dd6441a91af7990bbb82c7ef884e25714f8[m
+Author: jackqj888 <11325176@qq.com>
+Date:   Wed Sep 22 16:33:40 2021 +0800
+
+    慕慕生鲜
