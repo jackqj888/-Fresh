@@ -10,7 +10,7 @@
       </div>
       <div class="user" v-if="uInfo1 === null">
         <el-button class="btn" @click="goLogin('mobile')">快速登入</el-button>
-        <el-button class="btn1" icon="el-icon-user" @click="goLogin('password')">账号登入</el-button>
+        <el-button class="btn1" icon="el-icon-user" @click="goLogin('account')">账号登入</el-button>
       </div>
       <div v-else class="userName">
         <img src="@/assets/popularScience.png" alt="" class="image"/>
@@ -80,7 +80,7 @@ export default {
       dialogVisible: false,
       message: '请登入',
       uInfo1: '',
-      select:'+86',
+      select:'',
       verificationCode1:'获取验证码',
       addForm: {
         mobile: '',
@@ -132,9 +132,13 @@ export default {
   },
   created() {
     this.uInfo1 = JSON.parse(window.localStorage.getItem('user_info'))
-    this.addForm.mobile = this.uInfo1 && this.uInfo1.phone ? this.uInfo1.phone : ''
-    this.avatar =  this.uInfo1 && this.uInfo1.avatar !== '' ? this.uInfo1.avatar : ""
+    console.log('zzz', this.uInfo1)
   },
+  // computed: {
+  //   username() {
+  //     return this.$store.state.user
+  //   },
+  // },
   methods: {
 
     dialogVisibleClosed() {
@@ -144,17 +148,17 @@ export default {
     getCode() {
       if (this.phoneNumberStyle) {
         // 调用获取短信验证码接口
-        api.login.getCode(this.addForm.mobile).then((res) => {
-          this.res = res
-          console.log('ccc', this.res)
-          if (this.res.status === 200) {
-            this.$message({
-              message: '验证码已发送，请稍候...',
-              type: 'success',
-              center: true,
-            })
-          }
-        })
+        // api.login.getCode(this.addForm.mobile).then((res) => {
+        //   this.res = res
+        //   console.log('ccc', this.res)
+        //   if (this.res.status === 200) {
+        //     this.$message({
+        //       message: '验证码已发送，请稍候...',
+        //       type: 'success',
+        //       center: true,
+        //     })
+        //   }
+        // })
         // 因为下面用到了定时器，需要保存this指向
         let that = this
         that.waitTime--
@@ -187,6 +191,7 @@ export default {
     logout() {
       // 这里实现登出逻辑
       api.logout.getLogout().then(() => {
+        // this.$store.commit('logout')
        window.localStorage.clear();
         clearToken()
         this.$router.push('/login')

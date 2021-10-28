@@ -351,6 +351,8 @@ export default {
         pagination: {
           el: '.rcpagination',
           clickable: true,
+          // bulletClass: 'my-bullet',
+          // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
           nextEl: '.rcLeft',

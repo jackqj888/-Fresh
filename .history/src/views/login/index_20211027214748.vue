@@ -313,7 +313,6 @@ export default {
           border-radius 20px
           width: 95px
           height: 33px
-          margin 0
 
 
         .btn
@@ -323,10 +322,12 @@ export default {
           font-size 18px
           line-height 62px
           background #FE8CAA
+
           cursor pointer
           border-radius 10px
           display: block
           margin: 30px auto 0 auto
+
         .router-link-active {
           text-decoration: none;
         }

@@ -233,7 +233,7 @@
           </div>
           <div class="rcbtn">
             <div class="rcLeft">&lt;</div>
-            <div class="rcpagination"></div>
+            <div class="swiper-pagination-bullet"></div>
             <div class="rcRight">&gt;</div>
           </div>
         </div>
@@ -349,8 +349,10 @@ export default {
         loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
-          el: '.rcpagination',
+          el: '.swiper-pagination',
           clickable: true,
+          // bulletClass: 'my-bullet',
+          // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
           nextEl: '.rcLeft',

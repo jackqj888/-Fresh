@@ -40,7 +40,7 @@ export default {
         },
         //自动轮播
         autoplay: {
-          delay: 4000,
+          delay: 2000,
           //当用户滑动图片后继续自动轮播
           disableOnInteraction: false,
         },
@@ -66,22 +66,14 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-.swiper-container 
-  max-width: 100%;
-  max-height: 100%;
-  display: block
-  margin: auto
-
+.swiper-container {
+  width 100%
+  height 100%
+}
 .carousel-map
-  width: 100%
-  height:500px
-  overflow: hidden
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-
-  
-  
+    width: 100%;
+    height:500px;
+    overflow: hidden;
 
 .banner-pagination
   height: 30px
@@ -89,7 +81,6 @@ export default {
   display flex
   justify-content center
   margin-top 47px
-
 
 
 .banner-pagination >>> .swiper-pagination-bullet {

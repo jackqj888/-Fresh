@@ -233,7 +233,7 @@
           </div>
           <div class="rcbtn">
             <div class="rcLeft">&lt;</div>
-            <div class="rcpagination"></div>
+            <div class="swiper-pagination-bullet"></div>
             <div class="rcRight">&gt;</div>
           </div>
         </div>
@@ -332,7 +332,7 @@ export default {
         loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
-          el: '.jkpagination',
+          el: '.jkPagination',
           clickable: true,
           // bulletClass: 'my-bullet',
           // bulletActiveClass: 'my-bullet-active'
@@ -349,8 +349,10 @@ export default {
         loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
-          el: '.rcpagination',
+          el: '.swiper-pagination',
           clickable: true,
+          // bulletClass: 'my-bullet',
+          // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
           nextEl: '.rcLeft',
@@ -935,30 +937,24 @@ body
   right: 45%;
 }
 
-// .jkbtn >>> .swiper-pagination-bullet {
-//      width: 8px;
-//      height: 8px;
-//      text-align: center;
-//      //line-height: 8px;
-//      font-size: 12px;
-//      //opacity: 1;
-//      background: #FFDDE6
-//      margin 0 20px
-//      //display block
-//    }
-//    .jkbtn >>> .swiper-pagination-bullet-active {
-//      color:#fff;
-//      background: #ff51d6
-//    }
-// .jkPagination
-//   // margin-right 20px
-//   >>>.swiper-pagination-bullet
-//       background  #FBD0D0       
-//   >>>.swiper-pagination-bullet-active
-//       background #FE5782
-          
-  
+.jkbtn >>> .swiper-pagination-bullet {
+     width: 8px;
+     height: 8px;
+     text-align: center;
+     //line-height: 8px;
+     font-size: 12px;
+     //opacity: 1;
+     background: #FFDDE6
+     margin 0 20px
+     //display block
+   }
+   .jkbtn >>> .swiper-pagination-bullet-active {
+     color:#fff;
+     background: #ff51d6
+   }
+
 .rcbtn
+
   height 50px
   display flex
   justify-content center
@@ -988,36 +984,32 @@ body
   margin-left 30px
 
 .jkbtn
-  text-align: center
+ 
   display flex
   justify-content right
   align-items center
   flex 1
   
-
-.jkLeft, .jkRight
-  width 23px
-  height 23px
+.jkLeft
+  width 22px
+  height 22px
+  border-radius 50%
+  background-color #FFDDE6
+  margin-right 15px
+  border 2px solid #F1F1F1
+  color #FE5782
+  border none // 去掉边框
+  outline none // 去掉点击按钮后的边框
+.jkRight
+  width 22px
+  height 22px
   border-radius 50%
   background-color #FFDDE6
   border none // 去掉边框
   outline none // 去掉点击按钮后的边框
   color #FE5782
-  text-align center
-  cursor pointer
-.jkLeft:hover , .jkRight:hover 
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
-.jkLeft
-  margin-right 10px
-        
-.jkpagination  
-  margin-right 20px
-  >>>.swiper-pagination-bulle
-    background  #FBD0D0
-  >>>.swiper-pagination-bullet-active
-    background #FE5782
-          
-      
+  margin 0 30px 0 30px
+  
 
 .carousel jk
   height 340px

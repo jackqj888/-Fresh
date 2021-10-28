@@ -233,7 +233,7 @@
           </div>
           <div class="rcbtn">
             <div class="rcLeft">&lt;</div>
-            <div class="rcpagination"></div>
+            <div class="swiper-pagination-bullet"></div>
             <div class="rcRight">&gt;</div>
           </div>
         </div>
@@ -349,8 +349,10 @@ export default {
         loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
-          el: '.rcpagination',
+          el: '.swiper-pagination',
           clickable: true,
+          // bulletClass: 'my-bullet',
+          // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
           nextEl: '.rcLeft',
@@ -1006,11 +1008,11 @@ body
   text-align center
   cursor pointer
 .jkLeft:hover , .jkRight:hover 
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+  ilter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
 .jkLeft
   margin-right 10px
         
-.jkpagination  
+.jkpagination
   margin-right 20px
   >>>.swiper-pagination-bulle
     background  #FBD0D0

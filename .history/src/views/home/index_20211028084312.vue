@@ -233,7 +233,7 @@
           </div>
           <div class="rcbtn">
             <div class="rcLeft">&lt;</div>
-            <div class="rcpagination"></div>
+            <div class="swiper-pagination-bullet"></div>
             <div class="rcRight">&gt;</div>
           </div>
         </div>
@@ -349,8 +349,10 @@ export default {
         loop: true,
         loopFillGroupWithBlank: true,
         pagination: {
-          el: '.rcpagination',
+          el: '.swiper-pagination',
           clickable: true,
+          // bulletClass: 'my-bullet',
+          // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
           nextEl: '.rcLeft',
@@ -994,7 +996,24 @@ body
   align-items center
   flex 1
   
-
+// .jkLeft
+//   width 22px
+//   height 22px
+//   border-radius 50%
+//   background-color #FFDDE6
+//   border 2px solid #F1F1F1
+//   color #FE5782
+//   border none // 去掉边框
+//   outline none // 去掉点击按钮后的边框
+// .jkRight
+//   width 22px
+//   height 22px
+//   border-radius 50%
+//   background-color #FFDDE6
+//   border none // 去掉边框
+//   outline none // 去掉点击按钮后的边框
+//   color #FE5782
+//   margin 0 30px 0 30px
 .jkLeft, .jkRight
   width 23px
   height 23px
@@ -1006,18 +1025,8 @@ body
   text-align center
   cursor pointer
 .jkLeft:hover , .jkRight:hover 
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
-.jkLeft
-  margin-right 10px
-        
-.jkpagination  
-  margin-right 20px
-  >>>.swiper-pagination-bulle
-    background  #FBD0D0
-  >>>.swiper-pagination-bullet-active
-    background #FE5782
-          
-      
+  ilter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+  
 
 .carousel jk
   height 340px
