@@ -5,27 +5,27 @@
       <Carousel :banner="homeBanner"></Carousel>
       <div class="navigation">
         <div class="groups" @click="goTo('talent')">
-          <img src="@/assets/groups.png" alt="" class="image" />
+          <img src="@/assets/groups.png" alt="" class="image"/>
           <span class="item-name">人才</span>
           <span class="item-title">Personnel</span>
         </div>
         <div class="popularScience" @click="goTo('kpm')">
-          <img src="@/assets/popularScience.png" alt="" class="image" />
+          <img src="@/assets/popularScience.png" alt="" class="image"/>
           <span class="item-name">科普</span>
           <span class="item-title">Popularization of science</span>
         </div>
         <div class="healthy" @click="goTo('health')">
-          <img src="@/assets/healthy.png" alt="" class="image" />
+          <img src="@/assets/healthy.png" alt="" class="image"/>
           <span class="item-name">健康</span>
           <span class="item-title">Healthy</span>
         </div>
         <div class="test" @click="goTo('kaopei')">
-          <img src="@/assets/test.png" alt="" class="image" />
+          <img src="@/assets/test.png" alt="" class="image"/>
           <span class="item-name">考试</span>
           <span class="item-title">Examination</span>
         </div>
         <div class="mall" @click="goTo('mall')">
-          <img src="@/assets/mall.png" alt="" class="image" />
+          <img src="@/assets/mall.png" alt="" class="image"/>
           <span class="item-name">商城</span>
           <span class="item-title">Shopping Mall</span>
         </div>
@@ -41,24 +41,24 @@
           <div class="course-introduction">
             <span class="e-font">
               The examination and training system has launched high-
-              <br />
+              <br/>
               quality courses. I wish you a smooth passing of the
-              <br />
+              <br/>
               examination and training
             </span>
-            <img src="@/assets/cirlces.png" class="image1" />
+            <img src="@/assets/cirlces.png" class="image1"/>
           </div>
           <div class="swiper-jp">
             <swiper class="swiper jp" ref="swiper" :options="jpOption">
               <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in course"
-                :key="index"
+                  class="swiper-slide"
+                  v-for="(item, index) in course"
+                  :key="index"
               >
                 <img
-                  :src="item.imgSrc"
-                  class="swiper-jp-image"
-                  @click="open(item, 'kaopei')"
+                    :src="item.imgSrc"
+                    class="swiper-jp-image"
+                    @click="open(item, 'kaopei')"
                 />
                 <span class="courseTitle" @click="open(item, 'kaopei')">
                   {{ item.name }}
@@ -84,25 +84,25 @@
           <div class="commodity-introduction">
             <span class="e-font">
               Shopping mall system shelves recommended
-              <br />
+              <br/>
               goods, value for money, I wish you a happy
-              <br />
+              <br/>
               shopping
             </span>
-            <img src="@/assets/cirlces1.png" class="image2" />
+            <img src="@/assets/cirlces1.png" class="image2"/>
           </div>
 
           <div class="swiper-tj">
             <swiper class="swiper tj" ref="swiper" :options="scOption">
               <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in commodity"
-                :key="index"
+                  class="swiper-slide"
+                  v-for="(item, index) in commodity"
+                  :key="index"
               >
                 <img
-                  :src="item.imgSrc"
-                  class="swiper-tj-image"
-                  @click="open(item, 'mall')"
+                    :src="item.imgSrc"
+                    class="swiper-tj-image"
+                    @click="open(item, 'mall')"
                 />
                 <span class="courseTitle" @click="open(item, 'mall')">
                   {{ item.name }}
@@ -128,21 +128,21 @@
         <swiper class="swiper" :options="kpOption">
           <!--          <swiper-slide>Slide 1</swiper-slide>-->
           <swiper-slide
-            class="swiper-slide"
-            v-for="(item, index) in kpmList"
-            :key="index"
+              class="swiper-slide"
+              v-for="(item, index) in kpmList"
+              :key="index"
           >
             <img
-              :src="item.imgSrcPc"
-              class="Preview"
-              @click="open(item, 'kpm')"
+                :src="item.imgSrcPc"
+                class="Preview"
+                @click="open(item, 'kpm')"
             />
             <p class="Preview-title" @click="open(item, 'kpm')">
               {{ item.name }}
             </p>
             <div class="user">
               <div>
-                <img :src="item.article.avatar" class="user-image" />
+                <img :src="item.article.avatar" class="user-image"/>
               </div>
 
               <div class="userName">
@@ -163,72 +163,90 @@
         </div>
       </div>
       <div class="banner2">
-        <img src="@/assets/banner2.png" />
+        <img src="@/assets/banner2.png"/>
       </div>
       <div class="hjealthTreatment">
         <div class="hjealthTreatment-box">
           <div class="hjealthTreatment-title">
             <span class="hjealthTreatment-font">健康疗程</span>
             <span class="hjealthTreatment-go">
-              <a class="go-tj" :href="healthUrl">点击进入 ></a>
+              <a class="go-lc" :href="healthUrl">点击进入 ></a>
             </span>
           </div>
           <div class="hjealthTreatment-e-font">
             <div>
               <p class="e-font jk">
-              Put forward high-quality conditioning scheme for
-              <br />
-              your health
-            </p>
+                Put forward high-quality conditioning scheme for
+                <br/>
+                your health
+              </p>
             </div>
-            
+
             <div class="jkbtn">
-             <div class="jkLeft">&lt;</div>
-              <div class="jkpagination" ></div>
-             <div class="jkRight">&gt;</div>
+              <div class="jkLeft">&lt;</div>
+              <div class="jkpagination"></div>
+              <div class="jkRight">&gt;</div>
             </div>
           </div>
-          
+
           <div class="carousel jk">
-            <swiper class="swiper jk"  :options="jkOption">
+            <swiper class="swiper jk" :options="jkOption">
               <swiper-slide
-                class="swiper-slide"
-                v-for="(item, index) in healthList"
-                :key="index"
+                  class="swiper-slide"
+                  v-for="(item, index) in healthList"
+                  :key="index"
               >
-                <img :src="item.imgSrcPc" class="swiper-img-jk" />
+                <img :src="item.imgSrcPc" class="swiper-img-jk"/>
                 <div style="width: 176px; text-align: center; font-size: 14px;">
                   {{ item.name }}
                 </div>
               </swiper-slide>
-              
+
             </swiper>
           </div>
         </div>
       </div>
       <div class="talents">
         <div class="talents-box">
-          <div class="talents-top-left">
-            <div class="talents-title">
-              <span class="talents-font">精选人才</span>
-              <span class="talents-go">
-                <a class="go-rc" :href="talentUrl">点击进入 ></a>
-              </span>
+          <div style="display: flex">
+            <div>
+              <div class="talents-left">
+                <div class="talents-title">
+                  <div class="talents-font">精选人才</div>
+                  <div class="talents-go">
+                    <a class="go-rc" :href="talentUrl">点击进入 ></a>
+                  </div>
+                </div>
+              </div>
+              <div class="talents-e-font">
+                <div class="e-font-rc">
+                  Talent system to help you better select talents
+                </div>
+              </div>
+              <div class="talents-swiper">
+                <swiper class="swiper" :options="BigOption">
+                  <swiper-slide
+                      class="swiper-slide"
+                      v-for="(item, index) in details"
+                      :key="index"
+                  >
+                    <img :src="item.imgSrc" class="talents-img"/>
+                    <div class="talents-name">{{ item.name }}</div>
+                  </swiper-slide>
+                </swiper>
+              </div>
             </div>
-          </div>
-          <div class="talents-e-font">
-            <p class="e-font-rc">
-              Talent system to help you better select talents
-            </p>
-          </div>
-          <div class="talents-swiper" ref="swiper" :options="rcOption">
-            <div
-              class="talents-image"
-              v-for="(item, index) in details"
-              :key="index"
-            >
-              <img :src="item.imgSrc" class="talents-img" />
-              <p class="talents-name">{{ item.name }}</p>
+            <div class="talents-right">
+              <swiper class="swiper" :options="SmallOption">
+                <swiper-slide
+                    class="swiper-slide"
+                    v-for="(item, index) in details"
+                    :key="index"
+                >
+                  <img :src="item.imgSrc" class="talents-img"/>
+                  <div class="talents-name">{{ item.name }}</div>
+                </swiper-slide>
+              </swiper>
             </div>
           </div>
           <div class="rcbtn">
@@ -242,7 +260,7 @@
         <p class="healthCheck-font">健康检测</p>
         <p class="e-font">
           Health data test to check whether you are healthy. Come and
-          <br />
+          <br/>
           make an appointment
         </p>
         <p class="go">
@@ -250,13 +268,13 @@
         </p>
         <div class="evaluate">
           <div
-            class="evaluate-box"
-            v-for="(item, index) in evaluate"
-            :key="index"
+              class="evaluate-box"
+              v-for="(item, index) in evaluate"
+              :key="index"
           >
             <p class="evaluate-title">{{ item.data.title }}</p>
             <div class="evaluate-Introduction" @click="goHealthTo(item)">
-              <img :src="item.imgSrc" class="cirlces4" />
+              <img :src="item.imgSrc" class="cirlces4"/>
               <div class="evaluate-font">
                 <p class="evaluate-cn">{{ item.data.summary }}</p>
                 <p class="evaluate-en">
@@ -295,7 +313,7 @@ export default {
         on: {
           resize: () => {
             this.$refs.swiper.$swiper.changeDirection(
-              window.innerWidth <= 960 ? 'vertical' : 'horizontal',
+                window.innerWidth <= 960 ? 'vertical' : 'horizontal',
             )
           },
         },
@@ -311,7 +329,7 @@ export default {
         on: {
           resize: () => {
             this.$refs.swiper.$swiper.changeDirection(
-              window.innerWidth <= 960 ? 'vertical' : 'horizontal',
+                window.innerWidth <= 960 ? 'vertical' : 'horizontal',
             )
           },
         },
@@ -334,23 +352,34 @@ export default {
         pagination: {
           el: '.jkpagination',
           clickable: true,
-          // bulletClass: 'my-bullet',
-          // bulletActiveClass: 'my-bullet-active'
         },
         navigation: {
           nextEl: '.jkLeft',
           prevEl: '.jkRight',
         },
       },
-      rcOption: {
-        slidesPerView: 8,
+      BigOption: {
+        slidesPerView: 2,
         spaceBetween: 30,
-        slidesPerGroup: 8,
-        loop: true,
-        loopFillGroupWithBlank: true,
+        freeMode: true,
         pagination: {
           el: '.rcpagination',
           clickable: true,
+        },
+        navigation: {
+          nextEl: '.rcLeft',
+          prevEl: '.rcRight',
+        },
+      },
+
+      SmallOption: {
+        spaceBetween: 30,
+        slidesPerView: 3,
+        slidesPerColumn: 2,
+        slidesPerColumnFill: 'row',
+        pagination: {
+          el: '.talent-pagination',
+          clickable: true
         },
         navigation: {
           nextEl: '.rcLeft',
@@ -439,6 +468,7 @@ export default {
 html,
 body
   height: 100%;
+
 .wrapper
   display: flex;
   flex-direction: column;
@@ -457,7 +487,7 @@ body
     justify-content center
     align-items center
     width 100%
-    margin-top: 176px
+    margin-top: 76px
 
 
     .groups, .popularScience, .healthy, .test, .mall
@@ -466,6 +496,7 @@ body
       justify-content center
       align-items center
       cursor pointer
+
       .image
         width 66px
         height 66px
@@ -513,8 +544,7 @@ body
       .course-font1
         font-size 18px
         color #FF9F59
-        
-        
+
 
       .course-introduction
         display flex
@@ -587,57 +617,68 @@ body
       font-size 22px
       text-align center
       margin-top 30px
+
       .go-tj
         color #333333
-    .swiper-container{
+
+    .swiper-container {
       width: 1200px;
       margin: 0 auto;
-      .swiper-slide{
+
+      .swiper-slide {
         width 380px !important
         height 460px
         border 2px solid #F1F1F1
         border-radius 15px
-        .Preview{
+
+        .Preview {
           width: 100%;
-          height:227px;
+          height: 227px;
           border-radius 15px
         }
-        .Preview-title{
+
+        .Preview-title {
           font-size 22px
           font-family PingFang SC
           font-weight bold
           margin-left 22px
           margin-bottom 22px
         }
-        .user{
+
+        .user {
           display flex
           justify-content flex-start
-          .user-image{
+
+          .user-image {
             width 44px
             height 44px
             border-radius 50%
             margin-right 8px
           }
-          .userName{
+
+          .userName {
             margin 0
             display: flex
             justify-content center
             flex-direction column
-            .userName-font{
+
+            .userName-font {
               font-size 14px
               color #000
               margin 0
 
             }
-          .userName-time{
-            font-size 13px
-            color #9C9B9B
-            margin-top 10px
 
-          }
+            .userName-time {
+              font-size 13px
+              color #9C9B9B
+              margin-top 10px
+
+            }
           }
         }
-        .btn{
+
+        .btn {
           width 169px
           height 44px
           color #fff
@@ -658,26 +699,28 @@ body
   margin-right 20px
   border 2px solid #F0EEFF
   color #FE5782
-  
+
 .btnRight
   width 44px
   height 44px
   border-radius 50%
   background-color #fff
-  outline none 
+  outline none
   color #FE5782
   border: 2px solid #f0eeff;
+
 .btnLeft:hover, .btnRight:hover
   border none
   background-color #FFDDE6
 
 .kpbtn
- margin-top 93px
- text-align center
-  
+  margin-top 93px
+  text-align center
+
 .banner2
   margin 57px 0 128px 0
   text-align center
+
 .hjealthTreatment
   display flex
   justify-content center
@@ -687,9 +730,10 @@ body
   height 513px
 
 .hjealthTreatment-title
-  
+
   align-items left
   margin-bottom 15px
+
 .hjealthTreatment-font
   font-size 30px
   font-family PingFang SC
@@ -699,15 +743,18 @@ body
   margin 25px 30px 0 0
   ont-size 22px
   text-align center
-.go-tj
+
+.go-tj1
   margin-left 40px
-  color #000000
-  font-size 22px
+  color #FE8CAA
+  font-size 18px
   text-decoration none
+
 .hjealthTreatment-e-font
- display flex
- justify-content space-between
- margin-bottom 40px
+  display flex
+  justify-content space-between
+  margin-bottom 40px
+
 .e-font1
   font-size 16px
 
@@ -717,7 +764,8 @@ body
 
 .talents-box
   width 1200px
-  height 513px
+  min-width 1200px
+  height 535px
   background-color #FFDDE6
 
 .talents-title
@@ -736,6 +784,7 @@ body
   margin 25px 30px 0 0
   font-size 22px
   text-align center
+
 .talents-e-font
   display flex
   justify-content flex-start
@@ -758,41 +807,69 @@ body
   height 231px
   border-radius 15px
   margin-right 27px
+  cursor pointer
 
 .talents-name
   width: 180px
   height: 27px
   text-align center
-  margin 0
+  font-size 16px
+  cursor pointer
+
+.talents-right {
+  flex 1
+  margin-top 49px
+
+  .swiper-container {
+    width 456px
+
+    .swiper-wrapper {
+      width 456px
+    }
+
+    .swiper-slide {
+      width: 129px !important;
+      height: 209px;
+
+      img {
+        width 129px
+        height 164px
+        margin-bottom 12px
+        border-radius 20px
+      }
+
+    }
+  }
+}
 
 
 .healthCheck
-    display flex
-    flex-direction column
-    justify-content center
-    align-items center
-    margin-top 79px
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+  margin-top 79px
 
 .healthCheck-font
-    font-size 30px
-    font-family PingFang SC
-    font-weight bold
-    text-align center
-    line-height 30px
-    margin 0
+  font-size 30px
+  font-family PingFang SC
+  font-weight bold
+  text-align center
+  line-height 30px
+  margin 0
 
 .e-font
   font-size 16px
   margin 2px
 
 .go
- font-size 22px
- text-align center
- margin 30px 0 66px 0
+  font-size 22px
+  text-align center
+  margin 30px 0 66px 0
 
 .evaluate
-   display flex
-   justify-content center
+  display flex
+  justify-content center
 
 
 .evaluate-box
@@ -808,46 +885,47 @@ body
 
 
 .evaluate-title
- font-size 22px
- font-family PingFang SC
- font-weight bold
- text-align center
- margin 15px 0 0 0
+  font-size 22px
+  font-family PingFang SC
+  font-weight bold
+  text-align center
+  margin 15px 0 0 0
 
 .evaluate-Introduction
   display flex
   justify-content center
 
 .cirlces4
- width 36px
- height 35px
- margin-right 27px
- opacity 0.6
+  width 36px
+  height 35px
+  margin-right 27px
+  opacity 0.6
 
 .evaluate-font
-    display flex
-    justify-content flex-start
-    flex-direction column
- .evaluate-cn
-    font-size 16px
-    font-family PingFang SC
-    font-weight bold
-    color #3D3D3D
-    text-align left
-    margin 7px 0 0 0
-    overflow hidden
-    text-overflow ellipsis
-    white-space nowrap
-    height: 23px
-    width: 313px
+  display flex
+  justify-content flex-start
+  flex-direction column
+
+.evaluate-cn
+  font-size 16px
+  font-family PingFang SC
+  font-weight bold
+  color #3D3D3D
+  text-align left
+  margin 7px 0 0 0
+  overflow hidden
+  text-overflow ellipsis
+  white-space nowrap
+  height: 23px
+  width: 313px
 
 .evaluate-en
-    font-size 14px
-    font-family PingFang SC
-    font-weight bold
-    color #3D3D3D
-    text-align left
-    margin 14px 0 0 0
+  font-size 14px
+  font-family PingFang SC
+  font-weight bold
+  color #3D3D3D
+  text-align left
+  margin 14px 0 0 0
 
 .courseTitle
   margin 0 0 0 10px
@@ -882,9 +960,15 @@ body
   color #FF9F59
   text-decoration: none
 
-// .go-tj
-//   color #FE96B1
-//   text-decoration: none
+.go-tj
+  color #FE96B1
+  text-decoration: none
+
+.go-lc
+  color #000000
+  text-decoration: none
+  font-size 22px
+  margin 0 0 10px 30px
 
 .go-rc
   color #000000
@@ -920,6 +1004,7 @@ body
 
 .swiper-button-prev1, .swiper-button-next1
   --swiper-navigation-size 15px
+
 .swiper-button-prev2, .swiper-button-next2
   --swiper-navigation-size 15px
 
@@ -956,15 +1041,18 @@ body
 //       background  #FBD0D0       
 //   >>>.swiper-pagination-bullet-active
 //       background #FE5782
-          
-  
+
+
 .rcbtn
-  height 50px
   display flex
   justify-content center
-  margin 20px 250px 0 50px
-  align-items center
-  text-align: center
+  color #fe5782
+  text-align center
+  margin-bottom 20xp
+.talent-pagination 
+   text-align center
+   width auto
+   
 
 .rcLeft
   width 22px
@@ -975,7 +1063,9 @@ body
   border 2px solid #F1F1F1
   color #FE5782
   border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
+  outline none
+
+// 去掉点击按钮后的边框
 
 .rcRight
   width 22px
@@ -993,7 +1083,7 @@ body
   justify-content right
   align-items center
   flex 1
-  
+
 
 .jkLeft, .jkRight
   width 23px
@@ -1005,26 +1095,30 @@ body
   color #FE5782
   text-align center
   cursor pointer
-.jkLeft:hover , .jkRight:hover 
+
+.jkLeft:hover, .jkRight:hover
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))
+
 .jkLeft
   margin-right 10px
-        
-.jkpagination  
+
+.jkpagination
   margin-right 20px
-  >>>.swiper-pagination-bulle
-    background  #FBD0D0
-  >>>.swiper-pagination-bullet-active
+
+  >>> .swiper-pagination-bulle
+    background #FBD0D0
+
+  >>> .swiper-pagination-bullet-active
     background #FE5782
-          
-      
+
 
 .carousel jk
   height 340px
 
 .e-font jk
- width 395px
- height 40px 
+  width 395px
+  height 40px
+
 .swiper-img-jk
   width 176px
   height 247px

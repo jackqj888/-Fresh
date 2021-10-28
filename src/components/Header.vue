@@ -177,8 +177,8 @@ export default {
     },
     goLogin(type) {
       this.$router.push({
-        path: `/login`,
-        query:{
+        name: `logon`,
+        params:{
           type: type
         }
       })

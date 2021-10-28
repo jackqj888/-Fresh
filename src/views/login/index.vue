@@ -140,8 +140,8 @@ export default {
     if (a) {
       this.$router.replace('/index')
     }
-    if (this.$route.query.type) {
-      this.form.grant_type = this.$route.query.type
+    if (this.$route.params.type) {
+      this.form.grant_type = this.$route.params.type
     }
   },
   methods: {
@@ -192,6 +192,7 @@ export default {
             scope: this.form.scope,
           }
           api.login.getlogin(data).then((res) => {
+            this.$message.success('登录成功');
             let access_token = res.access_token
             window.localStorage.setItem('access_token', access_token)
             let userInfo = res.user_info
@@ -207,10 +208,12 @@ export default {
           code: this.form.code,
         }
         api.login.getlogin(data).then((res) => {
-          let access_token = res.access_token
-          window.localStorage.setItem('access_token', access_token)
+          let token = res.access_token
+          // window.localStorage.setItem('access_token', access_token)
+          this.$store.commit('token',token)
           let userInfo = res.user_info
-          window.localStorage.setItem('user_info', JSON.stringify(userInfo))
+          // window.localStorage.setItem('user_info', JSON.stringify(userInfo))
+          this.$store.commit('userInfo',userInfo)
           this.$router.push({ name: 'home', params: { data } })
         })
       } else {

@@ -2,7 +2,7 @@
   <div class="carousel-map">
     <swiper :options="headerOption">
       <swiper-slide class="swiper-slide" v-for="(item,index) in banner" :key="index">
-        <img :src="item.bannerSrc" />
+        <img :src="item.bannerSrc" class="my-banner"/>
       </swiper-slide>
       <!-- 左右箭头 -->
        <!-- <div class="swiper-button-prev" slot="button-prev"></div> 
@@ -53,12 +53,8 @@ export default {
     console.log('bbb',this.banner);
   },
 
-  mounted() {
-    this.className = 'lun-img'
-    setTimeout(() => {
-      this.className = 'lun-img-two'
-    }, 300)
-  },
+  mounted() {},
+
   methods: {
   
   },
@@ -74,14 +70,21 @@ export default {
 
 .carousel-map
   width: 100%
-  height:500px
+  height:100%
   overflow: hidden
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+@media screen and (max-width:1920px){
+  .my-banner {
+    width:100% 
+    height: 500px;
+  }
+}
+.my-banner
+  display: block
+  margin: auto
 
-  
-  
 
 .banner-pagination
   height: 30px
