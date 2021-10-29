@@ -1,27 +1,32 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { getUser,setUser } from '@/utils/storage'
-import {setToken} from "../utils/storage";
+import { setUser } from '../utils/storage'
+import {setToken,clearToken} from "../utils/storage";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user:  getUser(),
-    token:setToken()
+    user: '',
+    token: ''
    
   },
   
   mutations: {
-    setUser(state, user) {
+    user(state, user) {
       state.user = user
-      setUser(JSON.stringify(user))
+      setUser(user)
     },
+    token(state,token){
+      state.token = token
+      setToken('token',)
+    },
+    
     // 登出
     logout(state) {
      
       state.user = null;
-  
+      clearToken()
       // state.token = false;
     }
   },

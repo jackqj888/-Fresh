@@ -6,16 +6,16 @@
           <div class="login-top">
             <div class="tabs">
               <div
-                class="tab"
-                :class="{ active: form.grant_type === 'mobile' }"
-                @click="form.grant_type = 'mobile'"
+                  class="tab"
+                  :class="{ active: form.grant_type === 'mobile' }"
+                  @click="form.grant_type = 'mobile'"
               >
                 快捷登录
               </div>
               <div
-                class="tab"
-                :class="{ active: form.grant_type === 'password' }"
-                @click="form.grant_type = 'password'"
+                  class="tab"
+                  :class="{ active: form.grant_type === 'password' }"
+                  @click="form.grant_type = 'password'"
               >
                 登录
               </div>
@@ -30,17 +30,17 @@
           <template v-if="form.grant_type === 'mobile'">
             <div class="input">
               <input
-                type="text"
-                v-model="form.mobile"
-                placeholder="输入手机号"
+                  type="text"
+                  v-model="form.mobile"
+                  placeholder="输入手机号"
               />
             </div>
             <div class="input">
-              <input type="text" v-model="form.code" placeholder="输入验证码" />
+              <input type="text" v-model="form.code" placeholder="输入验证码"/>
               <button
-                class="verificationCode"
-                @click="getCode"
-                :class="{ 'disabled-style': getCodeBtnDisable }"
+                  class="verificationCode"
+                  @click="getCode"
+                  :class="{ 'disabled-style': getCodeBtnDisable }"
               >
                 {{ verificationCode }}
               </button>
@@ -49,27 +49,27 @@
           <template v-else>
             <div class="input">
               <input
-                type="text"
-                v-model="form.username"
-                placeholder="输入手机号"
+                  type="text"
+                  v-model="form.username"
+                  placeholder="输入手机号"
               />
             </div>
             <div class="input">
               <input
-                :type="inputType"
-                v-model="form.password"
-                placeholder="输入密码"
+                  :type="inputType"
+                  v-model="form.password"
+                  placeholder="输入密码"
               />
               <div class="view">
                 <img
-                  src="@/assets/eye_open.svg"
-                  v-if="inputType === 'text'"
-                  @click="inputType = 'password'"
+                    src="@/assets/eye_open.svg"
+                    v-if="inputType === 'text'"
+                    @click="inputType = 'password'"
                 />
                 <img
-                  src="@/assets/eye_close.svg"
-                  v-else
-                  @click="inputType = 'text'"
+                    src="@/assets/eye_close.svg"
+                    v-else
+                    @click="inputType = 'text'"
                 />
               </div>
             </div>
@@ -92,7 +92,7 @@
 
 <script>
 import api from '@/api'
-import { getToken } from '@/utils/storage'
+// import { getToken } from '@/utils/storage'
 
 export default {
   name: 'login',
@@ -111,6 +111,7 @@ export default {
         code: '',
         TERMINAL: 'web',
       },
+      newData: ''
     }
   },
   computed: {
@@ -132,14 +133,11 @@ export default {
         }
         return true
       },
-      set() {},
+      set() {
+      },
     },
   },
   created() {
-    const a = getToken()
-    if (a) {
-      this.$router.replace('/index')
-    }
     if (this.$route.params.type) {
       this.form.grant_type = this.$route.params.type
     }
@@ -183,44 +181,55 @@ export default {
       }, 1000)
     },
     getLogin() {
-      if (this.form.grant_type === 'password') {
-        if (this.form.username !== '' && this.form.password !== '') {
-          let data = {
-            username: this.form.username,
-            password: this.form.password,
-            grant_type: this.form.grant_type,
-            scope: this.form.scope,
-          }
-          api.login.getlogin(data).then((res) => {
-            this.$message.success('登录成功');
-            let access_token = res.access_token
-            window.localStorage.setItem('access_token', access_token)
-            let userInfo = res.user_info
-            window.localStorage.setItem('user_info', JSON.stringify(userInfo))
-            this.$router.push({ name: 'home', params: { data } })
-          })
-        } else {
-          this.$message.error('请输入手机号和密码！')
+      if (this.form.grant_type === 'password' ? this.form.username !== '' && this.form.password !== '' : '') {
+        this.newData = {
+          username: this.form.username,
+          password: this.form.password,
+          grant_type: this.form.grant_type,
+          scope: this.form.scope,
         }
-      } else if (this.form.mobile !== '' && this.form.code !== '') {
-        let data = {
-          mobile: this.form.mobile,
-          code: this.form.code,
-        }
-        api.login.getlogin(data).then((res) => {
-          let token = res.access_token
-          // window.localStorage.setItem('access_token', access_token)
-          this.$store.commit('token',token)
-          let userInfo = res.user_info
-          // window.localStorage.setItem('user_info', JSON.stringify(userInfo))
-          this.$store.commit('userInfo',userInfo)
-          this.$router.push({ name: 'home', params: { data } })
-        })
+        this.go(this.newData)
+              
+
       } else {
-        this.$message.error('请输入手机号和密码！')
+        if (this.form.grant_type === 'mobile' ? this.form.username !== '' && this.form.password !== '' : '') {
+          this.newData = {
+            mobile: this.form.mobile,
+            code: this.form.code,
+          }
+         
+        }
+        this.go(this.newData)
       }
     },
-  },
+    go(){ 
+      api.login.getlogin(data).then((res) => {
+        this.$message.success('登录成功');
+        let access_token = res.access_token
+        window.localStorage.setItem('access_token', access_token)
+        let userInfo = res.user_info
+        window.localStorage.setItem('user_info', JSON.stringify(userInfo))
+        this.$router.push({name: 'home', params: {data}})
+      })}
+  }
+// } else if (this.form.mobile !== '' && this.form.code !== '') {
+//   let data = {
+//     mobile: this.form.mobile,
+//     code: this.form.code,
+//   }
+//   api.login.getlogin(data).then((res) => {
+//     let token = res.access_token
+//
+//     this.$store.commit('token',token)
+//     let user = res.user_info.username
+//     this.$store.commit('user',user)
+//     this.$router.push({ name: 'home', params: { data } })
+//   })
+// } else {
+//   this.$message.error('请输入手机号和验证码！')
+// }
+
+},
 }
 </script>
 
@@ -330,6 +339,7 @@ export default {
           border-radius 10px
           display: block
           margin: 30px auto 0 auto
+
         .router-link-active {
           text-decoration: none;
         }

@@ -5,16 +5,16 @@
         <img src="@/assets/login.png" alt="login"/>
       </div>
       <div class="logo1">
-        <span class="siteName">汝果AI门户系统</span>
-        <span class="siteName1">Ruguo AI portal system</span>
+        <div class="siteName">汝果AI门户系统</div>
+        <div class="siteName1">Ruguo AI portal system</div>
       </div>
-      <div class="user" v-if="uInfo1 === null">
+      <div class="user" v-if="user === null">
         <el-button class="btn" @click="goLogin('mobile')">快速登入</el-button>
         <el-button class="btn1" icon="el-icon-user" @click="goLogin('password')">账号登入</el-button>
       </div>
       <div v-else class="userName">
         <img src="@/assets/popularScience.png" alt="" class="image"/>
-        <span class="username">{{ uInfo1.username }}</span>
+        <div class="username">{{ user }}</div>
 
         <el-dropdown>
           <el-button type="primary" class="my">
@@ -79,7 +79,7 @@ export default {
     return {
       dialogVisible: false,
       message: '请登入',
-      uInfo1: '',
+      user: '',
       select:'+86',
       verificationCode1:'获取验证码',
       addForm: {
@@ -131,9 +131,9 @@ export default {
     },
   },
   created() {
-    this.uInfo1 = JSON.parse(window.localStorage.getItem('user_info'))
-    this.addForm.mobile = this.uInfo1 && this.uInfo1.phone ? this.uInfo1.phone : ''
-    this.avatar =  this.uInfo1 && this.uInfo1.avatar !== '' ? this.uInfo1.avatar : ""
+    this.user = JSON.parse(window.localStorage.getItem('user'))
+    this.addForm.mobile = this.user  ? this.user : ''
+  
   },
   methods: {
 
