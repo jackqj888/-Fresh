@@ -19,7 +19,7 @@ export default new Vuex.Store({
     },
     token(state,token){
       state.token = token
-      setToken('token',token)
+      setToken(token)
     },
     
     // 登出

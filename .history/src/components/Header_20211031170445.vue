@@ -225,51 +225,49 @@ export default {
 
 <style lang="stylus">
 .home-header {
-  background-color: #fff;
+  background-color: #d2cdcd;
   color: #333;
+
   line-height: 60px;
+
 }
+
 .top
-  display flex
-  justify-content: space-between
-  max-width: 1200px
-  margin: 0 auto
+  display: flex;
+  justify-content: center
+  background-color: #fff
 
 .logo
-  width 175px
-  height 144px
-  img{
-    max-height 100%
-    max-width 100%
-  }
+  margin-right 303px
+
 .logo1
+  margin 40px 0 40px 0
   display flex
   flex-direction column
+  justify-content center
   lign-items center
 
- .siteName
+  margin-right 170px
+
+  .siteName
     font-size 30px
     line-height: 30px;
-    margin-bottom 10px
-    margin-top 40px
-    text-align center
+    margin-bottom 20PX
 
-   .siteName1
+  .siteName1
     font-size 13px
     line-height: 20px
-    margin-bottom: 10px
-    text-align center
+    margin-bottom: 20PX
 
 .userName
+
   display flex
   justify-content center
   margin-top 30px
-  height 50px
 
   .image
     width 60px
     height 60px
-    border-radius 10px
 
   .username
     margin-left 14px
@@ -286,7 +284,7 @@ export default {
     font-size 18px
 
 .el-dropdown-menu el-popper
-  margin 0
+
   top 10px
 
 
@@ -398,13 +396,6 @@ export default {
 .el-select
   padding-right: 0
 
-.el-input--suffix{
-  width: 70px;
-} 
-
-.el-input__inner{
-  padding-left: 10px;
-}
 .el-dropdown-menu__item:focus, .el-dropdown-menu__item:hover{
   background-color: #ffa0b4 !important;
   color: #ffffff !important;

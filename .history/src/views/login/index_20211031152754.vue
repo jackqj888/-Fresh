@@ -208,7 +208,6 @@ export default {
   
     go(data) {
       api.login.getlogin(data).then((res) => {
-        console.log('www',res);
         this.$message.success('登录成功')
         let token = res.access_token
         this.$store.commit('token', token)

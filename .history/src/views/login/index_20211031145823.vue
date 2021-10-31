@@ -179,45 +179,83 @@ export default {
         }
       }, 1000)
     },
-    getLogin() {
-      if (this.form.grant_type === 'password') {
+      getLogin() {
+      if(this.form.grant_type === 'password') {
         console.log(this.form)
-        if (this.form.username !== '' && this.form.password !== '') {
-          this.newData = {
+        if(this.form.username !== '' && this.form.password !== ''){
+          let data = {
             username: this.form.username,
             password: this.form.password,
             grant_type: this.form.grant_type,
-            scope: this.form.scope,
+            scope: this.form.scope
           }
-          this.go(this.newData)
+          api.login.goLogin(data).then((res) => {
+            let token = res.access_token
+            this.$store.commit('token',token)
+            let user = res.user_info
+            this.$store.commit('token',user)
+            this.$router.push({name: 'home', params: {data}})
+          })
         } else {
           this.$message.error('请输入手机号和密码！')
         }
       } else {
-        if (this.form.mobile !== '' && this.form.code !== '') {
-          this.newData = {
+        if(this.form.mobile !== '' && this.form.code !== ''){
+          let data = {
             mobile: this.form.mobile,
             code: this.form.code,
           }
-          this.go(this.newData)
+          api.login.getlogin(data).then((res) => {
+            let token = res.access_token
+            this.$store.commit('token',token)
+            let user = res.user_info
+             this.$store.commit('token',user)
+            this.$router.push({name: 'home', params: {data}})
+          })
         } else {
           this.$message.error('请输入手机号和验证码！')
         }
       }
     },
-  
-    go(data) {
-      api.login.getlogin(data).then((res) => {
-        console.log('www',res);
-        this.$message.success('登录成功')
-        let token = res.access_token
-        this.$store.commit('token', token)
-        let user = res.user_info.username
-        this.$store.commit('user', user)
-        this.$router.push({ name: 'home', params: { data } })
-      })
-    },
+    // getLogin() {
+    //   debugger
+
+    //   if (this.form.grant_type === 'password') {
+    //     if (this.form.username !== '' && this.form.password !== '') {
+    //       let data = {
+    //         username: this.form.username,
+    //         password: this.form.password,
+    //         grant_type: this.form.grant_type,
+    //         scope: this.form.scope,
+    //       }
+    //       this.go(data)
+    //     } else {
+    //       this.$message.error('请输入手机号和密码！')
+    //     }
+    //   } else {
+    //     if (this.form.username !== '' && this.form.password !== '') {
+    //       var data = {
+    //         mobile: this.form.mobile,
+    //         code: this.form.code,
+    //       }
+    //       this.go(data)
+    //     } else {
+    //       this.$message.error('请输入手机号和验证码！')
+    //     }
+    //   }
+    // },
+    // go(data) {
+    //   api.login.getlogin(data).then((res) => {
+    //     this.$message.success('登录成功')
+    //     let access_token = res.access_token
+    //     window.localStorage.setItem('access_token', access_token)
+    //     let userInfo = res.user_info
+    //     window.localStorage.setItem('user_info', JSON.stringify(userInfo))
+    //     this.$router.push({ name: 'home', params: { data } })
+    //   })
+    // },
   },
+ 
 }
 </script>
 
