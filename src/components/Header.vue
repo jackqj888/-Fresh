@@ -23,7 +23,7 @@
           </el-button>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item @click.native="goTo('study')">我的课程</el-dropdown-item>
-            <el-dropdown-item @click.native="goTo('myPage')">我的简历</el-dropdown-item>
+            <el-dropdown-item @click.native="goTo('resume')">我的简历</el-dropdown-item>
             <el-dropdown-item @click.native="dialogVisible = true">
               修改密码
             </el-dropdown-item>
@@ -32,7 +32,7 @@
         </el-dropdown>
       </div>
       <el-dialog title="修改密码" :visible.sync="dialogVisible" width="20%" @close="dialogVisibleClosed">
-        <el-form :model="addForm" :rules="addFormRules" ref="addFormRefs"  class="formPosition">
+        <el-form :model="addForm" :rules="addFormRules" ref="addForm" class="formPosition">
           <el-form-item prop="mobile">
             <el-input placeholder="手机号码" v-model="addForm.mobile" class="input-with-select">
               <el-select v-model="select" slot="prepend" placeholder="+86">
@@ -42,7 +42,7 @@
             </el-input>
           </el-form-item>
           <el-form-item prop="verificationCode">
-            <el-input class="put" v-model="addForm.verificationCode" placeholder="短信验证码" ></el-input>
+            <el-input class="put" v-model="addForm.verificationCode" placeholder="短信验证码"></el-input>
             <el-button
                 class="verificationCode"
                 @click="getCode"
@@ -52,14 +52,15 @@
             </el-button>
           </el-form-item>
           <el-form-item prop="newPassword">
-            <el-input class="put" v-model="addForm.newPassword" placeholder="输入新密码"></el-input>
+            <el-input class="put" v-model="addForm.newPassword" placeholder="输入新密码" type="password"></el-input>
           </el-form-item>
           <el-form-item prop="confirmNewPassword">
-            <el-input class="put" v-model="addForm.confirmNewPassword" placeholder="确认新密码"></el-input>
+            <el-input class="put" v-model="addForm.confirmNewPassword" placeholder="确认新密码" type="password"
+                      @blur="blur"></el-input>
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
-          <el-button class="btn5"  type="primary" @click="onSubmit('addForm')" :disabled="disabled">
+          <el-button class="btn5" type="primary" @click="onSubmit" :disabled="disabled">
             完 成
           </el-button>
         </span>
@@ -78,8 +79,8 @@ export default {
       dialogVisible: false,
       message: '请登入',
       user: '',
-      select:'+86',
-      verificationCode1:'获取验证码',
+      select: '+86',
+      verificationCode1: '获取验证码',
       addForm: {
         mobile: '',
         verificationCode: '',
@@ -87,7 +88,7 @@ export default {
         confirmNewPassword: ''
       },
       waitTime: 30,
-      res:[],
+      res: [],
       addFormRules: {
         mobile: [
           {required: true, message: '请输入手机号码', trigger: 'blur'}
@@ -102,6 +103,7 @@ export default {
           {required: true, message: '请确认新密码', trigger: 'blur'}
         ]
       },
+      disabled: true,
 
 
     }
@@ -125,16 +127,16 @@ export default {
         }
         return true
       },
-      set() {},
+      set() {
+      },
     },
   },
   created() {
     this.user = JSON.parse(window.localStorage.getItem('user'))
-    this.addForm.mobile = this.user  ? this.user : ''
-  
+    this.addForm.mobile = this.user ? this.user : ''
+
   },
   methods: {
-
     dialogVisibleClosed() {
       this.$refs.addFormRefs.resetFields()
     },
@@ -145,7 +147,7 @@ export default {
         api.login.getCode(this.addForm.mobile).then((res) => {
           this.res = res
           console.log('ccc', this.res)
-          if (this.res.status === 200) {
+          if (res) {
             this.$message({
               message: '验证码已发送，请稍候...',
               type: 'success',
@@ -176,45 +178,62 @@ export default {
     goLogin(type) {
       this.$router.push({
         name: `logon`,
-        params:{
+        params: {
           type: type
         }
       })
     },
-    goTo(type){
-      if(type === 'study'){
-        window.open('http://kfxx.smtbs.cn/kaopei/pages/myStudy/index', '_blank')
+    goTo(type) {
+      if (type === 'study') {
+        window.open('http://www.baidu.com', '_blank')
       } else {
-        window.open('http://kfxx.smtbs.cn/talent/pages/my/post', '_blank')
+        window.open('http://www.qq.com', '_blank')
       }
     },
-    blur(){
-      if(this.addForm.confirmNewPassword === this.addForm.newPassword){
+    blur() {
+      if (this.addForm.confirmNewPassword === this.addForm.newPassword) {
         this.disabled = false
       } else {
         this.$message.error('两次密码不一致！')
         this.disabled = true
       }
     },
-    onSubmit(formName){
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          let params = this.addForm.mobile +'/' + this.addForm.verificationCode
-          api.login.getCheck(params).then((res) => {
-            if (!res) {
-              this.changePassword()
-            } else {
-              this.$message.error('验证码错误！')
+    
+    onSubmit() {
+      this.$refs.addForm.validate((valid) => {
+        if (!valid) return
+        let params = {
+              mobile: this.addForm.mobile,
+              code: this.addForm.verificationCode,
             }
-          })
-        }
+            // this.addForm.mobile + '/' + this.addForm.verificationCode
+        api.login.getCheck(params).then((res) => {
+          console.log('ggg',res)
+          if (!res) {
+            this.changePassword()
+          } else {
+            this.$message.error('验证码错误！')
+          }
+        })
+
       });
     },
-   
+    changePassword(){
+      let params = {
+        password: this.addForm.newPassword
+      }
+      api.login.changePassword(params).then((res) => {
+        console.log('lll',res)
+        if (res) {
+          this.logout()
+        }
+      })
+    },
+
     logout() {
       // 这里实现登出逻辑
       api.logout.getLogout().then(() => {
-       window.localStorage.clear();
+        window.localStorage.clear();
         clearToken()
         this.$router.push('/login')
       })
@@ -229,6 +248,7 @@ export default {
   color: #333;
   line-height: 60px;
 }
+
 .top
   display flex
   justify-content: space-between
@@ -238,27 +258,29 @@ export default {
 .logo
   width 175px
   height 144px
-  img{
+
+  img {
     max-height 100%
     max-width 100%
   }
+
 .logo1
   display flex
   flex-direction column
   lign-items center
 
- .siteName
-    font-size 30px
-    line-height: 30px;
-    margin-bottom 10px
-    margin-top 40px
-    text-align center
+.siteName
+  font-size 30px
+  line-height: 30px;
+  margin-bottom 10px
+  margin-top 40px
+  text-align center
 
-   .siteName1
-    font-size 13px
-    line-height: 20px
-    margin-bottom: 10px
-    text-align center
+.siteName1
+  font-size 13px
+  line-height: 20px
+  margin-bottom: 10px
+  text-align center
 
 .userName
   display flex
@@ -310,9 +332,9 @@ export default {
   flex: 1;
   overflow: auto;
 }
-  
+
 .verificationCode
-  border none 
+  border none
   outline none
   position absolute
   right 0
@@ -321,9 +343,10 @@ export default {
   margin-right 5px
   color: #FC7497
   background-color: #F1F1F1
+
 .verificationCode:hover
   color: #FC7497
- 
+
 
 .el-form formPosition
   display flex
@@ -345,9 +368,11 @@ export default {
   outline none
   border-radius 15px
   margin-right 18px
+
 .btn:hover
   background #FE8CAA
   color: #ffffff
+
 .btn1
   width 177px
   height 60px
@@ -358,22 +383,25 @@ export default {
   outline none
   border-radius 15px
   box-shadow 5px 15px 10px 8px rgba(207, 202, 241, .5)
+
 .btn1:hover
   background #FE5782
   color: #ffffff
-  
+
 .btn5
   width 100%
   background-color: #FFBCCD
   box-sizing border-box
   border none // 去掉边框
-  outline none // 去掉点击按钮后的边框
+  outline none
+
+// 去掉点击按钮后的边框
 .btn5:hover
   background-color: #FFBCCD
 
 .el-dropdown
   margin 0
-  
+
 .el-dialog__body
   padding 15px 50px 0
 
@@ -385,62 +413,76 @@ export default {
 .el-input__inner
   background-color: #F1F1F1
   padding 0
+
 .el-icon-user
   margin-right 20px
+
 .disabled-style
   background-color #f1f1f1
   color #FFBCCD
+
 .el-button:focus
   color #FFBCCD
+
 .disabled-style :hover
   color #FFBCCD
 
 .el-select
   padding-right: 0
 
-.el-input--suffix{
+.el-input--suffix {
   width: 70px;
-} 
+}
 
-.el-input__inner{
+.el-input__inner {
   padding-left: 10px;
 }
-.el-dropdown-menu__item:focus, .el-dropdown-menu__item:hover{
+
+.el-dropdown-menu__item:focus, .el-dropdown-menu__item:hover {
   background-color: #ffa0b4 !important;
   color: #ffffff !important;
 }
->>> .el-dialog{
+
+>>> .el-dialog {
   border-radius 10px
 }
-  @media screen and ( max-width: 980px ) {
-    .top{
-      .logo{
-        margin 0 auto
-      }
-      .siteName{
-        margin-top 0
-      }
-      .userName{
-        margin-bottom 30px
-      }
+
+@media screen and ( max-width: 980px ) {
+  .top {
+    .logo {
+      margin 0 auto
     }
-  }@media screen and ( max-width: 414px ) {
-  .top{
-    .userName{
+
+    .siteName {
+      margin-top 0
+    }
+
+    .userName {
+      margin-bottom 30px
+    }
+  }
+}
+
+@media screen and ( max-width: 414px ) {
+  .top {
+    .userName {
       .image {
         width 40px
         height 40px
       }
-      .username{
+
+      .username {
         font-size 14px
         line-height 40px
       }
-      .my{
+
+      .my {
         width 120px
         height 40px
         font-size 14px
       }
-      .el-dropdown{
+
+      .el-dropdown {
         top: -10px
       }
     }

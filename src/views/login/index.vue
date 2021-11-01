@@ -111,7 +111,6 @@ export default {
         code: '',
         TERMINAL: 'web',
       },
-      newData: '',
     }
   },
   computed: {
@@ -148,7 +147,7 @@ export default {
         api.login.getCode(this.form.mobile).then((res) => {
           this.res = res
           console.log('ccc', this.res)
-          if (res) {
+          if (this.res) {
             this.$message({
               message: '验证码已发送，请稍候...',
               type: 'success',
@@ -181,25 +180,25 @@ export default {
     },
     getLogin() {
       if (this.form.grant_type === 'password') {
-        console.log(this.form)
         if (this.form.username !== '' && this.form.password !== '') {
-          this.newData = {
+          let data = {
             username: this.form.username,
             password: this.form.password,
             grant_type: this.form.grant_type,
             scope: this.form.scope,
           }
-          this.go(this.newData)
+          this.goLogin(data)
+          console.log('ccc',data)
         } else {
           this.$message.error('请输入手机号和密码！')
         }
       } else {
         if (this.form.mobile !== '' && this.form.code !== '') {
-          this.newData = {
+          let data = {
             mobile: this.form.mobile,
             code: this.form.code,
           }
-          this.go(this.newData)
+          this.go(data)
         } else {
           this.$message.error('请输入手机号和验证码！')
         }
@@ -207,7 +206,18 @@ export default {
     },
   
     go(data) {
-      api.login.getlogin(data).then((res) => {
+      api.login.getLogin(data).then((res) => {
+        console.log('www',res);
+        this.$message.success('登录成功')
+        let token = res.access_token
+        this.$store.commit('token', token)
+        let user = res.user_info.username
+        this.$store.commit('user', user)
+        this.$router.push({ name: 'home', params: { data } })
+      })
+    },
+    goLogin(data) {
+      api.login.goLogin(data).then((res) => {
         console.log('www',res);
         this.$message.success('登录成功')
         let token = res.access_token
