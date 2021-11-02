@@ -5,7 +5,7 @@
       <div class="banner">
         <swiper class="swiper" :options="headerOption">
           <swiper-slide v-for="(item, index) in homeBanner" :key="index">
-            <img :src="item.bannerSrc" alt="" class="image"/>
+            <img :src="item.bannerPcSrc" alt="" class="banner-image"/>
           </swiper-slide>
         </swiper>
         <div class="headerPagination" slot="pagination"></div>
@@ -45,7 +45,7 @@
               <div class="swiper-jp">
                 <swiper class="swiper jp" ref="swiper" :options="jpOption">
                   <swiper-slide class="swiper-slide" v-for="(item, index) in course" :key="index">
-                    <img :src="item.imgSrc" class="swiper-jp-image" @click="open(item, 'kaopei')"/>
+                    <img :src="item.imgSrcPc" class="swiper-jp-image" @click="open(item, 'kaopei')"/>
                     <span class="courseTitle" @click="open(item, 'kaopei')">{{ item.name }}</span>
                     <span class="course-price" @click="open(item , 'kaopei')">￥ {{ item.price }}</span>
                   </swiper-slide>
@@ -78,7 +78,7 @@
               <div class="swiper-tj">
                 <swiper class="swiper tj" ref="swiper" :options="scOption">
                   <swiper-slide class="swiper-slide" v-for="(item, index) in commodity" :key="index">
-                    <img :src="item.imgSrc" class="swiper-tj-image" @click="open(item, 'mall')"/>
+                    <img :src="item.imgSrcPc" class="swiper-tj-image" @click="open(item, 'mall')"/>
                     <span class="courseTitle" @click="open(item , 'mall')">{{ item.name }}</span>
                     <span class="course-price" @click="open(item, 'mall')">￥ {{ item.price }}</span>
                   </swiper-slide>
@@ -101,7 +101,7 @@
         </div>
         <swiper class="swiper" :options="kpOption">
           <swiper-slide class="swiper-slide" v-for="(item, index) in kpmList" :key="index">
-            <img :src="item.imgSrcPc" class="Preview" @click="open(item, 'kpm')"/>
+            <img :src="item.article.coverList" class="Preview" @click="open(item, 'kpm')"/>
             <p class="Preview-title" @click="open(item, 'kpm')">{{item.name}}</p>
             <div class="user">
               <div>
@@ -174,7 +174,7 @@
               <div class="talents-swiper">
                 <swiper class="swiper" :options="bigTalentOption">
                   <swiper-slide class="swiper-slide" v-for="(item, index) in details" :key="index">
-                    <img :src="item.imgSrc" class="talents-img" @click="open(item, 'talent')"/>
+                    <img :src="item.imgPcSrc" class="talents-img" @click="open(item, 'talent')"/>
                     <p class="talents-name" @click="open(item, 'talent')">{{ item.name }}</p>
                   </swiper-slide>
                 </swiper>
@@ -337,14 +337,14 @@ export default {
       talentUrl: "",
       healthList: [],
       navigationList: [],
-      footList:[]
+      footList:[],
+      menuList:[]
     }
   },
   created() {
     this.getHomeList()
     // this.getLogoList()
     this.uInfo=JSON.parse(window.localStorage.getItem('user_info'))
-    // console.log('zzz',this.uInfo)
   },
   methods: {
     getHomeList() {
@@ -352,7 +352,7 @@ export default {
         this.data = res
         this.channels = this.data.channels
         this.homeBanner = this.data.banners
-        console.log(this.homeBanner)
+        console.log(this.data)
         this.channels.map(item => {
           if(item.channel.appCode == 'kaopei'){
             this.course = item.details
@@ -363,6 +363,7 @@ export default {
           } else if(item.channel.appCode == 'kpm'){
             this.kpmList = item.details
             this.kpmUrl = item.channel.targetUrlPc
+            console.log()
           } else if(item.channel.appCode == 'health') {
             this.evaluate = item.items[10]
             this.healthList = item.items[12]
@@ -375,13 +376,14 @@ export default {
         this.data.navigation.map(item => {
           item.map(eItem => {
             this.navigationList.push(eItem)
+            console.log('iii',this.navigationList)
           })
         })
       })
     },
  
     navigationTo(item){
-      window.open(item.url, '_blank')
+      window.open(item.urlPc, '_blank')
     },
     goTo(appCode){
       this.channels.map(item => {
@@ -407,7 +409,8 @@ export default {
     goHealthTo(item){
       let openUrl = this.healthUrl + item.urlPc
       window.open(openUrl, '_blank')
-    }
+    },
+    
   },
 }
 </script>
@@ -434,8 +437,10 @@ body
     .swiper-container{
       height 100%
       width 100%
-      img{
-        object-fit: cover
+      .banner-image{
+        //object-fit: cover
+        height 100%
+        width 100%
       }
     }
     >>> .swiper-pagination-bullets{
@@ -620,7 +625,7 @@ body
       }
       .swiper-slide{
         width 380px !important
-        height 460px
+        height 480px
         border 2px solid #F1F1F1
         border-radius 15px
         .Preview{
@@ -642,12 +647,12 @@ body
             width 44px
             height 44px
             border-radius 50%
-            margin-right 8px
+            margin 0 8px 35px 22px
           }
           .userName{
             margin 0
             display: flex
-            justify-content center
+            //justify-content center
             flex-direction column
             .userName-font{
               font-size 14px
@@ -952,7 +957,7 @@ body
   text-decoration: none
 
 .swiper-jp-image, .swiper-tj-image
-  width 106px
+  width 104px
   height 106px
   border-radius 25px
 

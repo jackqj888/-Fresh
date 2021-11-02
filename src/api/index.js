@@ -12,12 +12,14 @@ export default {
     getCheck: (params) => get(`/kaopei/mp/sms/check/`+ params ),
     changePassword:(data)=>post(`/admin/profile/external/update`, data),
     goLogin:(data)=>postByUrl(`/auth/oauth/token`, data),
+    MenuList:()=> get(`/portal/mp/index/menu/list`)
   },
   logout: {
     getLogout:() =>del(`/auth/token/logout`)
   },
   home: {
     HomeList:()=> get(`/portal/mp/index/index`),
-    LogoList:()=> get(`/admin/tenant/info`)
+    LogoList:()=> get(`/admin/tenant/info`),
+    
   },
 };

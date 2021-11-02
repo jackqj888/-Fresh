@@ -184,7 +184,6 @@ export default {
     },
     getLogin() {
       if(this.form.grant_type === 'password') {
-        console.log(this.form)
         if(this.form.username !== '' && this.form.password !== ''){
           let data = {
             username: this.form.username,
@@ -197,8 +196,10 @@ export default {
             window.localStorage.setItem('access_token', access_token)
             let userInfo = res.user_info
             window.localStorage.setItem('user_info', JSON.stringify(userInfo))
+            this.getMenuList(data)
             this.$router.push({name: 'home', params: {data}})
           })
+          
         } else {
           this.$message.error('请输入手机号和密码！')
         }
@@ -213,13 +214,23 @@ export default {
             window.localStorage.setItem('access_token', access_token)
             let userInfo = res.user_info
             window.localStorage.setItem('user_info', JSON.stringify(userInfo))
+            this.getMenuList(data)
             this.$router.push({name: 'home', params: {data}})
           })
+          
         } else {
           this.$message.error('请输入手机号和验证码！')
         }
       }
     },
+    getMenuList(data){
+      api.login.MenuList(data).then((res) => {
+        this.data=res
+        console.log('xxx',this.data)
+      })
+    }
+    
+    
   },
 }
 </script>

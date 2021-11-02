@@ -1,10 +1,10 @@
 <template>
   <div class="pagetemplate">
-    <Header :footList="footList" :QrCode="linksQrCodeImg"></Header>
-  
+    <Header :footList="footList" :menuList="menuList"></Header>
+
     <router-view></router-view>
 
-    <Footer :footList="footList"></Footer>
+    <Footer :footList="footList" :QrCode="linksQrCodeImg"></Footer>
   </div>
 </template>
 
@@ -20,21 +20,28 @@ export default {
   },
   data() {
     return {
-      footList:[],
-      linksQrCodeImg:null
+      footList: {},
+      linksQrCodeImg: [],
+      menuList:[]
     }
   },
   created() {
-   this.getLogoList()
+    this.getLogoList()
+    this.getMenuList()
   },
   methods: {
-       getLogoList(){
-      api.home.LogoList().then(res=>{
-        this.footList=res
-        this.linksQrCodeImg=this.footList.linksQrCodeImg
-        console.log('nnn',this.linksQrCodeImg)
+    getLogoList() {
+      api.home.LogoList().then(res => {
+        this.footList = res
+        this.linksQrCodeImg = this.footList.linksQrCodeImg
       })
     },
+    getMenuList(){
+      api.login.MenuList().then((res) => {
+        this.menuList=res
+        console.log('xxx',this.menuList)
+      })
+    }
   },
   watch: {},
 }
