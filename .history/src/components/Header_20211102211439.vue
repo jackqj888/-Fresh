@@ -27,8 +27,9 @@
               <i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown" >
-              <el-dropdown-item @click.native="goTo('study')" v-if="appCode[0].appCode==='kaopei'">我的课程</el-dropdown-item>
-              <el-dropdown-item @click.native="goTo('myPage')" v-if="appCode[2].appCode==='talent'">我的简历</el-dropdown-item>
+              <el-dropdown-item @click.native="goTo('study')" v-if="[appCode]==='kaopei'">我的课程</el-dropdown-item>
+              <el-dropdown-item @click.native="goTo('myPage')" v-if="[appCode]==='talent'">我的简历</el-dropdown-item>
+
               <el-dropdown-item @click.native="dialogVisible = true">
                 修改密码
               </el-dropdown-item>
@@ -124,7 +125,7 @@ export default {
         },
         disabled: true,
         avatar: '',
-        appCode: [],
+        appCode: '',
         items:[]
       }
     },
@@ -152,7 +153,7 @@ export default {
       },
     },
     mounted(){
-      
+      this.getmenuList()
     },
     watch:{
       menuList:{
@@ -166,11 +167,7 @@ export default {
     },
     
     created() {
-      this.appCode=this.items.map((item) => {
-       return {appCode:item.appCode}
       
-      })
-       console.log('jjj', this.appCode);
       this.uInfo1 = JSON.parse(window.localStorage.getItem('user_info'))
       this.addForm.mobile = this.uInfo1 && this.uInfo1.phone ? this.uInfo1.phone : ''
       this.avatar = this.uInfo1 && this.uInfo1.avatar !== '' ? this.uInfo1.avatar : ""
@@ -271,7 +268,14 @@ export default {
           }
         });
       },
-     
+      getmenuList(){
+        this.items.map(item => {
+        if (item.items.appCode === 'kaopei') {
+          this.appCode = item.items.appCode
+          console.log('hhh',this.appCode);
+        }
+      })
+      }
        
     },
   }

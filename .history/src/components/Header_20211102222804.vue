@@ -27,8 +27,9 @@
               <i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown" >
-              <el-dropdown-item @click.native="goTo('study')" v-if="appCode[0].appCode==='kaopei'">我的课程</el-dropdown-item>
-              <el-dropdown-item @click.native="goTo('myPage')" v-if="appCode[2].appCode==='talent'">我的简历</el-dropdown-item>
+              <el-dropdown-item @click.native="goTo('study')" v-if="appCode==='kaopei'">我的课程</el-dropdown-item>
+              <el-dropdown-item @click.native="goTo('myPage')" v-if="appCode==='talent'">我的简历</el-dropdown-item>
+
               <el-dropdown-item @click.native="dialogVisible = true">
                 修改密码
               </el-dropdown-item>
