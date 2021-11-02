@@ -52,7 +52,7 @@ export default {
       },
     },
     QrCode:{
-      type: Object,
+      type: Array,
       default() {
         return {}
       },

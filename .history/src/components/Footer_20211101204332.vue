@@ -1,9 +1,9 @@
 <template>
   <div class="home-footer wrap">
-    <div class="foot" >
+    <div class="foot" v-for="(item, index) in footList" :key="index">
       <div class="companyName">
         <div class="image">
-          <img :src="footList.logo" alt="logo" class="logo" />
+          <img :src="item.logo" alt="logo" class="logo" />
         </div>
         <div class="name">
           <span class="company">杭州汝果智能健康科技有限公司</span>
@@ -18,22 +18,22 @@
       <div>
         <div class="scanCode">
           <div class="scanCode-left">
-           <img :src="QrCode[0].pathSrc" alt="logo" class="logo" />
+            <img src="@/assets/scanCode.png" alt="scanCode" class="scanCode1" />
           </div>
           <div class="scanCode-right">
             <div class="email">
               <img src="@/assets/mail.png" alt="logo" class="mail" />
-              <span>{{footList.email}}</span>
+              <span>support@bhalani.com</span>
             </div>
             <div class="telephone">
               <img src="@/assets/phone .png" alt="logo" class="phone" />
-              <span>{{footList.telephone}}</span>
+              <span>+91 9876 543 210</span>
             </div>
           </div>
         </div>
         <div>
           <div class="safeCode">
-            <span>公安备案号 - © {{ footList.ipcRecordNumber }}</span>
+            <span>公安备案号 - © 2021 All Rights Reserved</span>
           </div>
         </div>
       </div>
@@ -42,7 +42,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     footList: {
@@ -51,23 +50,9 @@ export default {
         return {}
       },
     },
-    QrCode:{
-      type: Object,
-      default() {
-        return {}
-      },
-    }
   },
   data() {
-    return {
-      
-    }
-  },
-  created() {
- console.log('vvv',this.QrCode);
-  },
-  methods: {
-   
+    return {}
   },
 }
 </script>
@@ -88,8 +73,6 @@ export default {
         lign-items center
       .logo
         margin-top 25px
-        width 35px
-        height 35px
       .company
         font-size 35px
         margin-top 25px

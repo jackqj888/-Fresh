@@ -1,17 +1,17 @@
 <template>
   <div class="pagetemplate">
-    <Header :footList="footList" :QrCode="linksQrCodeImg"></Header>
-  
+    <Header></Header>
+    <!-- <keep-alive :exclude="/-no_cache/"> -->
     <router-view></router-view>
-
+    <!-- </keep-alive> -->
     <Footer :footList="footList"></Footer>
   </div>
 </template>
 
 <script>
+
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import api from '@/api'
 // import { getToken } from '@/utils/storage'
 export default {
   components: {
@@ -19,22 +19,13 @@ export default {
     Footer,
   },
   data() {
-    return {
-      footList:[],
-      linksQrCodeImg:null
-    }
+    return {}
   },
   created() {
-   this.getLogoList()
+  
   },
   methods: {
-       getLogoList(){
-      api.home.LogoList().then(res=>{
-        this.footList=res
-        this.linksQrCodeImg=this.footList.linksQrCodeImg
-        console.log('nnn',this.linksQrCodeImg)
-      })
-    },
+    
   },
   watch: {},
 }

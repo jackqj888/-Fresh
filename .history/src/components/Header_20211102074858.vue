@@ -73,14 +73,12 @@ import api from '@/api'
 import {clearToken} from '@/utils/storage'
 
 export default {
- props: {
-    footList: {
+  footList: {
       type: Array,
       default() {
         return {}
       },
     },
-  },
   data() {
     return {
       dialogVisible: false,

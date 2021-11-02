@@ -52,7 +52,7 @@ export default {
       },
     },
     QrCode:{
-      type: Object,
+      type: Array,
       default() {
         return {}
       },
@@ -64,7 +64,7 @@ export default {
     }
   },
   created() {
- console.log('vvv',this.QrCode);
+ 
   },
   methods: {
    

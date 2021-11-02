@@ -1,22 +1,26 @@
 <template>
   <div class="wrapper">
-    <div class="home-head"></div>
+    <Header></Header>
     <div class="home-container">
       <div class="banner">
         <swiper class="swiper" :options="headerOption">
           <swiper-slide v-for="(item, index) in homeBanner" :key="index">
-            <img :src="item.bannerSrc" alt="" class="image"/>
+            <img :src="item.bannerSrc" alt="" class="image" />
           </swiper-slide>
         </swiper>
         <div class="headerPagination" slot="pagination"></div>
       </div>
-      <div class="navigation" style="margin: 75px auto 0 auto">
+      <div class="navigation" style="margin: 75px auto 0 auto;">
         <swiper class="swiper jk" :options="navigationOption">
-          <swiper-slide class="swiper-slide" v-for="(item, index) in navigationList" :key="index">
+          <swiper-slide
+            class="swiper-slide"
+            v-for="(item, index) in navigationList"
+            :key="index"
+          >
             <div class="groups" @click="navigationTo(item)">
-              <img :src="item.imgPcSrc" alt="" class="image"/>
-              <div class="item-name">{{item.title}}</div>
-<!--                <div class="item-title">Personnel</div>-->
+              <img :src="item.imgPcSrc" alt="" class="image" />
+              <div class="item-name">{{ item.title }}</div>
+              <!--                <div class="item-title">Personnel</div>-->
             </div>
           </swiper-slide>
         </swiper>
@@ -29,25 +33,37 @@
               <div class="course-title">
                 <span class="course-font">精品课程</span>
                 <span class="course-font1">
-              <a class="go-jp" :href="kaopeiUrl">进入考培 ></a>
-            </span>
+                  <a class="go-jp" :href="kaopeiUrl">进入考培 ></a>
+                </span>
               </div>
               <div class="course-introduction">
-            <span class="e-font">
-              The examination and training system has launched high-
-              <br/>
-              quality courses. I wish you a smooth passing of the
-              <br/>
-              examination and training
-            </span>
-                <img src="@/assets/cirlces.png" class="image1"/>
+                <span class="e-font">
+                  The examination and training system has launched high-
+                  <br />
+                  quality courses. I wish you a smooth passing of the
+                  <br />
+                  examination and training
+                </span>
+                <img src="@/assets/cirlces.png" class="image1" />
               </div>
               <div class="swiper-jp">
                 <swiper class="swiper jp" ref="swiper" :options="jpOption">
-                  <swiper-slide class="swiper-slide" v-for="(item, index) in course" :key="index">
-                    <img :src="item.imgSrc" class="swiper-jp-image" @click="open(item, 'kaopei')"/>
-                    <span class="courseTitle" @click="open(item, 'kaopei')">{{ item.name }}</span>
-                    <span class="course-price" @click="open(item , 'kaopei')">￥ {{ item.price }}</span>
+                  <swiper-slide
+                    class="swiper-slide"
+                    v-for="(item, index) in course"
+                    :key="index"
+                  >
+                    <img
+                      :src="item.imgSrc"
+                      class="swiper-jp-image"
+                      @click="open(item, 'kaopei')"
+                    />
+                    <span class="courseTitle" @click="open(item, 'kaopei')">
+                      {{ item.name }}
+                    </span>
+                    <span class="course-price" @click="open(item, 'kaopei')">
+                      ￥ {{ item.price }}
+                    </span>
                   </swiper-slide>
                 </swiper>
                 <div class="swiper-button-prev swiper-button-prev1"></div>
@@ -61,28 +77,39 @@
                 <span class="commodity-font">
                   推荐商品
                 </span>
-                    <span class="commodity-font1">
+                <span class="commodity-font1">
                   <a class="go-tj" :href="mallUrl">进入商城 ></a>
                 </span>
               </div>
               <div class="commodity-introduction">
-            <span class="e-font">
-              Shopping mall system shelves recommended
-              <br/>
-              goods, value for money, I wish you a happy
-              <br/>
-              shopping
-            </span>
-                <img src="@/assets/cirlces1.png" class="image2"/>
+                <span class="e-font">
+                  Shopping mall system shelves recommended
+                  <br />
+                  goods, value for money, I wish you a happy
+                  <br />
+                  shopping
+                </span>
+                <img src="@/assets/cirlces1.png" class="image2" />
               </div>
               <div class="swiper-tj">
                 <swiper class="swiper tj" ref="swiper" :options="scOption">
-                  <swiper-slide class="swiper-slide" v-for="(item, index) in commodity" :key="index">
-                    <img :src="item.imgSrc" class="swiper-tj-image" @click="open(item, 'mall')"/>
-                    <span class="courseTitle" @click="open(item , 'mall')">{{ item.name }}</span>
-                    <span class="course-price" @click="open(item, 'mall')">￥ {{ item.price }}</span>
+                  <swiper-slide
+                    class="swiper-slide"
+                    v-for="(item, index) in commodity"
+                    :key="index"
+                  >
+                    <img
+                      :src="item.imgSrc"
+                      class="swiper-tj-image"
+                      @click="open(item, 'mall')"
+                    />
+                    <span class="courseTitle" @click="open(item, 'mall')">
+                      {{ item.name }}
+                    </span>
+                    <span class="course-price" @click="open(item, 'mall')">
+                      ￥ {{ item.price }}
+                    </span>
                   </swiper-slide>
-
                 </swiper>
                 <div class="swiper-button-prev swiper-button-prev2"></div>
                 <div class="swiper-button-next swiper-button-next2"></div>
@@ -100,57 +127,91 @@
           <p class="go"><a class="go-tj" :href="kpmUrl">点击进入 ></a></p>
         </div>
         <swiper class="swiper" :options="kpOption">
-          <swiper-slide class="swiper-slide" v-for="(item, index) in kpmList" :key="index">
-            <img :src="item.imgSrcPc" class="Preview" @click="open(item, 'kpm')"/>
-            <p class="Preview-title" @click="open(item, 'kpm')">{{item.name}}</p>
+          <swiper-slide
+            class="swiper-slide"
+            v-for="(item, index) in kpmList"
+            :key="index"
+          >
+            <img
+              :src="item.imgSrcPc"
+              class="Preview"
+              @click="open(item, 'kpm')"
+            />
+            <p class="Preview-title" @click="open(item, 'kpm')">
+              {{ item.name }}
+            </p>
             <div class="user">
               <div>
-                <img :src="item.article.avatar" class="user-image"/>
+                <img :src="item.article.avatar" class="user-image" />
               </div>
               <div class="userName">
-                <span class="userName-font">{{item.article.nickname}}</span>
-                <span class="userName-time">{{item.article.createTime}}</span>
+                <span class="userName-font">{{ item.article.nickname }}</span>
+                <span class="userName-time">{{ item.article.createTime }}</span>
               </div>
             </div>
             <div style="text-align: center;">
-              <el-button class="btn" @click="open(item, 'kpm')">点击查看</el-button>
+              <el-button class="btn" @click="open(item, 'kpm')">
+                点击查看
+              </el-button>
             </div>
           </swiper-slide>
         </swiper>
-        <div style="text-align: center;margin-top: 30px">
-          <button class=" btnLeft">←</button>
-          <button class=" btnRight">→</button>
+        <div style="text-align: center; margin-top: 30px;">
+          <button class="btnLeft">←</button>
+          <button class="btnRight">→</button>
         </div>
       </div>
       <div class="banner2">
-        <img src="@/assets/banner2.png"/>
+        <img src="@/assets/banner2.png" />
       </div>
       <div class="healthTreatment">
         <div class="healthTreatment-box">
           <div class="healthTreatment-title">
             <span class="healthTreatment-font">健康疗程</span>
-            <span class="healthTreatment-go"><a class="go-tj" :href="healthUrl">点击进入 ></a></span>
+            <span class="healthTreatment-go">
+              <a class="go-tj" :href="healthUrl">点击进入 ></a>
+            </span>
           </div>
           <div class="healthTreatment-e-font">
             <div class="e-font1">
               Put forward high-quality conditioning scheme for
-              <br/>
+              <br />
               your health
             </div>
-            <div style="display: flex;justify-content: right;align-items: center;flex: 1">
-              <div class="jkLeft" >&lt;</div>
+            <div
+              style="
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                flex: 1;
+              "
+            >
+              <div class="jkLeft">&lt;</div>
               <div class="jkPagination"></div>
               <div class="jkRight">&gt;</div>
             </div>
           </div>
           <div class="carousel">
             <swiper class="swiper jk" :options="jkOption">
-              <swiper-slide class="swiper-slide" v-for="(item, index) in healthList" :key="index">
+              <swiper-slide
+                class="swiper-slide"
+                v-for="(item, index) in healthList"
+                :key="index"
+              >
                 <div class="swiper-img">
-                  <img :src="item.imgSrcPc" @click="open(item, 'health')"/>
+                  <img :src="item.imgSrcPc" @click="open(item, 'health')" />
                 </div>
-                <div style="width: 176px; text-align: center; font-size: 14px; cursor: pointer"
-                     @click="open(item, 'health')">{{item.name}}</div>
+                <div
+                  style="
+                    width: 176px;
+                    text-align: center;
+                    font-size: 14px;
+                    cursor: pointer;
+                  "
+                  @click="open(item, 'health')"
+                >
+                  {{ item.name }}
+                </div>
               </swiper-slide>
             </swiper>
           </div>
@@ -158,41 +219,63 @@
       </div>
       <div class="talents">
         <div class="talents-box">
-          <div style="display: flex">
+          <div style="display: flex;">
             <div>
               <div class="talents-top-left">
                 <div class="talents-title">
                   <span class="talents-font">精选人才</span>
                   <span class="talents-go">
-                <a class="go-rc" :href="talentUrl">点击进入 ></a>
-              </span>
+                    <a class="go-rc" :href="talentUrl">点击进入 ></a>
+                  </span>
                 </div>
               </div>
               <div class="talents-e-font">
-                <p class="e-font1">Talent system to help you better select talents</p>
+                <p class="e-font1">
+                  Talent system to help you better select talents
+                </p>
               </div>
               <div class="talents-swiper">
                 <swiper class="swiper" :options="bigTalentOption">
-                  <swiper-slide class="swiper-slide" v-for="(item, index) in details" :key="index">
-                    <img :src="item.imgSrc" class="talents-img" @click="open(item, 'talent')"/>
-                    <p class="talents-name" @click="open(item, 'talent')">{{ item.name }}</p>
+                  <swiper-slide
+                    class="swiper-slide"
+                    v-for="(item, index) in details"
+                    :key="index"
+                  >
+                    <img
+                      :src="item.imgSrc"
+                      class="talents-img"
+                      @click="open(item, 'talent')"
+                    />
+                    <p class="talents-name" @click="open(item, 'talent')">
+                      {{ item.name }}
+                    </p>
                   </swiper-slide>
                 </swiper>
               </div>
             </div>
             <div class="smallTalent">
               <swiper class="swiper" :options="smallTalentOption">
-                <swiper-slide class="swiper-slide" v-for="(item, index) in details" :key="index">
-                  <img :src="item.imgSrc" class="talents-img" @click="open(item, 'talent')"/>
-                  <div class="talents-name" @click="open(item, 'talent')">{{ item.name }}</div>
+                <swiper-slide
+                  class="swiper-slide"
+                  v-for="(item, index) in details"
+                  :key="index"
+                >
+                  <img
+                    :src="item.imgSrc"
+                    class="talents-img"
+                    @click="open(item, 'talent')"
+                  />
+                  <div class="talents-name" @click="open(item, 'talent')">
+                    {{ item.name }}
+                  </div>
                 </swiper-slide>
               </swiper>
             </div>
           </div>
           <div class="talent-pagination-box">
-            <div class="talentLeft" >&lt;</div>
+            <div class="talentLeft">&lt;</div>
             <div class="talent-pagination"></div>
-            <div class="talentRight" >&gt;</div>
+            <div class="talentRight">&gt;</div>
           </div>
         </div>
       </div>
@@ -200,18 +283,24 @@
         <p class="healthCheck-font">健康检测</p>
         <p class="e-font">
           Health data test to check whether you are healthy. Come and
-          <br/>
+          <br />
           make an appointment
         </p>
         <p class="go">
-          <a class="go-jk" :href="healthUrl">点击进入 ></a></p>
+          <a class="go-jk" :href="healthUrl">点击进入 ></a>
+        </p>
         <div class="evaluate">
           <el-row :gutter="24">
-            <el-col :sm="24" :md="8" v-for="(item,index) in evaluate" :key="index">
+            <el-col
+              :sm="24"
+              :md="8"
+              v-for="(item, index) in evaluate"
+              :key="index"
+            >
               <div class="evaluate-box">
                 <p class="evaluate-title">{{ item.data.title }}</p>
-                <div class="evaluate-Introduction" @click=goHealthTo(item)>
-                  <img :src="item.imgSrc" class="cirlces4"/>
+                <div class="evaluate-Introduction" @click="goHealthTo(item)">
+                  <img :src="item.imgSrc" class="cirlces4" />
                   <div class="evaluate-font">
                     <p class="evaluate-cn">{{ item.data.summary }}</p>
                     <p class="evaluate-en">
@@ -225,16 +314,21 @@
         </div>
       </div>
     </div>
-    <div class="home-foot"></div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import api from '@/api'
+import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   name: 'home',
-  components: {},
+  components: {
+    Header,
+    Footer
+  },
   data() {
     return {
       ProductList: [],
@@ -278,8 +372,8 @@ export default {
         slidesPerGroup: 3,
         navigation: {
           nextEl: '.btnLeft',
-          prevEl: '.btnRight'
-        }
+          prevEl: '.btnRight',
+        },
       },
       jkOption: {
         slidesPerView: 6,
@@ -295,27 +389,27 @@ export default {
           prevEl: '.jkRight',
         },
       },
-      bigTalentOption:{
+      bigTalentOption: {
         slidesPerView: 2,
         spaceBetween: 30,
         freeMode: true,
         pagination: {
           el: '.swiper-pagination',
-          clickable: true
+          clickable: true,
         },
         navigation: {
           nextEl: '.talentLeft',
           prevEl: '.talentRight',
         },
       },
-      smallTalentOption:{
+      smallTalentOption: {
         slidesPerView: 3,
         slidesPerColumn: 2,
-        slidesPerColumnFill : 'row',
+        slidesPerColumnFill: 'row',
         spaceBetween: 30,
         pagination: {
           el: '.talent-pagination',
-          clickable: true
+          clickable: true,
         },
         navigation: {
           nextEl: '.talentLeft',
@@ -327,76 +421,81 @@ export default {
       homeBanner: [],
       evaluate: [],
       details: [],
-      uInfo:null,
+      uInfo: null,
       channels: [],
       kpmList: [],
-      kaopeiUrl: "",
-      mallUrl: "",
-      kpmUrl: "",
-      healthUrl: "",
-      talentUrl: "",
+      kaopeiUrl: '',
+      mallUrl: '',
+      kpmUrl: '',
+      healthUrl: '',
+      talentUrl: '',
       healthList: [],
       navigationList: [],
-      footList:[]
+      footList: [],
     }
   },
   created() {
     this.getHomeList()
-    // this.getLogoList()
-    this.uInfo=JSON.parse(window.localStorage.getItem('user_info'))
+    this.getLogoList()
+    this.uInfo = JSON.parse(window.localStorage.getItem('user_info'))
     // console.log('zzz',this.uInfo)
   },
   methods: {
     getHomeList() {
-      api.home.HomeList().then(res=>{
+      api.home.HomeList().then((res) => {
         this.data = res
         this.channels = this.data.channels
         this.homeBanner = this.data.banners
         console.log(this.homeBanner)
-        this.channels.map(item => {
-          if(item.channel.appCode == 'kaopei'){
+        this.channels.map((item) => {
+          if (item.channel.appCode == 'kaopei') {
             this.course = item.details
             this.kaopeiUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'mall'){
+          } else if (item.channel.appCode == 'mall') {
             this.commodity = item.details
             this.mallUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'kpm'){
+          } else if (item.channel.appCode == 'kpm') {
             this.kpmList = item.details
             this.kpmUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'health') {
+          } else if (item.channel.appCode == 'health') {
             this.evaluate = item.items[10]
             this.healthList = item.items[12]
             this.healthUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'talent') {
+          } else if (item.channel.appCode == 'talent') {
             this.details = item.details
             this.talentUrl = item.channel.targetUrlPc
           }
         })
-        this.data.navigation.map(item => {
-          item.map(eItem => {
+        this.data.navigation.map((item) => {
+          item.map((eItem) => {
             this.navigationList.push(eItem)
           })
         })
       })
     },
- 
-    navigationTo(item){
+    getLogoList() {
+      api.home.LogoList().then((res) => {
+        this.footList = res
+        console.log('nnn', this.footList)
+      })
+    },
+    navigationTo(item) {
       window.open(item.url, '_blank')
     },
-    goTo(appCode){
-      this.channels.map(item => {
-        if(item.channel.appCode == appCode){
-          if(item.channel.targetUrlPc){
+    goTo(appCode) {
+      this.channels.map((item) => {
+        if (item.channel.appCode == appCode) {
+          if (item.channel.targetUrlPc) {
             window.open(item.channel.targetUrlPc, '_blank')
           }
         }
       })
     },
-    open(item, appCode){
+    open(item, appCode) {
       let targetUrlPc = ''
-      this.channels.map(item => {
-        if(item.channel.appCode == appCode){
-          if(item.channel.targetUrlPc){
+      this.channels.map((item) => {
+        if (item.channel.appCode == appCode) {
+          if (item.channel.targetUrlPc) {
             targetUrlPc = item.channel.targetUrlPc
           }
         }
@@ -404,10 +503,10 @@ export default {
       let openUrl = targetUrlPc + item.urlPc
       window.open(openUrl, '_blank')
     },
-    goHealthTo(item){
+    goHealthTo(item) {
       let openUrl = this.healthUrl + item.urlPc
       window.open(openUrl, '_blank')
-    }
+    },
   },
 }
 </script>
@@ -653,7 +752,7 @@ body
               font-size 14px
               color #000
               margin 0
-             
+
             }
           .userName-time{
             font-size 13px

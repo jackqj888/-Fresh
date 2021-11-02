@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="home-head"></div>
+    <Header></Header>
     <div class="home-container">
       <div class="banner">
         <swiper class="swiper" :options="headerOption">
@@ -225,7 +225,7 @@
         </div>
       </div>
     </div>
-    <div class="home-foot"></div>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -342,7 +342,7 @@ export default {
   },
   created() {
     this.getHomeList()
-    // this.getLogoList()
+    this.getLogoList()
     this.uInfo=JSON.parse(window.localStorage.getItem('user_info'))
     // console.log('zzz',this.uInfo)
   },
@@ -379,7 +379,12 @@ export default {
         })
       })
     },
- 
+    getLogoList(){
+      api.home.LogoList().then(res=>{
+        this.footList=res
+        console.log('nnn',this.footList)
+      })
+    },
     navigationTo(item){
       window.open(item.url, '_blank')
     },

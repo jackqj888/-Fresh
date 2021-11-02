@@ -2,7 +2,7 @@
   <div class="home-header wrap">
     <el-row class="top">
       <el-col :md="8" :sm="24"><div class="logo">
-        <img :src="footList.logo" alt="logo" class="logo" />
+        <img src="@/assets/headerLogo.png" alt="headerLogo"/>
       </div></el-col>
       <el-col :md="8" :sm="24"><div class="logo1">
         <span class="siteName">汝果AI门户系统</span>
@@ -73,14 +73,6 @@ import api from '@/api'
 import {clearToken} from '@/utils/storage'
 
 export default {
- props: {
-    footList: {
-      type: Array,
-      default() {
-        return {}
-      },
-    },
-  },
   data() {
     return {
       dialogVisible: false,

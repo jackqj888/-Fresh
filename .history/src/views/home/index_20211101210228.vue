@@ -379,7 +379,12 @@ export default {
         })
       })
     },
- 
+    // getLogoList(){
+    //   api.home.LogoList().then(res=>{
+    //     this.footList=res
+    //     console.log('nnn',this.data1)
+    //   })
+    // },
     navigationTo(item){
       window.open(item.url, '_blank')
     },

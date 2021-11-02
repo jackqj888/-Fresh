@@ -336,13 +336,12 @@ export default {
       healthUrl: "",
       talentUrl: "",
       healthList: [],
-      navigationList: [],
-      footList:[]
+      navigationList: []
     }
   },
   created() {
     this.getHomeList()
-    // this.getLogoList()
+    this.getLogoList()
     this.uInfo=JSON.parse(window.localStorage.getItem('user_info'))
     // console.log('zzz',this.uInfo)
   },
@@ -379,7 +378,12 @@ export default {
         })
       })
     },
- 
+    getLogoList(){
+      api.home.LogoList().then(res=>{
+        this.data1=res
+        console.log('nnn',this.data1)
+      })
+    },
     navigationTo(item){
       window.open(item.url, '_blank')
     },

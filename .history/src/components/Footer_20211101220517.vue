@@ -1,7 +1,7 @@
 <template>
   <div class="home-footer wrap">
-    <div class="foot" >
-      <div class="companyName">
+    <div class="companyName" >
+      <div class="foot">
         <div class="image">
           <img :src="footList.logo" alt="logo" class="logo" />
         </div>
@@ -18,7 +18,7 @@
       <div>
         <div class="scanCode">
           <div class="scanCode-left">
-           <img :src="QrCode[0].pathSrc" alt="logo" class="logo" />
+            <img src="@/assets/scanCode.png" alt="scanCode" class="scanCode1" />
           </div>
           <div class="scanCode-right">
             <div class="email">
@@ -27,7 +27,7 @@
             </div>
             <div class="telephone">
               <img src="@/assets/phone .png" alt="logo" class="phone" />
-              <span>{{footList.telephone}}</span>
+              <span>+91 9876 543 210</span>
             </div>
           </div>
         </div>
@@ -42,32 +42,31 @@
 </template>
 
 <script>
-
+import api from '@/api'
 export default {
-  props: {
-    footList: {
-      type: Array,
-      default() {
-        return {}
-      },
-    },
-    QrCode:{
-      type: Object,
-      default() {
-        return {}
-      },
-    }
-  },
+  // props: {
+  //   footList: {
+  //     type: Array,
+  //     default() {
+  //       return {}
+  //     },
+  //   },
+  // },
   data() {
     return {
-      
+      footList: null,
     }
   },
   created() {
- console.log('vvv',this.QrCode);
+    this.getLogoList()
   },
   methods: {
-   
+    getLogoList() {
+      api.home.LogoList().then((res) => {
+        this.footList = res
+        console.log('nnn', this.footList)
+      })
+    },
   },
 }
 </script>
@@ -88,8 +87,6 @@ export default {
         lign-items center
       .logo
         margin-top 25px
-        width 35px
-        height 35px
       .company
         font-size 35px
         margin-top 25px

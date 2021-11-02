@@ -336,8 +336,7 @@ export default {
       healthUrl: "",
       talentUrl: "",
       healthList: [],
-      navigationList: [],
-      footList:[]
+      navigationList: []
     }
   },
   created() {
@@ -379,7 +378,12 @@ export default {
         })
       })
     },
- 
+    // getLogoList(){
+    //   api.home.LogoList().then(res=>{
+    //     this.data1=res
+    //     console.log('nnn',this.data1)
+    //   })
+    // },
     navigationTo(item){
       window.open(item.url, '_blank')
     },

@@ -336,50 +336,54 @@ export default {
       healthUrl: "",
       talentUrl: "",
       healthList: [],
-      navigationList: [],
-      footList:[]
+      navigationList: []
     }
   },
   created() {
     this.getHomeList()
-    // this.getLogoList()
+    this.getLogoList()
     this.uInfo=JSON.parse(window.localStorage.getItem('user_info'))
     // console.log('zzz',this.uInfo)
   },
   methods: {
-    getHomeList() {
-      api.home.HomeList().then(res=>{
-        this.data = res
-        this.channels = this.data.channels
-        this.homeBanner = this.data.banners
-        console.log(this.homeBanner)
-        this.channels.map(item => {
-          if(item.channel.appCode == 'kaopei'){
-            this.course = item.details
-            this.kaopeiUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'mall'){
-            this.commodity = item.details
-            this.mallUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'kpm'){
-            this.kpmList = item.details
-            this.kpmUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'health') {
-            this.evaluate = item.items[10]
-            this.healthList = item.items[12]
-            this.healthUrl = item.channel.targetUrlPc
-          } else if(item.channel.appCode == 'talent') {
-            this.details = item.details
-            this.talentUrl = item.channel.targetUrlPc
-          }
-        })
-        this.data.navigation.map(item => {
-          item.map(eItem => {
-            this.navigationList.push(eItem)
-          })
-        })
+    // getHomeList() {
+    //   api.home.HomeList().then(res=>{
+    //     this.data = res
+    //     this.channels = this.data.channels
+    //     this.homeBanner = this.data.banners
+    //     console.log(this.homeBanner)
+    //     this.channels.map(item => {
+    //       if(item.channel.appCode == 'kaopei'){
+    //         this.course = item.details
+    //         this.kaopeiUrl = item.channel.targetUrlPc
+    //       } else if(item.channel.appCode == 'mall'){
+    //         this.commodity = item.details
+    //         this.mallUrl = item.channel.targetUrlPc
+    //       } else if(item.channel.appCode == 'kpm'){
+    //         this.kpmList = item.details
+    //         this.kpmUrl = item.channel.targetUrlPc
+    //       } else if(item.channel.appCode == 'health') {
+    //         this.evaluate = item.items[10]
+    //         this.healthList = item.items[12]
+    //         this.healthUrl = item.channel.targetUrlPc
+    //       } else if(item.channel.appCode == 'talent') {
+    //         this.details = item.details
+    //         this.talentUrl = item.channel.targetUrlPc
+    //       }
+    //     })
+    //     this.data.navigation.map(item => {
+    //       item.map(eItem => {
+    //         this.navigationList.push(eItem)
+    //       })
+    //     })
+    //   })
+    // },
+    getLogoList(){
+      api.home.LogoList().then(res=>{
+        this.data1=res
+        console.log('nnn',this.data1)
       })
     },
- 
     navigationTo(item){
       window.open(item.url, '_blank')
     },

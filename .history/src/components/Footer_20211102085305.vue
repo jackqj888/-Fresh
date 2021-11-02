@@ -51,12 +51,7 @@ export default {
         return {}
       },
     },
-    QrCode:{
-      type: Object,
-      default() {
-        return {}
-      },
-    }
+    
   },
   data() {
     return {

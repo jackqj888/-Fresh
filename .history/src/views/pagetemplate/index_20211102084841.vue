@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       footList:[],
-      linksQrCodeImg:null
+      linksQrCodeImg:[]
     }
   },
   created() {

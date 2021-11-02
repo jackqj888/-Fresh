@@ -1,9 +1,9 @@
 <template>
   <div class="pagetemplate">
-    <Header :footList="footList" :QrCode="linksQrCodeImg"></Header>
-  
+    <Header :footList="footList"></Header>
+    <!-- <keep-alive :exclude="/-no_cache/"> -->
     <router-view></router-view>
-
+    <!-- </keep-alive> -->
     <Footer :footList="footList"></Footer>
   </div>
 </template>
@@ -20,8 +20,7 @@ export default {
   },
   data() {
     return {
-      footList:[],
-      linksQrCodeImg:null
+      footList:[]
     }
   },
   created() {
@@ -31,8 +30,7 @@ export default {
        getLogoList(){
       api.home.LogoList().then(res=>{
         this.footList=res
-        this.linksQrCodeImg=this.footList.linksQrCodeImg
-        console.log('nnn',this.linksQrCodeImg)
+        console.log('nnn',this.data1)
       })
     },
   },

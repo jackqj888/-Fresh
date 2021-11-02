@@ -3,7 +3,7 @@
     <div class="foot" >
       <div class="companyName">
         <div class="image">
-          <img :src="footList.logo" alt="logo" class="logo" />
+          <!-- <img :src="footList.logo" alt="logo" class="logo" /> -->
         </div>
         <div class="name">
           <span class="company">杭州汝果智能健康科技有限公司</span>
@@ -18,7 +18,7 @@
       <div>
         <div class="scanCode">
           <div class="scanCode-left">
-           <img :src="QrCode[0].pathSrc" alt="logo" class="logo" />
+           <img :src="footList.logo" alt="logo" class="logo" />
           </div>
           <div class="scanCode-right">
             <div class="email">
@@ -51,12 +51,6 @@ export default {
         return {}
       },
     },
-    QrCode:{
-      type: Object,
-      default() {
-        return {}
-      },
-    }
   },
   data() {
     return {
@@ -64,7 +58,7 @@ export default {
     }
   },
   created() {
- console.log('vvv',this.QrCode);
+ 
   },
   methods: {
    

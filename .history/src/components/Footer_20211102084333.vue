@@ -18,7 +18,7 @@
       <div>
         <div class="scanCode">
           <div class="scanCode-left">
-           <img :src="QrCode[0].pathSrc" alt="logo" class="logo" />
+           <img :src="footList.logo" alt="logo" class="logo" />
           </div>
           <div class="scanCode-right">
             <div class="email">
@@ -52,7 +52,7 @@ export default {
       },
     },
     QrCode:{
-      type: Object,
+      type: Array,
       default() {
         return {}
       },
@@ -64,7 +64,7 @@ export default {
     }
   },
   created() {
- console.log('vvv',this.QrCode);
+ 
   },
   methods: {
    
