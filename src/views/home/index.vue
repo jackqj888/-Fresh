@@ -352,7 +352,7 @@ export default {
         this.data = res
         this.channels = this.data.channels
         this.homeBanner = this.data.banners
-        console.log(this.data)
+        // console.log(this.data)
         this.channels.map(item => {
           if(item.channel.appCode == 'kaopei'){
             this.course = item.details
@@ -363,7 +363,7 @@ export default {
           } else if(item.channel.appCode == 'kpm'){
             this.kpmList = item.details
             this.kpmUrl = item.channel.targetUrlPc
-            console.log()
+            // console.log()
           } else if(item.channel.appCode == 'health') {
             this.evaluate = item.items[10]
             this.healthList = item.items[12]
@@ -376,7 +376,7 @@ export default {
         this.data.navigation.map(item => {
           item.map(eItem => {
             this.navigationList.push(eItem)
-            console.log('iii',this.navigationList)
+            // console.log('iii',this.navigationList)
           })
         })
       })

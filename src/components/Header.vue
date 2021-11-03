@@ -3,7 +3,7 @@
     <el-row class="top">
       <el-col :md="8" :sm="24">
         <div class="logo">
-          <img :src="footList.logo" alt="logo" class="logo" />
+          <img :src="footList.logo" alt="logo" class="logo"/>
         </div>
       </el-col>
       <el-col :md="8" :sm="24">
@@ -15,16 +15,10 @@
       <el-col :md="8" :sm="24">
         <div class="user" v-if="uInfo1 === null">
           <el-button class="btn" @click="goLogin('mobile')">快速登入</el-button>
-          <el-button
-            class="btn1"
-            icon="el-icon-user"
-            @click="goLogin('password')"
-          >
-            账号登入
-          </el-button>
+          <el-button class="btn1" icon="el-icon-user" @click="goLogin('password')">账号登入</el-button>
         </div>
         <div v-else class="userName">
-          <img :src="avatar" alt="" class="image" />
+          <img :src="avatar" alt="" class="image"/>
           <span class="username">{{ uInfo1.username }}</span>
 
           <el-dropdown placement="bottom">
@@ -32,102 +26,57 @@
               我的订单
               <i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item
-                @click.native="goTo('study')"
-                v-if="kaopei === 'kaopei'"
-              >
-                我的课程
-              </el-dropdown-item>
-              <el-dropdown-item
-                @click.native="goTo('myPage')"
-                v-if="talent === 'talent'"
-              >
-                我的简历
-              </el-dropdown-item>
+            <el-dropdown-menu slot="dropdown" >
+              <el-dropdown-item @click.native="goTo('kaopei')" v-if="appCode.includes('kaopei')">我的课程</el-dropdown-item>
+              <el-dropdown-item @click.native="goTo('talent')" v-if="appCode.includes('talent')">我的简历</el-dropdown-item>
               <el-dropdown-item @click.native="dialogVisible = true">
                 修改密码
               </el-dropdown-item>
-              <el-dropdown-item @click.native="logout">
-                退出登录
-              </el-dropdown-item>
+              <el-dropdown-item @click.native="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
       </el-col>
     </el-row>
-    <el-dialog
-      title="修改密码"
-      :visible.sync="dialogVisible"
-      width="360px"
-      @close="dialogVisibleClosed"
-    >
-      <el-form
-        :model="addForm"
-        :rules="addFormRules"
-        ref="addForm"
-        class="formPosition"
-      >
+    <el-dialog title="修改密码" :visible.sync="dialogVisible" width="360px" @close="dialogVisibleClosed">
+      <el-form :model="addForm" :rules="addFormRules" ref="addForm" class="formPosition">
         <el-form-item prop="mobile">
-          <el-input
-            placeholder="手机号码"
-            v-model="addForm.mobile"
-            class="input-with-select"
-          >
+          <el-input placeholder="手机号码" v-model="addForm.mobile" class="input-with-select">
             <el-select v-model="select" slot="prepend" placeholder="+86">
               <el-option label="+86" value="1"></el-option>
             </el-select>
           </el-input>
         </el-form-item>
         <el-form-item prop="verificationCode">
-          <el-input
-            class="put"
-            v-model="addForm.verificationCode"
-            placeholder="短信验证码"
-          ></el-input>
+          <el-input class="put" v-model="addForm.verificationCode" placeholder="短信验证码"></el-input>
           <el-button
-            class="verificationCode"
-            @click="getCode"
-            :class="{ 'disabled-style': getCodeBtnDisable }"
+              class="verificationCode"
+              @click="getCode"
+              :class="{ 'disabled-style': getCodeBtnDisable }"
           >
             {{ verificationCode1 }}
           </el-button>
         </el-form-item>
         <el-form-item prop="newPassword">
-          <el-input
-            class="put"
-            v-model="addForm.newPassword"
-            placeholder="输入新密码"
-            type="password"
-          ></el-input>
+          <el-input class="put" v-model="addForm.newPassword" placeholder="输入新密码" type="password"></el-input>
         </el-form-item>
         <el-form-item prop="confirmNewPassword">
-          <el-input
-            class="put"
-            v-model="addForm.confirmNewPassword"
-            placeholder="确认新密码"
-            type="password"
-            @blur="blur"
-          ></el-input>
+          <el-input class="put" v-model="addForm.confirmNewPassword" placeholder="确认新密码" type="password"
+                    @blur="blur"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button
-          class="btn5"
-          type="primary"
-          @click="onSubmit('addForm')"
-          :disabled="disabled"
-        >
-          完 成
-        </el-button>
-      </span>
+          <el-button class="btn5" type="primary" @click="onSubmit('addForm')" :disabled="disabled">
+            完 成
+          </el-button>
+        </span>
     </el-dialog>
   </div>
 </template>
 
 <script>
 import api from '@/api'
-import { clearToken } from '@/utils/storage'
+import {clearToken} from '@/utils/storage'
 
 export default {
   props: {
@@ -141,203 +90,196 @@ export default {
       type: Array,
       default() {
         return []
-      },
-    },
-  },
-  data() {
-    return {
-      dialogVisible: false,
-      message: '请登入',
-      uInfo1: '',
-      select: '+86',
-      verificationCode1: '获取验证码',
-      addForm: {
-        mobile: '',
-        verificationCode: '',
-        newPassword: '',
-        confirmNewPassword: '',
-      },
-      waitTime: 30,
-      res: [],
-      addFormRules: {
-        mobile: [
-          { required: true, message: '请输入手机号码', trigger: 'blur' },
-        ],
-        verificationCode: [
-          { required: true, message: '请输入验证码', trigger: 'blur' },
-        ],
-        newPassword: [
-          { required: true, message: '请输入新密码', trigger: 'blur' },
-        ],
-        confirmNewPassword: [
-          { required: true, message: '请确认新密码', trigger: 'blur' },
-        ],
-      },
-      disabled: true,
-      avatar: '',
-      kaopei: '',
-      talent: '',
-      mall:'',
-      health:'',
-      store:'',
-      kpm:''
-    }
-  },
-  computed: {
-    // 用于校验手机号码格式是否正确
-    phoneNumberStyle() {
-      let reg = /^1[3456789]\d{9}$/
-      if (!reg.test(this.addForm.mobile)) {
-        return false
       }
-      return true
     },
-    getCodeBtnDisable: {
-      get() {
-        if (this.waitTime === 30) {
-          if (this.addForm.mobile) {
-            return false
-          }
-          return true
+  },
+    data() {
+      return {
+        dialogVisible: false,
+        message: '请登入',
+        uInfo1: '',
+        select: '+86',
+        verificationCode1: '获取验证码',
+        addForm: {
+          mobile: '',
+          verificationCode: '',
+          newPassword: '',
+          confirmNewPassword: ''
+        },
+        waitTime: 30,
+        res: [],
+        addFormRules: {
+          mobile: [
+            {required: true, message: '请输入手机号码', trigger: 'blur'}
+          ],
+          verificationCode: [
+            {required: true, message: '请输入验证码', trigger: 'blur'}
+          ],
+          newPassword: [
+            {required: true, message: '请输入新密码', trigger: 'blur'}
+          ],
+          confirmNewPassword: [
+            {required: true, message: '请确认新密码', trigger: 'blur'}
+          ]
+        },
+        disabled: true,
+        avatar: '',
+        appCode: [],
+        items:[]
+      }
+    },
+    computed: {
+      // 用于校验手机号码格式是否正确
+      phoneNumberStyle() {
+        let reg = /^1[3456789]\d{9}$/
+        if (!reg.test(this.addForm.mobile)) {
+          return false
         }
         return true
       },
-      set() {},
-    },
-  },
-  mounted() {},
-  watch: {
-    menuList: {
-      immediate: true,
-      handler(val) {
-        this.items = val
-        console.log('kkk', this.items)
+      getCodeBtnDisable: {
+        get() {
+          if (this.waitTime === 30) {
+            if (this.addForm.mobile) {
+              return false
+            }
+            return true
+          }
+          return true
+        },
+        set() {
+        },
       },
     },
-  },
-
-  created() {
-    this.items.map((item) => {
-      if (item.appCode == 'kaopei') {
-        this.kaopei = item.appCode
-      } else if (item.appCode == 'talent') {
-        this.talent = item.appCode
-      } else if (item.appCode == 'mall') {
-        this.mall = item.appCode
-      }else if (item.appCode == 'health') {
-        this.health = item.appCode
-      }else if (item.appCode == 'store') {
-        this.store = item.appCode
-      }else if (item.appCode == 'kpm') {
-        this.kpm = item.appCode
-      }
-    })
-    this.uInfo1 = JSON.parse(window.localStorage.getItem('user_info'))
-    this.addForm.mobile =
-      this.uInfo1 && this.uInfo1.phone ? this.uInfo1.phone : ''
-    this.avatar =
-      this.uInfo1 && this.uInfo1.avatar !== '' ? this.uInfo1.avatar : ''
-  },
-
-  methods: {
-    dialogVisibleClosed() {
-      this.$refs.addFormRefs.resetFields()
+    mounted(){
+      
     },
-    getCode() {
-      if (this.phoneNumberStyle) {
-        // 调用获取短信验证码接口
-        api.login.getCode(this.addForm.mobile).then((res) => {
-          if (!res) {
-            this.$message({
-              message: '验证码已发送，请稍候...',
-              type: 'success',
-              center: true,
-            })
-            this.checkTime()
-          }
-        })
-      } else {
-        this.$message.error('手机号码错误！')
-      }
-    },
-    checkTime() {
-      // 因为下面用到了定时器，需要保存this指向
-      let that = this
-      that.waitTime--
-      that.getCodeBtnDisable = true
-      that.verificationCode1 = `${that.waitTime}s 后重新获取`
-      let timer = setInterval(function () {
-        if (that.waitTime > 1) {
-          that.waitTime--
-          that.verificationCode1 = `${that.waitTime}s 后重新获取`
-        } else {
-          clearInterval(timer)
-          that.verificationCode1 = '获取验证码'
-          that.getCodeBtnDisable = false
-          that.waitTime = 30
+    watch:{
+      menuList:{
+        immediate:true,
+        handler(val) {
+          this.items=val
+          this.appCode = []
+          this.items.map((item) => {
+            this.appCode.push(item.appCode)
+          })
+          // console.log('jjj', this.appCode);
         }
-      }, 1000)
-    },
-    changePassword() {
-      let params = {
-        password: this.addForm.newPassword,
-      }
-      api.login.changePassword(params).then((res) => {
-        if (res) {
-          this.logout()
-        }
-      })
-    },
-    goLogin(type) {
-      this.$router.push({
-        path: `/login`,
-        query: {
-          type: type,
-        },
-      })
-    },
-    goTo(type) {
-      if (type === 'study') {
-        window.open(
-          'http://rmt-mp.ruguoai.info/prod-api/pages/my/index?activeIndex=0',
-          '_blank',
-        )
-      } else {
-        window.open('http://rmt-mp.ruguoai.info/prod-api/talent/user', '_blank')
+
       }
     },
-    logout() {
-      // 这里实现登出逻辑
-      api.logout.getLogout().then(() => {
-        window.localStorage.clear()
-        clearToken()
-        this.$router.push('/login')
-      })
+
+    created() {
+      this.uInfo1 = JSON.parse(window.localStorage.getItem('user_info'))
+      this.addForm.mobile = this.uInfo1 && this.uInfo1.phone ? this.uInfo1.phone : ''
+      this.avatar = this.uInfo1 && this.uInfo1.avatar !== '' ? this.uInfo1.avatar : ""
     },
-    blur() {
-      if (this.addForm.confirmNewPassword === this.addForm.newPassword) {
-        this.disabled = false
-      } else {
-        this.$message.error('两次密码不一致！')
-        this.disabled = true
-      }
-    },
-    onSubmit(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          let params = this.addForm.mobile + '/' + this.addForm.verificationCode
-          api.login.getCheck(params).then((res) => {
+    methods: {
+      dialogVisibleClosed() {
+        this.$refs.addFormRefs.resetFields()
+      },
+      getCode() {
+        if (this.phoneNumberStyle) {
+          // 调用获取短信验证码接口
+          api.login.getCode(this.addForm.mobile).then((res) => {
             if (!res) {
-              this.changePassword()
-            } else {
-              this.$message.error('验证码错误！')
+              this.$message({
+                message: '验证码已发送，请稍候...',
+                type: 'success',
+                center: true,
+              })
+              this.checkTime()
             }
           })
+        } else {
+          this.$message.error('手机号码错误！')
         }
-      })
+      },
+      checkTime() {
+        // 因为下面用到了定时器，需要保存this指向
+        let that = this
+        that.waitTime--
+        that.getCodeBtnDisable = true
+        that.verificationCode1 = `${that.waitTime}s 后重新获取`
+        let timer = setInterval(function () {
+          if (that.waitTime > 1) {
+            that.waitTime--
+            that.verificationCode1 = `${that.waitTime}s 后重新获取`
+          } else {
+            clearInterval(timer)
+            that.verificationCode1 = '获取验证码'
+            that.getCodeBtnDisable = false
+            that.waitTime = 30
+          }
+        }, 1000)
+      },
+      changePassword() {
+        let params = {
+          password: this.addForm.newPassword
+        }
+        api.login.changePassword(params).then((res) => {
+          if (res) {
+            this.logout()
+          }
+        })
+      },
+      goLogin(type) {
+        this.$router.push({
+          path: `/login`,
+          query: {
+            type: type
+          }
+        })
+      },
+      goTo(type) {
+        let localurl = ""
+        this.items.filter(item => {
+          if(item.appCode === type){
+            localurl = item.pcDomainUrl
+          }
+        })
+        if (type === 'kaopei') {
+          let url = localurl + '/pages/my/index?activeIndex=0'
+          window.open(url, '_blank')
+        } else {
+          let url = localurl + '/user'
+          window.open(url, '_blank')
+        }
+      },
+      logout() {
+        // 这里实现登出逻辑
+        api.logout.getLogout().then(() => {
+          window.localStorage.clear();
+          clearToken()
+          this.$router.push('/login')
+        })
+      },
+      blur() {
+        if (this.addForm.confirmNewPassword === this.addForm.newPassword) {
+          this.disabled = false
+        } else {
+          this.$message.error('两次密码不一致！')
+          this.disabled = true
+        }
+      },
+      onSubmit(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            let params = this.addForm.mobile + '/' + this.addForm.verificationCode
+            api.login.getCheck(params).then((res) => {
+              if (!res) {
+                this.changePassword()
+              } else {
+                this.$message.error('验证码错误！')
+              }
+            })
+          }
+        });
+      },
+     
+       
     },
-  },
-}
+  }
 </script>
 
 <style lang="stylus" scoped>

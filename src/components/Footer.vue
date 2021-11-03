@@ -66,8 +66,8 @@ export default {
     return {}
   },
   created() {
-    console.log('vvv', this.footList);
-    console.log('bbb', this.QrCode)
+    // console.log('vvv', this.footList);
+    // console.log('bbb', this.QrCode)
   },
   methods: {},
 }
